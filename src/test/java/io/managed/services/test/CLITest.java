@@ -106,7 +106,7 @@ public class CLITest extends TestBase {
 
     @Test
     @Order(1)
-    void testDownloadCLI(Vertx vertx) throws IOException {
+    void testDownloadCLI(Vertx vertx) throws Exception {
         assertCredentials();
 
         workdir = await(vertx.fileSystem().createTempDirectory("cli"));

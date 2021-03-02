@@ -1,7 +1,6 @@
 package io.managed.services.test.executor;
 
 import io.fabric8.kubernetes.api.model.EnvVar;
-import io.managed.services.test.k8s.exception.KubeClusterException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -102,7 +101,7 @@ public class Exec {
      * @param command arguments for command
      * @return execution results
      */
-    public static ExecResult exec(String... command) {
+    public static ExecResult exec(String... command) throws Exception {
         return exec(Arrays.asList(command));
     }
 
@@ -112,7 +111,7 @@ public class Exec {
      * @param command arguments for command
      * @return execution results
      */
-    public static ExecResult exec(boolean logToOutput, String... command) {
+    public static ExecResult exec(boolean logToOutput, String... command) throws Exception {
         List<String> commands = new ArrayList<>(Arrays.asList(command));
         return exec(null, commands, 0, logToOutput);
     }
@@ -123,7 +122,7 @@ public class Exec {
      * @param command arguments for command
      * @return execution results
      */
-    public static ExecResult exec(List<String> command) {
+    public static ExecResult exec(List<String> command) throws Exception {
         return exec(null, command, 0, false);
     }
 
@@ -133,7 +132,7 @@ public class Exec {
      * @param command arguments for command
      * @return execution results
      */
-    public static ExecResult exec(String input, List<String> command) {
+    public static ExecResult exec(String input, List<String> command) throws Exception {
         return exec(input, command, 0, false);
     }
 
@@ -145,7 +144,7 @@ public class Exec {
      * @param logToOutput log output or not
      * @return execution results
      */
-    public static ExecResult exec(String input, List<String> command, int timeout, boolean logToOutput) {
+    public static ExecResult exec(String input, List<String> command, int timeout, boolean logToOutput) throws Exception {
         return exec(input, command, Collections.emptySet(), timeout, logToOutput, true);
     }
 
@@ -157,7 +156,7 @@ public class Exec {
      * @param throwErrors throw error if exec fail
      * @return results
      */
-    public static ExecResult exec(String input, List<String> command, int timeout, boolean logToOutput, boolean throwErrors) {
+    public static ExecResult exec(String input, List<String> command, int timeout, boolean logToOutput, boolean throwErrors) throws Exception {
         return exec(input, command, Collections.emptySet(), timeout, logToOutput, throwErrors);
     }
 
@@ -172,7 +171,7 @@ public class Exec {
      * @param throwErrors look for errors in output and throws exception if true
      * @return execution results
      */
-    public static ExecResult exec(String input, List<String> command, Set<EnvVar> envVars, int timeout, boolean logToOutput, boolean throwErrors) {
+    public static ExecResult exec(String input, List<String> command, Set<EnvVar> envVars, int timeout, boolean logToOutput, boolean throwErrors) throws Exception {
         int ret = 1;
         ExecResult execResult;
         try {
@@ -195,42 +194,12 @@ public class Exec {
                 }
             }
 
-            execResult = new ExecResult(ret, executor.out(), executor.err());
-
-            if (throwErrors && ret != 0) {
-                String msg = "`" + join(" ", command) + "` got status code " + ret + " and stderr:\n------\n" + executor.stdErr + "\n------\nand stdout:\n------\n" + executor.stdOut + "\n------";
-
-                Matcher matcher = ERROR_PATTERN.matcher(executor.err());
-                KubeClusterException t = null;
-
-                if (matcher.find()) {
-                    switch (matcher.group(1)) {
-                        case "NotFound":
-                            t = new KubeClusterException.NotFound(execResult, msg);
-                            break;
-                        case "AlreadyExists":
-                            t = new KubeClusterException.AlreadyExists(execResult, msg);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                matcher = INVALID_PATTERN.matcher(executor.err());
-                if (matcher.find()) {
-                    t = new KubeClusterException.InvalidResource(execResult, msg);
-                }
-                if (t == null) {
-                    t = new KubeClusterException(execResult, msg);
-                }
-                throw t;
-            }
             return new ExecResult(ret, executor.out(), executor.err());
-
         } catch (IOException | ExecutionException e) {
-            throw new KubeClusterException(e);
+            throw new Exception(e);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new KubeClusterException(e);
+            throw new Exception(e);
         }
     }
 
