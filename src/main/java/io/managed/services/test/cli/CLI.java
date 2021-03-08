@@ -83,6 +83,8 @@ public class CLI {
 
     public Future<KafkaListResponse> listKafkaByNameAsJson(String name) {
         return exec("kafka", "list", "--search", name, "-o", "json")
-                .map(p -> stdoutAsJson(p, KafkaListResponse.class));
+                .map(p -> ProcessUtils.stderr(p).contains("No Kafka instances were found") ?
+                        new KafkaListResponse() :
+                        stdoutAsJson(p, KafkaListResponse.class));
     }
 }

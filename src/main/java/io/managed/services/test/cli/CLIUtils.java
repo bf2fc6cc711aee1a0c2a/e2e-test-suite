@@ -143,7 +143,7 @@ public class CLIUtils {
 
     public static Future<Optional<KafkaResponse>> getKafkaByName(CLI cli, String name) {
         return cli.listKafkaByNameAsJson(name)
-                .map(r -> r.items.stream().findFirst());
+                .map(r -> r.items != null ? r.items.stream().findFirst() : Optional.empty());
     }
 
     public static Future<KafkaResponse> waitForKafkaReady(Vertx vertx, CLI cli, String id) {
