@@ -1,11 +1,8 @@
 package io.managed.services.test;
 
-import com.ea.async.Async;
-import io.managed.services.test.client.kafka.KafkaUtils;
 import io.vertx.core.Future;
 import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
-import org.apache.kafka.common.KafkaFuture;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.TestInfo;
@@ -27,7 +24,6 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Iterator;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
@@ -89,42 +85,6 @@ public class TestUtils {
                     return sleep(vertx, interval)
                             .compose(v -> waitFor(vertx, description, interval, deadline, timeout, isReady));
                 });
-    }
-
-    /**
-     * Sync an async request by waiting for the passed Future do be completed
-     *
-     * @param future KafkaFuture
-     * @param <T>    The Future result Type
-     * @param <F>    Future
-     * @return The Future result
-     */
-    public static <T, F extends KafkaFuture<T>> T await(F future) {
-        return Async.await(KafkaUtils.toCompletionStage(future));
-    }
-
-    /**
-     * Sync an async request by waiting for the passed Future do be completed
-     *
-     * @param future Future
-     * @param <T>    The Future result Type
-     * @param <F>    Future
-     * @return The Future result
-     */
-    public static <T, F extends Future<T>> T await(F future) {
-        return Async.await(future.toCompletionStage());
-    }
-
-    /**
-     * Sync an async request by waiting for the passed Future do be completed
-     *
-     * @param future Future
-     * @param <T>    The Future result Type
-     * @param <F>    Future
-     * @return The Future result
-     */
-    public static <T, F extends CompletableFuture<T>> T await(F future) {
-        return Async.await(future);
     }
 
     /**
