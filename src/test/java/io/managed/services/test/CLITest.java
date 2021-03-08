@@ -26,7 +26,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static io.managed.services.test.TestUtils.await;
@@ -62,25 +61,40 @@ public class CLITest extends TestBase {
     String topic;
 
     @AfterAll
-    void clean(Vertx vertx) {
-        if (cli != null) {
-            deleteServiceAccountByNameIfExists(cli, SERVICE_ACCOUNT_NAME);
-            deleteKafkaByNameIfExists(cli, KAFKA_INSTANCE_NAME);
+    void clean(Vertx vertx, VertxTestContext context) {
 
-            LOGGER.info("log-out from the CLI");
-            await(cli.logout().recover(t -> {
-                LOGGER.error("logout failed with error:", t);
-                return Future.succeededFuture();
-            }));
-        }
+        Future.succeededFuture()
 
-        if (workdir != null) {
-            LOGGER.info("delete workdir: {}", workdir);
-            await(vertx.fileSystem().deleteRecursive(workdir, true).recover(t -> {
-                LOGGER.error("failed to delete workdir {} with error:", workdir, t);
-                return Future.succeededFuture();
-            }));
-        }
+                // 1. delete the kafka instance and service account by name if it exists
+                .compose(__ -> Optional.ofNullable(cli)
+                        .map(c -> deleteServiceAccountByNameIfExists(c, SERVICE_ACCOUNT_NAME)
+                                .compose(___ -> deleteKafkaByNameIfExists(c, KAFKA_INSTANCE_NAME)))
+                        .orElse(Future.succeededFuture()))
+
+                // 2. logout form the cli
+                .compose(__ -> Optional.ofNullable(cli)
+                        .map(c -> {
+                            LOGGER.info("log-out from the CLI");
+                            return c.logout().recover(t -> {
+                                LOGGER.error("logout failed with error:", t);
+                                return Future.succeededFuture();
+                            });
+                        })
+                        .orElse(Future.succeededFuture()))
+
+                // 3. delete workdir after logout if it exists
+                .compose(__ -> Optional.ofNullable(workdir)
+                        .map(w -> {
+                            LOGGER.info("delete workdir: {}", workdir);
+                            return vertx.fileSystem().deleteRecursive(workdir, true)
+                                    .recover(t -> {
+                                        LOGGER.error("failed to delete workdir {} with error:", workdir, t);
+                                        return Future.succeededFuture();
+                                    });
+                        })
+                        .orElse(Future.succeededFuture()))
+
+                .onComplete(context.succeedingThenComplete());
     }
 
     void assertCLI() {
