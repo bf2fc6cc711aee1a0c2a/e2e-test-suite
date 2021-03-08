@@ -80,4 +80,9 @@ public class CLI {
         return exec("kafka", "list", "-o", "json")
                 .map(p -> stdoutAsJson(p, KafkaListResponse.class));
     }
+
+    public Future<KafkaListResponse> listKafkaByNameAsJson(String name) {
+        return exec("kafka", "list", "--search", name, "-o", "json")
+                .map(p -> stdoutAsJson(p, KafkaListResponse.class));
+    }
 }
