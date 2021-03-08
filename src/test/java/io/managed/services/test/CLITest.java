@@ -6,7 +6,6 @@ import io.managed.services.test.cli.CLIUtils;
 import io.managed.services.test.cli.ProcessException;
 import io.managed.services.test.client.serviceapi.KafkaResponse;
 import io.managed.services.test.client.serviceapi.ServiceAccount;
-import io.managed.services.test.executor.ExecBuilder;
 import io.managed.services.test.framework.TestTag;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
@@ -197,27 +196,38 @@ public class CLITest extends TestBase {
 
     @Test
     @Order(4)
-    void testCreateKafkaInstance(Vertx vertx) {
+    void testCreateKafkaInstance(Vertx vertx, VertxTestContext context) {
         assertLoggedIn();
         assertServiceAccount();
 
-        LOGGER.info("Create kafka cluster with name {}", KAFKA_INSTANCE_NAME);
-        kafkaInstance = await(cli.createKafka(KAFKA_INSTANCE_NAME));
-        LOGGER.info("Created kafka cluster {} with id {}", kafkaInstance.name, kafkaInstance.id);
-        await(waitForKafkaReady(vertx, cli, kafkaInstance.id));
-        LOGGER.info("Kafka cluster {} with id {} is ready", kafkaInstance.name, kafkaInstance.id);
+        LOGGER.info("create kafka instance with name {}", KAFKA_INSTANCE_NAME);
+        cli.createKafka(KAFKA_INSTANCE_NAME)
+                .compose(kafka -> {
+                    LOGGER.info("created kafka instance {} with id {}", kafka.name, kafka.id);
+                    return waitForKafkaReady(vertx, cli, kafka.id)
+                            .onSuccess(__ -> {
+                                LOGGER.info("kafka instance {} with id {} is ready", kafka.name, kafka.id);
+                                kafkaInstance = kafka;
+                            });
+                })
+
+                .onComplete(context.succeedingThenComplete());
     }
 
     @Test
     @Order(5)
-    void testGetStatusOfKafkaInstance() {
+    void testGetStatusOfKafkaInstance(VertxTestContext context) {
         assertLoggedIn();
         assertKafka();
 
         LOGGER.info("Get kafka instance with name {}", KAFKA_INSTANCE_NAME);
-        KafkaResponse getKafka = await(cli.describeKafka(kafkaInstance.id));
-        assertEquals("ready", getKafka.status);
-        LOGGER.info("Found kafka instance {} with id {}", getKafka.name, getKafka.id);
+        cli.describeKafka(kafkaInstance.id)
+                .onSuccess(kafka -> context.verify(() -> {
+                    assertEquals("ready", kafka.status);
+                    LOGGER.info("found kafka instance {} with id {}", kafka.name, kafka.id);
+                }))
+
+                .onComplete(context.succeedingThenComplete());
     }
 
     @Test
@@ -257,11 +267,11 @@ public class CLITest extends TestBase {
 
     @Test
     @Order(11)
-    void testCreateAlreadyCreatedKafka() {
+    void testCreateAlreadyCreatedKafka(VertxTestContext context) {
         assertLoggedIn();
         assertKafka();
 
-        await(cli.createKafka(KAFKA_INSTANCE_NAME)
+        cli.createKafka(KAFKA_INSTANCE_NAME)
                 .compose(r -> Future.failedFuture("Create kafka with same name should fail"))
                 .recover(throwable -> {
                     if (throwable instanceof Exception) {
@@ -270,7 +280,8 @@ public class CLITest extends TestBase {
                     }
                     return Future.failedFuture(throwable);
                 })
-        );
+
+                .onComplete(context.succeedingThenComplete());
     }
 
     @Test
@@ -285,12 +296,13 @@ public class CLITest extends TestBase {
 
     @Test
     @Order(13)
-    void testDeleteKafkaInstance(Vertx vertx) {
+    void testDeleteKafkaInstance(Vertx vertx, VertxTestContext context) {
         assertLoggedIn();
         assertKafka();
 
         LOGGER.info("Delete kafka instance {} with id {}", kafkaInstance.name, kafkaInstance.id);
-        await(cli.deleteKafka(kafkaInstance.id));
-        await(waitForKafkaDelete(vertx, cli, kafkaInstance.name));
+        cli.deleteKafka(kafkaInstance.id)
+                .compose(__ -> waitForKafkaDelete(vertx, cli, kafkaInstance.name))
+                .onComplete(context.succeedingThenComplete());
     }
 }
