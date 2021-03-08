@@ -1,17 +1,15 @@
 package io.managed.services.test;
 
 import io.managed.services.test.cli.CLI;
+import io.managed.services.test.cli.CLIDownloader;
 import io.managed.services.test.cli.CLIUtils;
-import io.managed.services.test.cli.Platform;
 import io.managed.services.test.cli.ProcessException;
-import io.managed.services.test.client.github.GitHub;
 import io.managed.services.test.client.serviceapi.KafkaResponse;
 import io.managed.services.test.client.serviceapi.ServiceAccount;
 import io.managed.services.test.executor.ExecBuilder;
 import io.managed.services.test.framework.TestTag;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
-import io.vertx.core.file.OpenOptions;
 import io.vertx.junit5.Timeout;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
@@ -26,9 +24,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static io.managed.services.test.TestUtils.await;
 import static io.managed.services.test.cli.CLIUtils.deleteKafkaByNameIfExists;
 import static io.managed.services.test.cli.CLIUtils.deleteServiceAccountByNameIfExists;
 import static io.managed.services.test.cli.CLIUtils.extractCLI;
@@ -46,9 +44,6 @@ public class CLITest extends TestBase {
 
     static final String DOWNLOAD_ORG = "bf2fc6cc711aee1a0c2a";
     static final String DOWNLOAD_REPO = "cli";
-    static final String CLI_NAME = "rhoas";
-    static final String DOWNLOAD_ASSET_TEMPLATE = "%s_%s_%s.%s";
-    static final String ARCHIVE_ENTRY_TEMPLATE = "%s_%s_%s/bin/%s";
     static final String KAFKA_INSTANCE_NAME = "cli-e2e-test-instance-" + Environment.KAFKA_POSTFIX_NAME;
     static final String SERVICE_ACCOUNT_NAME = "cli-e2e-service-account-" + Environment.KAFKA_POSTFIX_NAME;
     static final String TOPIC_NAME = "cli-e2e-test-topic";
@@ -125,48 +120,29 @@ public class CLITest extends TestBase {
 
     @Test
     @Order(1)
-    void testDownloadCLI(Vertx vertx) throws Exception {
+    void testDownloadCLI(Vertx vertx, VertxTestContext context) {
         assertCredentials();
 
-        workdir = await(vertx.fileSystem().createTempDirectory("cli"));
-        LOGGER.info("workdir: {}", workdir);
+        var downloader = new CLIDownloader(
+                vertx,
+                Environment.BF2_GITHUB_TOKEN,
+                DOWNLOAD_ORG,
+                DOWNLOAD_REPO,
+                Environment.CLI_VERSION,
+                Environment.CLI_PLATFORM,
+                Environment.CLI_ARCH);
 
-        var client = new GitHub(vertx, Environment.BF2_GITHUB_TOKEN);
+        // download the cli
+        downloader.downloadCLIInTempDir()
 
-        LOGGER.info("retrieve release by tag '{}' in repository: '{}/{}'", Environment.CLI_VERSION, DOWNLOAD_ORG, DOWNLOAD_REPO);
-        var release = await(client.getReleaseByTagName(DOWNLOAD_ORG, DOWNLOAD_REPO, Environment.CLI_VERSION));
+                .compose(binary -> {
+                    this.cli = new CLI(binary.directory, binary.name);
 
-        final var downloadAsset = String.format(DOWNLOAD_ASSET_TEMPLATE, CLI_NAME, release.tagName, Environment.CLI_ARCH, Platform.getArch().equals(Platform.WINDOWS) ? "zip" : "tar.gz");
-        LOGGER.info("search for asset '{}' in release: '{}'", downloadAsset, release.toString());
-        var asset = release.assets.stream()
-                .filter(a -> a.name.equals(downloadAsset))
-                .findFirst().orElseThrow();
+                    LOGGER.info("validate cli");
+                    return cli.help();
+                })
 
-        final var archive = workdir + "/cli." + (Platform.getArch().equals(Platform.WINDOWS) ? "zip" : "tar.gz");
-        LOGGER.info("download asset '{}' to '{}'", asset.toString(), archive);
-        var archiveFile = await(vertx.fileSystem().open(archive, new OpenOptions()
-                .setCreate(true)
-                .setAppend(false)));
-        await(client.downloadAsset(DOWNLOAD_ORG, DOWNLOAD_REPO, asset.id, archiveFile));
-
-        final var cli = workdir + "/" + CLI_NAME;
-        final var entry = String.format(ARCHIVE_ENTRY_TEMPLATE, CLI_NAME, release.tagName, Environment.CLI_ARCH, CLI_NAME);
-        LOGGER.info("extract {} from archive {} to: {}", entry, archive, cli);
-        extractCLI(archive, entry, cli);
-
-        // make the cli executable
-        if (!Platform.getArch().equals(Platform.WINDOWS)) {
-            await(vertx.fileSystem().chmod(cli, "rwxr-xr-x"));
-        }
-
-        this.cli = new CLI(workdir, CLI_NAME);
-
-        LOGGER.info("validate cli");
-        new ExecBuilder()
-                .withCommand(cli, "--help")
-                .logToOutput(true)
-                .throwErrors(true)
-                .exec();
+                .onComplete(context.succeedingThenComplete());
     }
 
 
