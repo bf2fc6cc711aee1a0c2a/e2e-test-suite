@@ -5,6 +5,8 @@ import io.vertx.core.Promise;
 import io.vertx.core.Vertx;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.MessageFactory2;
+import org.apache.logging.log4j.message.ParameterizedMessageFactory;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.util.ExceptionUtils;
@@ -34,6 +36,7 @@ import java.util.function.Function;
 public class TestUtils {
     private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
 
+    private static final MessageFactory2 messageFactory = new ParameterizedMessageFactory();
 
     /**
      * Wait until the passed async lambda function return true
@@ -148,6 +151,17 @@ public class TestUtils {
         Promise<Void> p = Promise.promise();
         x.setTimer(d.toMillis(), l -> p.complete());
         return p.future();
+    }
+
+    /**
+     * Format the message like log4j
+     *
+     * @param message String format
+     * @param params  Objects
+     * @return String
+     */
+    public static String message(String message, Object... params) {
+        return messageFactory.newMessage(message, params).getFormattedMessage();
     }
 
     public static long waitFor(String description, long pollIntervalMs, long timeoutMs, BooleanSupplier ready) {
