@@ -28,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 
 import static io.managed.services.test.cli.CLIUtils.deleteKafkaByNameIfExists;
 import static io.managed.services.test.cli.CLIUtils.deleteServiceAccountByNameIfExists;
-import static io.managed.services.test.cli.CLIUtils.extractCLI;
 import static io.managed.services.test.cli.CLIUtils.waitForKafkaDelete;
 import static io.managed.services.test.cli.CLIUtils.waitForKafkaReady;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -57,38 +56,40 @@ public class CLITest extends TestBase {
     @AfterAll
     void clean(Vertx vertx, VertxTestContext context) {
 
-        Future.succeededFuture()
+        var cliF = Optional.ofNullable(cli)
+                .map(cli -> {
 
-                // 1. delete the kafka instance and service account by name if it exists
-                .compose(__ -> Optional.ofNullable(cli)
-                        .map(c -> deleteServiceAccountByNameIfExists(c, SERVICE_ACCOUNT_NAME)
-                                .compose(___ -> deleteKafkaByNameIfExists(c, KAFKA_INSTANCE_NAME)))
-                        .orElse(Future.succeededFuture()))
+                    // delete service account by name if it exists
+                    LOGGER.info("delete service account with name: {}", SERVICE_ACCOUNT_NAME);
+                    return context.assertFailure(deleteServiceAccountByNameIfExists(cli, SERVICE_ACCOUNT_NAME))
 
-                // 2. logout form the cli
-                .compose(__ -> Optional.ofNullable(cli)
-                        .map(c -> {
-                            LOGGER.info("log-out from the CLI");
-                            return c.logout().recover(t -> {
-                                LOGGER.error("logout failed with error:", t);
-                                return Future.succeededFuture();
-                            });
-                        })
-                        .orElse(Future.succeededFuture()))
+                            // delete kafka instance by name if it exists
+                            .eventually(__ -> {
+                                LOGGER.info("delete kafka instance with name: {}", KAFKA_INSTANCE_NAME);
+                                return context.assertComplete(deleteKafkaByNameIfExists(cli, KAFKA_INSTANCE_NAME));
+                            })
 
-                // 3. delete workdir after logout if it exists
-                .compose(__ -> Optional.ofNullable(workdir)
-                        .map(w -> {
+                            .eventually(__ -> {
+                                LOGGER.info("log-out from the CLI");
+                                return context.assertComplete(cli.logout());
+                            })
+
+                            .eventually(__ -> Future.succeededFuture());
+                })
+                .orElse(Future.succeededFuture());
+
+
+        var workdirF = cliF.compose(__ ->
+                Optional.ofNullable(workdir)
+                        .map(workdir -> {
                             LOGGER.info("delete workdir: {}", workdir);
-                            return vertx.fileSystem().deleteRecursive(workdir, true)
-                                    .recover(t -> {
-                                        LOGGER.error("failed to delete workdir {} with error:", workdir, t);
-                                        return Future.succeededFuture();
-                                    });
-                        })
-                        .orElse(Future.succeededFuture()))
+                            return context.assertComplete(vertx.fileSystem().deleteRecursive(workdir, true))
 
-                .onComplete(context.succeedingThenComplete());
+                                    .eventually(___ -> Future.succeededFuture());
+                        })
+                        .orElse(Future.succeededFuture()));
+
+        workdirF.onComplete(context.succeedingThenComplete());
     }
 
     void assertCLI() {
@@ -184,11 +185,12 @@ public class CLITest extends TestBase {
 
     @Test
     @Order(3)
-    void testCreateServiceAccount(Vertx vertx, VertxTestContext context) throws IOException {
+    void testCreateServiceAccount(VertxTestContext context) {
         assertLoggedIn();
+
         CLIUtils.createServiceAccount(cli, SERVICE_ACCOUNT_NAME)
                 .onSuccess(sa -> {
-                    serviceAccount = sa.get();
+                    serviceAccount = sa;
                     LOGGER.info("Created serviceaccount {} with id {}", serviceAccount.name, serviceAccount.id);
                 })
                 .onComplete(context.succeedingThenComplete());
