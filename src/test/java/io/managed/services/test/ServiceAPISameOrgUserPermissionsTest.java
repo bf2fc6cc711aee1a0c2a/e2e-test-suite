@@ -128,6 +128,7 @@ public class ServiceAPISameOrgUserPermissionsTest extends TestBase {
 
     @Test
     @Order(2)
+    @Timeout(value = 2, timeUnit = TimeUnit.MINUTES)
     void testUser2ProduceAndConsumeKafkaMessages(Vertx vertx, VertxTestContext context) {
         assertKafka();
 

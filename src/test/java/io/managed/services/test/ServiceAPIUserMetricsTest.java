@@ -7,6 +7,7 @@ import io.managed.services.test.client.serviceapi.ServiceAPIUtils;
 import io.managed.services.test.framework.TestTag;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Vertx;
+import io.vertx.junit5.Timeout;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import static io.managed.services.test.TestUtils.waitFor;
 import static io.managed.services.test.client.kafka.KafkaMessagingUtils.testTopic;
@@ -65,6 +67,7 @@ public class ServiceAPIUserMetricsTest extends TestBase {
 
     @Test
     @Order(1)
+    @Timeout(value = 2, timeUnit = TimeUnit.MINUTES)
     void testMessageInTotalMetric(Vertx vertx, VertxTestContext context) {
         assertAPI();
 
