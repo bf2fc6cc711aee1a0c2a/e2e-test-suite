@@ -22,6 +22,7 @@ import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
 import io.vertx.ext.auth.User;
+import io.vertx.junit5.Timeout;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
 import org.apache.logging.log4j.LogManager;
@@ -41,6 +42,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static io.managed.services.test.TestUtils.waitFor;
 import static java.time.Duration.ofMinutes;
@@ -85,8 +87,8 @@ public class BindingOperatorTest extends TestBase {
         LOGGER.info("authenticate user: {} against: {}", Environment.SSO_USERNAME, Environment.SSO_REDHAT_KEYCLOAK_URI);
         auth.login(Environment.SSO_USERNAME, Environment.SSO_PASSWORD)
                 .onSuccess(user -> {
+                    this.user = user;
                     this.api = new ServiceAPI(vertx, Environment.SERVICE_API_URI, user);
-
 
                     Config config = new ConfigBuilder()
                             .withMasterUrl(Environment.DEV_CLUSTER_SERVER)
@@ -161,6 +163,7 @@ public class BindingOperatorTest extends TestBase {
 
     @Test
     @Order(2)
+    @Timeout(value = 5, timeUnit = TimeUnit.MINUTES)
     void createManagedServiceAccountRequest(Vertx vertx, VertxTestContext context) {
         assumeTrue(client != null, "the global client is null");
 
@@ -218,12 +221,15 @@ public class BindingOperatorTest extends TestBase {
                         LOGGER.warn("last ManagedServicesRequest is: {}", Json.encode(r));
                     }
 
-                    if (r.getStatus() != null && !r.getStatus().getUserKafkas().isEmpty()) {
+                    if (r.getStatus() != null
+                            && r.getStatus().getUserKafkas() != null
+                            && !r.getStatus().getUserKafkas().isEmpty()) {
+
                         return Pair.with(true, r);
                     }
                     return Pair.with(false, null);
                 });
-        waitFor(vertx, "ManagedServicesRequest to complete", ofSeconds(10), ofMinutes(2), ready)
+        waitFor(vertx, "ManagedServicesRequest to complete", ofSeconds(10), ofMinutes(3), ready)
                 .onSuccess(r -> LOGGER.info("ManagedServicesRequest is ready: {}", Json.encode(r)))
                 .onComplete(context.succeedingThenComplete());
     }
@@ -267,7 +273,10 @@ public class BindingOperatorTest extends TestBase {
                         LOGGER.warn("last ManagedKafkaConnection is: {}", Json.encode(r));
                     }
 
-                    if (r.getStatus() != null && r.getStatus().getMessage().equals("Created")) {
+                    if (r.getStatus() != null
+                            && r.getStatus().getMessage() != null
+                            && r.getStatus().getMessage().equals("Created")) {
+
                         return Pair.with(true, r);
                     }
                     return Pair.with(false, null);
