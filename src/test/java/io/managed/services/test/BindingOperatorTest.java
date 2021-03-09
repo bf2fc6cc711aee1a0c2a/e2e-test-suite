@@ -23,6 +23,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
 import io.vertx.ext.auth.User;
 import io.vertx.junit5.VertxExtension;
+import io.vertx.junit5.VertxTestContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javatuples.Pair;
@@ -41,7 +42,6 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.managed.services.test.TestUtils.await;
 import static io.managed.services.test.TestUtils.waitFor;
 import static java.time.Duration.ofMinutes;
 import static java.time.Duration.ofSeconds;
@@ -71,7 +71,7 @@ public class BindingOperatorTest extends TestBase {
     final static String MANAGED_KAFKA_CONNECTION_NAME = "mk-e2e-kafka-connection";
 
     @BeforeAll
-    void bootstrap(Vertx vertx) {
+    void bootstrap(Vertx vertx, VertxTestContext context) {
         assumeTrue(Environment.SSO_USERNAME != null, "the SSO_USERNAME env is null");
         assumeTrue(Environment.SSO_PASSWORD != null, "the SSO_PASSWORD env is null");
         assumeTrue(Environment.DEV_CLUSTER_TOKEN != null, "the DEV_CLUSTER_TOKEN env is null");
@@ -83,20 +83,22 @@ public class BindingOperatorTest extends TestBase {
                 Environment.SSO_REDHAT_CLIENT_ID);
 
         LOGGER.info("authenticate user: {} against: {}", Environment.SSO_USERNAME, Environment.SSO_REDHAT_KEYCLOAK_URI);
-        this.user = await(auth.login(Environment.SSO_USERNAME, Environment.SSO_PASSWORD));
-        this.api = new ServiceAPI(vertx, Environment.SERVICE_API_URI, user);
+        auth.login(Environment.SSO_USERNAME, Environment.SSO_PASSWORD)
+                .onSuccess(user -> {
+                    this.api = new ServiceAPI(vertx, Environment.SERVICE_API_URI, user);
 
 
-        Config config = new ConfigBuilder()
-                .withMasterUrl(Environment.DEV_CLUSTER_SERVER)
-                .withOauthToken(Environment.DEV_CLUSTER_TOKEN)
-                .withNamespace(Environment.DEV_CLUSTER_NAMESPACE)
-                .build();
+                    Config config = new ConfigBuilder()
+                            .withMasterUrl(Environment.DEV_CLUSTER_SERVER)
+                            .withOauthToken(Environment.DEV_CLUSTER_TOKEN)
+                            .withNamespace(Environment.DEV_CLUSTER_NAMESPACE)
+                            .build();
 
-        LOGGER.info("initialize kubernetes client");
-        this.client = new DefaultKubernetesClient(config);
+                    LOGGER.info("initialize kubernetes client");
+                    this.client = new DefaultKubernetesClient(config);
+                })
 
-
+                .onComplete(context.succeedingThenComplete());
     }
 
     @AfterAll
@@ -159,7 +161,7 @@ public class BindingOperatorTest extends TestBase {
 
     @Test
     @Order(2)
-    void createManagedServiceAccountRequest(Vertx vertx) {
+    void createManagedServiceAccountRequest(Vertx vertx, VertxTestContext context) {
         assumeTrue(client != null, "the global client is null");
 
         var a = new ManagedServiceAccountRequest();
@@ -188,13 +190,14 @@ public class BindingOperatorTest extends TestBase {
                     }
                     return Pair.with(false, null);
                 });
-        a = await(waitFor(vertx, "ManagedServiceAccountRequest to complete", ofSeconds(10), ofMinutes(2), ready));
-        LOGGER.info("ManagedServiceAccountRequest is ready: {}", Json.encode(a));
+        waitFor(vertx, "ManagedServiceAccountRequest to complete", ofSeconds(10), ofMinutes(2), ready)
+                .onSuccess(r -> LOGGER.info("ManagedServiceAccountRequest is ready: {}", Json.encode(r)))
+                .onComplete(context.succeedingThenComplete());
     }
 
     @Test
     @Order(2)
-    void createManagedServicesRequest(Vertx vertx) {
+    void createManagedServicesRequest(Vertx vertx, VertxTestContext context) {
         assumeTrue(client != null, "the global client is null");
 
         var k = new ManagedServicesRequest();
@@ -220,14 +223,15 @@ public class BindingOperatorTest extends TestBase {
                     }
                     return Pair.with(false, null);
                 });
-        k = await(waitFor(vertx, "ManagedServicesRequest to complete", ofSeconds(10), ofMinutes(2), ready));
-        LOGGER.info("ManagedServicesRequest is ready: {}", Json.encode(k));
+        waitFor(vertx, "ManagedServicesRequest to complete", ofSeconds(10), ofMinutes(2), ready)
+                .onSuccess(r -> LOGGER.info("ManagedServicesRequest is ready: {}", Json.encode(r)))
+                .onComplete(context.succeedingThenComplete());
     }
 
 
     @Test
     @Order(3)
-    void createManagedKafkaConnection(Vertx vertx) {
+    void createManagedKafkaConnection(Vertx vertx, VertxTestContext context) {
         assumeTrue(client != null, "the global client is null");
 
         var managedServicesRequest = OperatorUtils.managedServicesRequest(client).withName(MANAGED_KAFKA_REQUEST_NAME).get();
@@ -268,7 +272,8 @@ public class BindingOperatorTest extends TestBase {
                     }
                     return Pair.with(false, null);
                 });
-        c = await(waitFor(vertx, "ManagedKafkaConnection to complete", ofSeconds(10), ofMinutes(2), ready));
-        LOGGER.info("ManagedKafkaConnection is ready: {}", Json.encode(c));
+        waitFor(vertx, "ManagedKafkaConnection to complete", ofSeconds(10), ofMinutes(2), ready)
+                .onSuccess(r -> LOGGER.info("ManagedKafkaConnection is ready: {}", Json.encode(r)))
+                .onComplete(context.succeedingThenComplete());
     }
 }
