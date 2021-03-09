@@ -126,6 +126,5 @@ public class ServiceAPIUserMetricsTest extends TestBase {
                 .onSuccess(i -> LOGGER.info("final in message count for topic '{}' is: {}", TOPIC_NAME, i))
                 .onSuccess(i -> context.verify(() -> assertEquals(i, initialInMessagesF.result() + MESSAGE_COUNT)))
                 .onComplete(context.succeedingThenComplete());
-        ;
     }
 }

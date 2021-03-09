@@ -36,7 +36,7 @@ import java.util.function.Function;
 public class TestUtils {
     private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
 
-    private static final MessageFactory2 messageFactory = new ParameterizedMessageFactory();
+    private static final MessageFactory2 MESSAGE_FACTORY = new ParameterizedMessageFactory();
 
     /**
      * Wait until the passed async lambda function return true
@@ -161,7 +161,7 @@ public class TestUtils {
      * @return String
      */
     public static String message(String message, Object... params) {
-        return messageFactory.newMessage(message, params).getFormattedMessage();
+        return MESSAGE_FACTORY.newMessage(message, params).getFormattedMessage();
     }
 
     public static long waitFor(String description, long pollIntervalMs, long timeoutMs, BooleanSupplier ready) {
