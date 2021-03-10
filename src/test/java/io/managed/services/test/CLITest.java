@@ -63,15 +63,15 @@ public class CLITest extends TestBase {
                     LOGGER.info("delete service account with name: {}", SERVICE_ACCOUNT_NAME);
                     return context.assertComplete(deleteServiceAccountByNameIfExists(cli, SERVICE_ACCOUNT_NAME))
                             // delete kafka instance by name if it exists
-                            .compose(__ -> {
+                            .eventually(__ -> {
                                 LOGGER.info("delete kafka instance with name: {}", KAFKA_INSTANCE_NAME);
                                 return context.assertComplete(deleteKafkaByNameIfExists(cli, KAFKA_INSTANCE_NAME));
                             })
-                            .compose(__ -> {
+                            .eventually(__ -> {
                                 LOGGER.info("log-out from the CLI");
                                 return context.assertComplete(cli.logout());
                             })
-                            .compose(__ -> Future.succeededFuture());
+                            .eventually(__ -> Future.succeededFuture());
                 })
                 .orElse(Future.succeededFuture());
 
@@ -179,6 +179,7 @@ public class CLITest extends TestBase {
     }
 
     @Test
+    @Timeout(value = 2, timeUnit = TimeUnit.MINUTES)
     @Order(3)
     void testCreateServiceAccount(VertxTestContext context) {
         assertLoggedIn();
@@ -192,6 +193,7 @@ public class CLITest extends TestBase {
     }
 
     @Test
+    @Timeout(value = 5, timeUnit = TimeUnit.MINUTES)
     @Order(4)
     void testCreateKafkaInstance(Vertx vertx, VertxTestContext context) {
         assertLoggedIn();
@@ -282,6 +284,7 @@ public class CLITest extends TestBase {
     }
 
     @Test
+    @Timeout(value = 1, timeUnit = TimeUnit.MINUTES)
     @Order(12)
     void testDeleteServiceAccount(Vertx vertx, VertxTestContext context) {
         assertServiceAccount();
@@ -292,6 +295,7 @@ public class CLITest extends TestBase {
     }
 
     @Test
+    @Timeout(value = 2, timeUnit = TimeUnit.MINUTES)
     @Order(13)
     void testDeleteKafkaInstance(Vertx vertx, VertxTestContext context) {
         assertLoggedIn();
