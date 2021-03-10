@@ -61,31 +61,26 @@ public class CLITest extends TestBase {
 
                     // delete service account by name if it exists
                     LOGGER.info("delete service account with name: {}", SERVICE_ACCOUNT_NAME);
-                    return context.assertFailure(deleteServiceAccountByNameIfExists(cli, SERVICE_ACCOUNT_NAME))
-
+                    return context.assertComplete(deleteServiceAccountByNameIfExists(cli, SERVICE_ACCOUNT_NAME))
                             // delete kafka instance by name if it exists
-                            .eventually(__ -> {
+                            .compose(__ -> {
                                 LOGGER.info("delete kafka instance with name: {}", KAFKA_INSTANCE_NAME);
                                 return context.assertComplete(deleteKafkaByNameIfExists(cli, KAFKA_INSTANCE_NAME));
                             })
-
-                            .eventually(__ -> {
+                            .compose(__ -> {
                                 LOGGER.info("log-out from the CLI");
                                 return context.assertComplete(cli.logout());
                             })
-
-                            .eventually(__ -> Future.succeededFuture());
+                            .compose(__ -> Future.succeededFuture());
                 })
                 .orElse(Future.succeededFuture());
-
 
         var workdirF = cliF.compose(__ ->
                 Optional.ofNullable(workdir)
                         .map(workdir -> {
                             LOGGER.info("delete workdir: {}", workdir);
                             return context.assertComplete(vertx.fileSystem().deleteRecursive(workdir, true))
-
-                                    .eventually(___ -> Future.succeededFuture());
+                                    .compose(___ -> Future.succeededFuture());
                         })
                         .orElse(Future.succeededFuture()));
 
