@@ -165,7 +165,6 @@ public class CLI {
             }
 
             if (t instanceof ProcessException) {
-                LOGGER.info("Process exception - retry");
                 if (t.getMessage().contains("504") || t.getMessage().contains("500")) {
                     return retry.apply(t);
                 }
