@@ -6,7 +6,6 @@ import io.managed.services.test.client.serviceapi.ServiceAPIUtils;
 import io.managed.services.test.framework.TestTag;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
-import io.vertx.junit5.Timeout;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +17,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.net.HttpURLConnection;
-import java.util.concurrent.TimeUnit;
 
 @Tag(TestTag.SERVICE_API_PERMISSIONS)
 @ExtendWith(VertxExtension.class)
