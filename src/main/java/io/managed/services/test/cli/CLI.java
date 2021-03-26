@@ -48,6 +48,7 @@ public class CLI {
 
         ProcessBuilder pb = new ProcessBuilder(cmd)
                 .directory(new File(workdir));
+        //TODO remove env setting after fix for https://github.com/bf2fc6cc711aee1a0c2a/cli/issues/497 will be released
         Map<String, String> env = pb.environment();
         env.put("RHOASCLI_CONFIG", System.getenv("HOME") + "/.rhoascli.json");
         return pb;
