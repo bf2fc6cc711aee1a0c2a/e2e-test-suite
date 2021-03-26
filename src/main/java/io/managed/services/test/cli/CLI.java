@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -45,8 +46,11 @@ public class CLI {
         cmd.add("-d");
         cmd.addAll(Arrays.asList(command));
 
-        return new ProcessBuilder(cmd)
+        ProcessBuilder pb = new ProcessBuilder(cmd)
                 .directory(new File(workdir));
+        Map<String, String> env = pb.environment();
+        env.put("RHOASCLI_CONFIG", System.getenv("HOME") + "/.rhoascli.json");
+        return pb;
     }
 
     private Future<Process> exec(String... command) {
