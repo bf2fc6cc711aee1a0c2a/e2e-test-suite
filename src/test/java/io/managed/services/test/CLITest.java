@@ -80,7 +80,12 @@ public class CLITest extends TestBase {
 
                         // clean kafka instance
                         .compose(__ -> cleanKafkaInstance(api)))
-
+                .compose(__ -> {
+                    if (cli != null) {
+                        return cli.logout();
+                    }
+                    return Future.succeededFuture();
+                })
                 .compose(__ -> {
                     if (cli != null) {
                         LOGGER.info("delete workdir: {}", cli.getWorkdir());
@@ -191,7 +196,7 @@ public class CLITest extends TestBase {
                     serviceAccount = sa;
                     try {
                         ServiceAccountSecret secret = CLIUtils.getServiceAccountSecret(cli, sa.name);
-                        sa.clientSecret = secret.password;
+                        sa.clientSecret = secret.clientSecret;
                     } catch (IOException e) {
                         context.failNow(e);
                     }
