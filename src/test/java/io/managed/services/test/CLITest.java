@@ -82,6 +82,7 @@ public class CLITest extends TestBase {
                         .compose(__ -> cleanKafkaInstance(api)))
                 .compose(__ -> {
                     if (cli != null) {
+                        LOGGER.info("logout user from rhoas");
                         return cli.logout();
                     }
                     return Future.succeededFuture();
