@@ -300,12 +300,11 @@ class ServiceAPITest extends TestBase {
         AtomicReference<KafkaResponse> kafkaForDeletion = new AtomicReference<>();
 
         api.createKafka(kafkaPayload, true)
-                .compose(__ -> sleep(vertx, ofSeconds(10)))
-                .compose(__ -> api.getListOfKafkaByName(KAFKA2_INSTANCE_NAME))
-                .compose(kafkaListResponse -> {
-                    kafkaForDeletion.set(kafkaListResponse.items.get(0));
-                    return api.deleteKafka(kafkaForDeletion.get().id, true);
+                .compose(kafkaResponse -> {
+                    kafkaForDeletion.set(kafkaResponse);
+                    return sleep(vertx, ofSeconds(10));
                 })
+                .compose(__ -> api.deleteKafka(kafkaForDeletion.get().id, true))
                 .compose(__ -> waitUntilKafkaIsDeleted(vertx, api, kafkaForDeletion.get().id))
                 .compose(__ -> sleep(vertx, ofSeconds(1)))
                 .onComplete(context.succeedingThenComplete());
