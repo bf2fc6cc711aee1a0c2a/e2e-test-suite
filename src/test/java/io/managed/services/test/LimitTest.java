@@ -23,6 +23,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -37,7 +38,7 @@ class LimitTest extends TestBase {
     private static final Logger LOGGER = LogManager.getLogger(LimitTest.class);
 
     ServiceAPI api;
-    static final int SA_LIMIT = 3;
+    static final int SA_LIMIT = 2;
     static final String SERVICE_ACCOUNT_NAME_PATTERN = "mk-e2e-sa-" + Environment.KAFKA_POSTFIX_NAME;
 
     @BeforeAll
@@ -60,9 +61,10 @@ class LimitTest extends TestBase {
     @Test
     void testLimitServiceAccount(VertxTestContext context) {
         assertAPI();
+        AtomicInteger saSuccessCount = new AtomicInteger(0);
 
         // Create Service Account payloads
-        List<CreateServiceAccountPayload> payloads = IntStream.range(0, SA_LIMIT).boxed().map(i -> {
+        List<CreateServiceAccountPayload> payloads = IntStream.range(0, SA_LIMIT + 1).boxed().map(i -> {
             CreateServiceAccountPayload serviceAccountPayload = new CreateServiceAccountPayload();
             serviceAccountPayload.name = SERVICE_ACCOUNT_NAME_PATTERN + "-" + i;
             return serviceAccountPayload;
@@ -70,17 +72,21 @@ class LimitTest extends TestBase {
 
 
         ServiceAPIUtils.deleteServiceAccountsByOwnerIfExists(api, Environment.SSO_SECONDARY_USERNAME) //remove all SA owned by user
-                .compose(__ -> api.createServiceAccount(payloads.get(0)))
-                .onSuccess(__ -> LOGGER.info("Service account {} created", payloads.get(0).name))
-                .compose(__ -> api.createServiceAccount(payloads.get(1)))
-                .onSuccess(__ -> LOGGER.info("Service account {} created", payloads.get(1).name))
-                .compose(__ -> api.createServiceAccount(payloads.get(2)))
-                .recover(throwable -> {
-                    if (throwable instanceof ResponseException && ((ResponseException) throwable).response.statusCode() == HttpURLConnection.HTTP_FORBIDDEN) {
+                .compose(__ -> TestUtils.forEach(payloads.iterator(), payload ->
+                        api.createServiceAccount(payload)
+                                .onSuccess(serviceAccount -> {
+                                    LOGGER.info("Service account {} created", serviceAccount.name);
+                                    saSuccessCount.incrementAndGet();
+                                })
+                                .map(serviceAccount -> null)))
+                .compose(__ -> Future.failedFuture("should fail"), t -> {
+                    if (t instanceof ResponseException &&
+                            ((ResponseException) t).response.statusCode() == HttpURLConnection.HTTP_FORBIDDEN &&
+                            saSuccessCount.get() == SA_LIMIT) {
                         LOGGER.info("Create service account outside limit failed");
                         return Future.succeededFuture();
                     }
-                    return Future.failedFuture(throwable);
+                    return Future.failedFuture(t);
                 })
                 .onComplete(context.succeedingThenComplete());
     }
