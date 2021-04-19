@@ -37,8 +37,8 @@ class LimitTest extends TestBase {
     private static final Logger LOGGER = LogManager.getLogger(LimitTest.class);
 
     ServiceAPI api;
-    final int SA_LIMIT = 3;
-    final String SERVICE_ACCOUNT_NAME_PATTERN = "mk-e2e-sa-" + Environment.KAFKA_POSTFIX_NAME;
+    static final int SA_LIMIT = 3;
+    static final String SERVICE_ACCOUNT_NAME_PATTERN = "mk-e2e-sa-" + Environment.KAFKA_POSTFIX_NAME;
 
     @BeforeAll
     void bootstrap(Vertx vertx, VertxTestContext context) {
@@ -71,9 +71,9 @@ class LimitTest extends TestBase {
 
         ServiceAPIUtils.deleteServiceAccountsByOwnerIfExists(api, Environment.SSO_SECONDARY_USERNAME) //remove all SA owned by user
                 .compose(__ -> api.createServiceAccount(payloads.get(0)))
-                .onSuccess(__ ->LOGGER.info("Service account {} created", payloads.get(0).name))
+                .onSuccess(__ -> LOGGER.info("Service account {} created", payloads.get(0).name))
                 .compose(__ -> api.createServiceAccount(payloads.get(1)))
-                .onSuccess(__ ->LOGGER.info("Service account {} created", payloads.get(1).name))
+                .onSuccess(__ -> LOGGER.info("Service account {} created", payloads.get(1).name))
                 .compose(__ -> api.createServiceAccount(payloads.get(2)))
                 .recover(throwable -> {
                     if (throwable instanceof ResponseException && ((ResponseException) throwable).response.statusCode() == HttpURLConnection.HTTP_FORBIDDEN) {
