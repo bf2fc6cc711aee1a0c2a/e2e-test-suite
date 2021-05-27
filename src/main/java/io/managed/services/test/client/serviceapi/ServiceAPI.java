@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 public class ServiceAPI extends BaseVertxClient {
 
     final TokenCredentials token;
-    final String API_BASE = "/api/kafkas_mgmt/v1/";
+    private static final String API_BASE = "/api/kafkas_mgmt/v1/";
 
     public ServiceAPI(Vertx vertx, String uri, String token) {
         super(vertx, uri);
