@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 import java.util.function.Function;
 
 /**
@@ -25,6 +26,7 @@ public class Environment {
     private static final Map<String, String> VALUES = new HashMap<>();
     private static final JsonNode JSON_DATA = loadConfigurationFile();
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm");
+    private static final String[] REGIONS = {"us-east-1", "eu-west-1"};
 
     /*
      * Definition of env vars
@@ -52,7 +54,6 @@ public class Environment {
     private static final String OPENSHIFT_IDENTITY_CLIENT_ID_ENV = "OPENSHIFT_IDENTITY_CLIENT_ID_ENV";
     private static final String OPENSHIFT_IDENTITY_REDIRECT_URI_ENV = "OPENSHIFT_IDENTITY_REDIRECT_URI_ENV";
 
-
     private static final String DEV_CLUSTER_SERVER_ENV = "DEV_CLUSTER_SERVER";
     private static final String DEV_CLUSTER_NAMESPACE_ENV = "DEV_CLUSTER_NAMESPACE";
     private static final String DEV_CLUSTER_TOKEN_ENV = "DEV_CLUSTER_TOKEN";
@@ -71,9 +72,12 @@ public class Environment {
     private static final String SKIP_TEARDOWN_ENV = "SKIP_TEARDOWN";
 
     private static final String SKIP_KAFKA_TEARDOWN_ENV = "SKIP_KAFKA_TEARDOWN";
-    private static final String DEFAULT_KAFKA_REGION_ENV = "DEFAULT_KAFKA_REGION";
 
     private static final String PROMETHEUS_PUSH_GATEWAY_ENV = "PROMETHEUS_PUSH_GATEWAY";
+
+    private static final String DEFAULT_KAFKA_REGION_ENV = "DEFAULT_KAFKA_REGION";
+
+    private static final String JENKINS_JOB_BUILD_NUMBER_ENV = "BUILD_NUMBER";
 
     /*
      * Setup constants from env variables or set default
@@ -131,8 +135,11 @@ public class Environment {
     // Skip only the Kafka instance delete teardown to speed the local development
     public static final boolean SKIP_KAFKA_TEARDOWN = getOrDefault(SKIP_KAFKA_TEARDOWN_ENV, Boolean::parseBoolean, false);
 
+    // Checks if the tests are being executed from Jenkins
+    public static final String BUILD_NUMBER = getOrDefault(JENKINS_JOB_BUILD_NUMBER_ENV, null);
+
     // Change the default region where kafka instances will be provisioned if the test suite doesn't decide otherwise
-    public static final String DEFAULT_KAFKA_REGION = getOrDefault(DEFAULT_KAFKA_REGION_ENV, "us-east-1");
+    public static final String DEFAULT_KAFKA_REGION = getOrDefault(DEFAULT_KAFKA_REGION_ENV, getKafkaAwsRegion());
 
     public static final String PROMETHEUS_PUSH_GATEWAY = getOrDefault(PROMETHEUS_PUSH_GATEWAY_ENV, null);
 
@@ -144,7 +151,7 @@ public class Environment {
     }
 
     /**
-     * Get value from env or  from config or default and parse it to String data type
+     * Get value from env or from config or default and parse it to String data type
      *
      * @param varName      variable name
      * @param defaultValue default string value
@@ -155,7 +162,7 @@ public class Environment {
     }
 
     /**
-     * Get value from env or  from config or default and parse it to defined type
+     * Get value from env or from config or default and parse it to defined type
      *
      * @param var          env variable name
      * @param converter    converter from string to defined type
@@ -164,10 +171,10 @@ public class Environment {
      */
     private static <T> T getOrDefault(String var, Function<String, T> converter, T defaultValue) {
         var value = System.getenv(var) != null ?
-            System.getenv(var) :
-            (Objects.requireNonNull(JSON_DATA).get(var) != null ?
-                JSON_DATA.get(var).asText() :
-                null);
+                System.getenv(var) :
+                (Objects.requireNonNull(JSON_DATA).get(var) != null ?
+                        JSON_DATA.get(var).asText() :
+                        null);
         T returnValue = defaultValue;
         if (value != null && !value.isEmpty()) {
             returnValue = converter.apply(value);
@@ -177,13 +184,13 @@ public class Environment {
     }
 
     /**
-     * Load configuration fom config file
+     * Load configuration from config file
      *
      * @return json object with loaded variables
      */
     private static JsonNode loadConfigurationFile() {
         var config = System.getenv().getOrDefault(CONFIG_FILE_ENV,
-            Paths.get(System.getProperty("user.dir"), "config.json").toAbsolutePath().toString());
+                Paths.get(System.getProperty("user.dir"), "config.json").toAbsolutePath().toString());
 
         VALUES.put(CONFIG_FILE_ENV, config);
 
@@ -195,5 +202,14 @@ public class Environment {
             log.info("the json config file didn't exists or wasn't provided");
             return mapper.createObjectNode();
         }
+    }
+
+    /**
+     * Get the aws region in which to deploy a kafka instance
+     *
+     * @return an aws region
+     */
+    public static String getKafkaAwsRegion() {
+        return (BUILD_NUMBER == null) ? REGIONS[0] : REGIONS[new Random().nextInt(REGIONS.length)];
     }
 }
