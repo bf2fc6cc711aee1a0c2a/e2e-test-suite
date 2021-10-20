@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Random;
 import java.util.function.Function;
 
 /**
@@ -210,6 +209,10 @@ public class Environment {
      * @return an aws region
      */
     public static String getKafkaAwsRegion() {
-        return (BUILD_NUMBER == null) ? REGIONS[0] : REGIONS[new Random().nextInt(REGIONS.length)];
+        if (BUILD_NUMBER == null) {
+            return REGIONS[0];
+        } else {
+            return (Integer.parseInt(BUILD_NUMBER) % 2 == 0) ? REGIONS[0] : REGIONS[1];
+        }
     }
 }
