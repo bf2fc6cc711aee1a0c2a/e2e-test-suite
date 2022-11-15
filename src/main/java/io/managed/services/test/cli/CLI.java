@@ -173,6 +173,11 @@ public class CLI {
         retry(() -> exec("service-account", "create", "--short-description", name, "--file-format", "json", "--output-file", path.toString(), "--overwrite"));
     }
 
+    public void createServiceAccountAsSecret(String name, String outputFileName, Path path) throws CliGenericException {
+        retry(() -> exec("service-account", "create", "--short-description", name, "--file-format", "secret",
+                "--output-file", outputFileName, "--overwrite"));
+    }
+
     public Topic createTopic(String topicName) throws CliGenericException {
         return retry(() -> exec("kafka", "topic", "create", "--name", topicName, "-o", "json"))
             .asJson(Topic.class);
@@ -213,6 +218,10 @@ public class CLI {
     public ConsumerGroup describeConsumerGroup(String name) throws CliGenericException {
         return retry(() -> exec("kafka", "consumer-group", "describe", "--id", name, "-o", "json"))
             .asJson(ConsumerGroup.class);
+    }
+
+    public void generateKafkaConfigAsConfigMap(String outputFileName) throws CliGenericException {
+        retry(() -> exec("generate-config", "--type", "configmap", "--output-file", outputFileName));
     }
 
     public void connectCluster(String token, String kubeconfig, String serviceType) throws CliGenericException {

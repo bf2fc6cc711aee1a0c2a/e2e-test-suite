@@ -90,7 +90,7 @@ public class QuarkusApplicationTest extends TestBase {
 
     private static final String SERVICE_BINDING_NAME = "rhoas-kafka-quickstart-bind";
 
-    private static final String APP_YAML_PATH = "quarkus/rhoas-kafka-quickstart-example.yml";
+    private static final String APP_YAML_PATH = "quarkus/kubernetes/rhoas-kafka-quickstart-example.yml";
     private static final String APP_SERVICE_NAME = "rhoas-kafka-quickstart-example";
     private static final String APP_DEPLOYMENT_NAME = "rhoas-kafka-quickstart-example";
     private static final String APP_ROUTE_NAME = "rhoas-kafka-quickstart-example";

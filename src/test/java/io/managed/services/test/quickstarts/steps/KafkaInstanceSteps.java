@@ -100,6 +100,8 @@ public class KafkaInstanceSteps {
 
     @AfterAll
     public static void clean_kafka_instance() throws Throwable {
+
+        log.info("cleanup of kafka instance");
         assumeTeardown();
 
         var keycloakLoginSession = new KeycloakLoginSession(Environment.PRIMARY_USERNAME, Environment.PRIMARY_PASSWORD);

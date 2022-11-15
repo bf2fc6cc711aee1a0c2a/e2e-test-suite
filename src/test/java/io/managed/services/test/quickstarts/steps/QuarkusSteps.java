@@ -126,7 +126,7 @@ public class QuarkusSteps {
 
     // TODO container version works only with packaging uber-jar and later running .jar instead of recommended ./mvnw
     //  quarkus:dev
-    @When("you run Quarkus example applications")
+    @When("you run your local Quarkus example applications")
     public void you_run_quarkus_example_applications() throws IOException, ProcessException, InterruptedException, CliGenericException {
 
         log.info("package run quarkus example application");
@@ -163,11 +163,6 @@ public class QuarkusSteps {
         singleThread.join();
         assertTrue(isProcessFinished.get(), "packaging of quarkus application did not finish within expected time (4 min)");
 
-        //log.info("packaging application");
-        //var output =
-        //        exec(quickstartRoot, "./mvnw", "package", "-Dquarkus.package.type=uber-jar", "-Dquarkus.profile=dev").stdoutAsString();
-        //log.info(output);
-
         // find path to java executable
         Path javaExecutablePath;
         if (Environment.CLI_PLATFORM.equals("macOS")) {
@@ -192,10 +187,24 @@ public class QuarkusSteps {
 
     }
 
-    @Then("the application is running and the `Last price` is updated at http localhost port 8080 resource prices.html")
-    public void theApplicationIsRunningAndTheLastPriceIsUpdatedAtHttpLocalhostPortResourcePricesHtml() throws Throwable {
+    @Then("the application is running and the `Last price` is updated at {word} port {word} resource prices.html")
+    public void theApplicationIsRunningAndTheLastPriceIsUpdatedAtHttpResourcePricesHtml(String address, String port) throws Throwable {
 
-        var endpoint = "http://localhost:8080";
+        String endpoint;
+        switch (address) {
+            case "localhost":
+                endpoint = "http://localhost:" + port;
+                break;
+            case "OSD":
+                // connection using NodePort is insecure, accessed port is not kubernetes admin but provided NodePort
+                endpoint = Environment.DEV_CLUSTER_SERVER
+                        .replace("https", "http")
+                        .replace("6443", port);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + address);
+        }
+
         var client = new QuarkusSample(vertx, endpoint);
 
         log.info("start streaming prices from: {}", endpoint);
@@ -234,7 +243,9 @@ public class QuarkusSteps {
         IsReady<Object> complete = last -> client.streamPrices(wsc)
                 .recover(t -> {
                     log.warn("ignore error: {}", t.getMessage());
-                    log.info("quarkus application output:\n{}", quarkusApplicationProcess.outputAsString());
+                    if (quarkusApplicationProcess != null) {
+                        log.info("quarkus application output:\n{}", quarkusApplicationProcess.outputAsString());
+                    }
                     return succeededFuture();
                 })
                 .map(___ -> {

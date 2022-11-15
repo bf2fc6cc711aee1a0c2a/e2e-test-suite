@@ -108,3 +108,34 @@ Feature: Quick starts for OpenShift Streams for Apache Kafka
     Then the Service Binding Operator binds your Kafka instance to each component
     And the logs of the pod for the producer component show that the producer generates random country names
     And the logs of the pod for the consumer component show that the consumer consumes the same country names, and in the same order
+
+  Scenario: Generating connection configuration information for a Helm-based OpenShift application
+    # 1 verify all prerequisity
+    Given you have a Red Hat account
+    * you are logged in to the OpenShift Streams for Apache Kafka web console
+    * you have a running Kafka instance in OpenShift Streams for Apache Kafka
+    * you are logged in to the rhoas CLI
+    * you use your running kafka instance in OpenShift Streams for Apache Kafka
+
+    # 2. Downloading app services guide repository
+#    When you clone the app-services-guides repository from GitHub
+#    Then the app-services-guides repository is available locally
+
+    # 3. Creating the prices Kafka topic in OpenShift Streams for Apache Kafka
+    Given you have a running Kafka instance in OpenShift Streams for Apache Kafka
+    * the Kafka instance is in Ready state
+    When you have created the Kafka topic prices
+    Then the Kafka topic prices is listed in the topics table
+
+    # Setting up connection files and permissions
+    When You generate connection configuration information for the service context as an OpenShift configuration map
+    * You Create a new service account as an OpenShift secret
+
+    Given you have set the permissions for your service account to produce and consume from topic prices
+    * you are logged in to the rhoas CLIi
+    * you use your oc project mk-e2e-tests
+    * you apply openshift resources from your workdir
+      | rhoas-secrets.yaml  |
+      | rhoas-services.yaml |
+    When you deploy oc resources for running your quarkus application connected using NodePort
+    Then the application is running and the `Last price` is updated at OSD port 31006 resource prices.html
