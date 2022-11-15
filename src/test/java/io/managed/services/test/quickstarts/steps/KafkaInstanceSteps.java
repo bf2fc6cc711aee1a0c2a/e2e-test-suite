@@ -36,7 +36,7 @@ public class KafkaInstanceSteps {
 
         log.info("create kafka instance with name '{}'", KAFKA_INSTANCE_UNIQUE_NAME);
         var payload = KafkaMgmtApiUtils.defaultKafkaInstance(KAFKA_INSTANCE_UNIQUE_NAME);
-        var kafka = KafkaMgmtApiUtils.createKafkaInstance(kafkaMgmtApi, payload);
+        var kafka = KafkaMgmtApiUtils.applyKafkaInstance(kafkaMgmtApi, payload);
         log.debug(kafka);
 
         kafkaInstanceContext.setKafkaInstance(kafka);

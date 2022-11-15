@@ -128,6 +128,7 @@ Feature: Quick starts for OpenShift Streams for Apache Kafka
     * You Create a new service account as an OpenShift secret
 
     Given you have set the permissions for your service account to produce and consume from topic prices
+    * you are logged in to the oc CLI
     * you use your oc project mk-e2e-tests
     * you apply openshift resources from your workdir
       | rhoas-secrets.yaml  |

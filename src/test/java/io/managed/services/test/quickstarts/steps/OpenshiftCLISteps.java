@@ -33,7 +33,7 @@ public class OpenshiftCLISteps {
         this.rhoasCLIContext = rhoasCLIContext;
     }
 
-    @Given("you are logged in to the rhoas CLIi")
+    @Given("you are logged in to the oc CLI")
     public void you_are_logged_in_to_the_openshift_cli() {
 
         assertNotNull(Environment.PRIMARY_USERNAME, "the PRIMARY_USERNAME env is null");
@@ -61,11 +61,11 @@ public class OpenshiftCLISteps {
     @When("you apply openshift resources from your workdir")
     public void youAppliedOpenshiftResources(DataTable filesToBeApplied) throws FileNotFoundException {
 
-        // get workdir from the cli steps
-        var workdir =  this.rhoasCLIContext.requireCLI().getWorkdir();
-
         // obtain all resources which are to be applied
         var resources = filesToBeApplied.asList();
+
+        // get workdir from the cli steps
+        var workdir =  this.rhoasCLIContext.requireCLI().getWorkdir();
 
         for (String singleResource : resources) {
             String wholePath = workdir + "/" + singleResource;
