@@ -190,14 +190,15 @@ public class QuarkusSteps {
     @Then("the application is running and the `Last price` is updated at {word} port {word} resource prices.html")
     public void theApplicationIsRunningAndTheLastPriceIsUpdatedAtHttpResourcePricesHtml(String address, String port) throws Throwable {
 
-        String endpoint;
+        // obtain complete url of deployed quarkus app
+        String url;
         switch (address) {
             case "localhost":
-                endpoint = "http://localhost:" + port;
+                url = "http://localhost:" + port;
                 break;
             case "OSD":
                 // connection using NodePort is insecure, accessed port is not kubernetes admin but provided NodePort
-                endpoint = Environment.DEV_CLUSTER_SERVER
+                url = Environment.DEV_CLUSTER_SERVER
                         .replace("https", "http")
                         .replace("6443", port);
                 break;
@@ -205,9 +206,9 @@ public class QuarkusSteps {
                 throw new IllegalStateException("Unexpected value: " + address);
         }
 
-        var client = new QuarkusSample(vertx, endpoint);
+        var client = new QuarkusSample(vertx, url);
 
-        log.info("start streaming prices from: {}", endpoint);
+        log.info("start streaming prices from: {}", url);
 
         // The /prices/stream endpoint returns a new price every 5s if the
         // quarkus app can connect successfully to the kafka instance

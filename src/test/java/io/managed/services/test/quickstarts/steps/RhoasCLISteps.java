@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 
 import static org.testng.Assert.assertTrue;
 
-
 @Log4j2
 public class RhoasCLISteps {
 

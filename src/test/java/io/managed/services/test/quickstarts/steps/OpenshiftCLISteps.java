@@ -11,26 +11,22 @@ import io.managed.services.test.Environment;
 import io.managed.services.test.quickstarts.QuarkusApplicationTest;
 import io.managed.services.test.quickstarts.contexts.RhoasCLIContext;
 import lombok.extern.log4j.Log4j2;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
 import static org.testng.Assert.assertNotNull;
-
 
 @Log4j2
 public class OpenshiftCLISteps {
 
-    private static final String APP_YAML_SERVICE_PATH = "quarkus/clinodeportconfig/service.yaml";
-    private static final String APP_YAML_DEPLOYMENT_PATH = "quarkus/clinodeportconfig/deployment.yaml";
+    private static final String APP_YAML_SERVICE_PATH = "quarkus/cliconfig/service.yaml";
+    private static final String APP_YAML_DEPLOYMENT_PATH = "quarkus/cliconfig/deployment.yaml";
 
     DefaultOpenShiftClient oc;
 
     private String ocNamespaceName;
 
-    // contexts
     private final RhoasCLIContext rhoasCLIContext;
 
     public OpenshiftCLISteps(RhoasCLIContext rhoasCLIContext) {
@@ -104,6 +100,5 @@ public class OpenshiftCLISteps {
             var deploymentResourceInputStream = QuarkusApplicationTest.class.getClassLoader().getResourceAsStream(APP_YAML_DEPLOYMENT_PATH);
             oc.resourceList(oc.load(deploymentResourceInputStream).get()).delete();
         } catch (Exception ignored) { }
-
     }
 }
