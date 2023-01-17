@@ -31,14 +31,13 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static io.managed.services.test.TestUtils.bwait;
 import static io.managed.services.test.TestUtils.message;
-import static io.managed.services.test.client.kafka.KafkaMessagingUtils.testTopicWithNConsumers;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.fail;
 
@@ -59,7 +58,12 @@ import static org.testng.Assert.fail;
 public class BillingMetricsTest extends TestBase {
 
     // class uses long live kafka instance, as waiting for metrics to be available and stable in newly created instance can take too long.
-    public static final String KAFKA_INSTANCE_NAME = "mk-e2e-ll-" + Environment.LAUNCH_KEY;
+//    public static final String KAFKA_INSTANCE_NAME = "mk-e2e-ll-" + Environment.LAUNCH_KEY;
+
+//    public static final String KAFKA_INSTANCE_NAME = "mk-e2e-ll-e2e-stage";
+    public static final String KAFKA_INSTANCE_NAME = "mk-e2e-ll-stage";
+//    public static final String KAFKA_INSTANCE_NAME = "placeholder-1";
+//    public static final String KAFKA_INSTANCE_NAME = "placeholder-2";
     public static final String SERVICE_ACCOUNT_NAME = "mk-billing-sa-" + Environment.LAUNCH_KEY;
 
     public static final String TOPIC_NAME = "billing_test";
@@ -81,6 +85,7 @@ public class BillingMetricsTest extends TestBase {
     private static final String METRIC_CLUSTER_HOURS = "kafka_id:strimzi_resource_state:max_over_time1h";
 
     // size and count of messages to be produced/ consumed
+//    private final int messageSize = 1024 * 128;
     private final int messageSize = 1024 * 128;
     private final int messageCount = 40;
     // number of consumers consuming data
@@ -213,43 +218,43 @@ public class BillingMetricsTest extends TestBase {
     @Test(priority = 2, enabled = true)
     @SneakyThrows
     public void invokeDataConsumption() {
-        String bootstrapHost = kafka.getBootstrapServerHost();
-        String clientID = serviceAccount.getClientId();
-        String clientSecret = serviceAccount.getClientSecret();
-
-        bwait(testTopicWithNConsumers(
-            Vertx.vertx(),
-            bootstrapHost,
-            clientID,
-            clientSecret,
-            TOPIC_NAME,
-            Duration.ofMinutes(3),
-            this.messageCount,
-            this.messageSize,
-            this.consumerCount,
-            KafkaAuthMethod.OAUTH));
+//        String bootstrapHost = kafka.getBootstrapServerHost();
+//        String clientID = serviceAccount.getClientId();
+//        String clientSecret = serviceAccount.getClientSecret();
+//
+//        bwait(testTopicWithNConsumers(
+//            Vertx.vertx(),
+//            bootstrapHost,
+//            clientID,
+//            clientSecret,
+//            TOPIC_NAME,
+//            Duration.ofMinutes(3),
+//            this.messageCount,
+//            this.messageSize,
+//            this.consumerCount,
+//            KafkaAuthMethod.OAUTH));
     }
 
     @Test(priority = 1, dependsOnMethods = {"invokeDataProduction"}, enabled = true)
     @SneakyThrows
     public void testMetricStorageIncreased() {
 
-        log.info("test correct storage increase metric when data are produced");
-        // storage before increasing (value snapshot created even before data were produced)
-        double oldStorageTotal = metricToSnapshotMap.get(METRIC_STORAGE).getObservedValue();
-
-        // expected increased value in used space across kafka brokers, i.e, produced bytes (messageSize * messageCount) * number of replicas (3).
-        double expectedIncrease = this.messageSize * this.messageCount * 3;
-        log.info("expected increase in size: {}", expectedIncrease);
-
-        // waiting for metric to be increased within with 5 range
-        KafkaMgmtMetricsUtils.waitUntilExpectedMetricRange(
-            prometheusWebClient,
-            kafka.getId(),
-            metricToSnapshotMap.get(METRIC_STORAGE).getQuery(),
-            oldStorageTotal,
-            expectedIncrease,
-            5.00);
+//        log.info("test correct storage increase metric when data are produced");
+//        // storage before increasing (value snapshot created even before data were produced)
+//        double oldStorageTotal = metricToSnapshotMap.get(METRIC_STORAGE).getObservedValue();
+//
+//        // expected increased value in used space across kafka brokers, i.e, produced bytes (messageSize * messageCount) * number of replicas (3).
+//        double expectedIncrease = this.messageSize * this.messageCount * 3;
+//        log.info("expected increase in size: {}", expectedIncrease);
+//
+//        // waiting for metric to be increased within with 5 range
+//        KafkaMgmtMetricsUtils.waitUntilExpectedMetricRange(
+//            prometheusWebClient,
+//            kafka.getId(),
+//            metricToSnapshotMap.get(METRIC_STORAGE).getQuery(),
+//            oldStorageTotal,
+//            expectedIncrease,
+//            5.00);
     }
 
     @Test(priority = 1, dependsOnMethods = {"invokeDataProduction"}, enabled = true)

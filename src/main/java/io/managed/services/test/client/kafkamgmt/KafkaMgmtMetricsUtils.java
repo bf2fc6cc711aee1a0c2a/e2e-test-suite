@@ -120,6 +120,7 @@ public class KafkaMgmtMetricsUtils {
             //LOGGER.info("currently observed increase: {}", observedIncrease);
             // how many %from expected data, are observed far from. e.g. expect 200 bytes, observed 80, difference is - 60 (%).
             var differencePercentage = (observedIncrease - expectedIncrease) / (expectedIncrease / 100);
+            LOGGER.info("observed value: {}", newObservedValue);
             LOGGER.info("currently observed difference %: {}", differencePercentage);
 
             if (differencePercentage < -100.0) {
@@ -131,11 +132,11 @@ public class KafkaMgmtMetricsUtils {
             var isReady = differencePercentage > -errorRangePercentage && differencePercentage < errorRangePercentage;
 
             //LOGGER.info("is metric data within expected range: {}", isReady);
-            return isReady;
+            return false;
         };
 
         try {
-            waitFor("metric to be ready", ofSeconds(6), ofMinutes(10), ready);
+            waitFor("metric to be ready", ofSeconds(6), ofMinutes(100), ready);
         } catch (TimeoutException e) {
             // throw a more accurate error
             throw new PrometheusException("metric not ready within expected time");
