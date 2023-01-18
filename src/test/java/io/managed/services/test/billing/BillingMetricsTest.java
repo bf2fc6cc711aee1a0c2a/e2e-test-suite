@@ -1,5 +1,6 @@
 package io.managed.services.test.billing;
 
+import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 import com.openshift.cloud.api.kas.auth.models.NewTopicInput;
 import com.openshift.cloud.api.kas.auth.models.Topic;
 import com.openshift.cloud.api.kas.auth.models.TopicSettings;
@@ -10,6 +11,8 @@ import io.managed.services.test.TestBase;
 import io.managed.services.test.client.ApplicationServicesApi;
 import io.managed.services.test.client.exception.ApiGenericException;
 import io.managed.services.test.client.kafka.KafkaAuthMethod;
+import io.managed.services.test.client.kafka.KafkaMessagingUtils;
+import io.managed.services.test.client.kafka.KafkaProducerClient;
 import io.managed.services.test.client.kafkainstance.KafkaInstanceApi;
 import io.managed.services.test.client.kafkainstance.KafkaInstanceApiAccessUtils;
 import io.managed.services.test.client.kafkainstance.KafkaInstanceApiUtils;
@@ -31,6 +34,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.managed.services.test.TestUtils.bwait;
@@ -190,23 +194,23 @@ public class BillingMetricsTest extends TestBase {
     @Test(priority = 1, enabled = true)
     @SneakyThrows
     public void invokeDataProduction() {
-//        String bootstrapHost = kafka.getBootstrapServerHost();
-//        String clientID = serviceAccount.getClientId();
-//        String clientSecret = serviceAccount.getClientSecret();
-//
-//        KafkaProducerClient producer = new KafkaProducerClient(
-//            Vertx.vertx(),
-//            bootstrapHost,
-//            clientID,
-//            clientSecret,
-//            KafkaAuthMethod.OAUTH,
-//            StringSerializer.class,
-//            StringSerializer.class);
-//
-//        List<String> producedMessages = KafkaMessagingUtils.generateRandomMessages(this.messageCount, this.messageSize, this.messageSize);
-//        bwait(producer.sendAsync(TOPIC_NAME, producedMessages));
-//
-//        producer.close();
+        String bootstrapHost = kafka.getBootstrapServerHost();
+        String clientID = serviceAccount.getClientId();
+        String clientSecret = serviceAccount.getClientSecret();
+
+        KafkaProducerClient producer = new KafkaProducerClient(
+            Vertx.vertx(),
+            bootstrapHost,
+            clientID,
+            clientSecret,
+            KafkaAuthMethod.OAUTH,
+            StringSerializer.class,
+            StringSerializer.class);
+
+        List<String> producedMessages = KafkaMessagingUtils.generateRandomMessages(this.messageCount, this.messageSize, this.messageSize);
+        bwait(producer.sendAsync(TOPIC_NAME, producedMessages));
+
+        producer.close();
     }
 
     @Test(priority = 2, enabled = true)
