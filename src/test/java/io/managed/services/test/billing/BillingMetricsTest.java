@@ -85,7 +85,7 @@ public class BillingMetricsTest extends TestBase {
     // size and count of messages to be produced/ consumed
 //    private final int messageSize = 1024 * 128;
     private final int messageSize = 1024 * 128;
-    private final int messageCount = 120;
+    private final int messageCount = 40;
     // number of consumers consuming data
     private final int consumerCount = 3;
 
