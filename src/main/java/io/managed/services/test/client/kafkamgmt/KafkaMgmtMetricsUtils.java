@@ -132,7 +132,7 @@ public class KafkaMgmtMetricsUtils {
             var isReady = differencePercentage > -errorRangePercentage && differencePercentage < errorRangePercentage;
 
             //LOGGER.info("is metric data within expected range: {}", isReady);
-            return false;
+            return isReady;
         };
 
         try {
