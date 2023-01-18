@@ -132,11 +132,11 @@ public class KafkaMgmtMetricsUtils {
             var isReady = differencePercentage > -errorRangePercentage && differencePercentage < errorRangePercentage;
 
             //LOGGER.info("is metric data within expected range: {}", isReady);
-            return isReady;
+            return false;
         };
 
         try {
-            waitFor("metric to be ready", ofSeconds(6), ofMinutes(100), ready);
+            waitFor("metric to be ready", ofSeconds(6), ofMinutes(1000), ready);
         } catch (TimeoutException e) {
             // throw a more accurate error
             throw new PrometheusException("metric not ready within expected time");
