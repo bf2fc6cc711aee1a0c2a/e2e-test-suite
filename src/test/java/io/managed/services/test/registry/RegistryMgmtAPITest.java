@@ -71,9 +71,9 @@ public class RegistryMgmtAPITest extends TestBase {
     @Test
     public void testCreateRegistry() throws Exception {
 
-        var registryCreateRest = new RegistryCreate()
-            .name(SERVICE_REGISTRY_NAME)
-            .description("Hello World!");
+        var registryCreateRest = new RegistryCreate();
+        registryCreateRest.setName(SERVICE_REGISTRY_NAME);
+        registryCreateRest.setDescription("Hello World!");
 
         var registry = registryMgmtApi.createRegistry(registryCreateRest);
         LOGGER.info("service registry: {}", Json.encode(registry));
@@ -124,8 +124,8 @@ public class RegistryMgmtAPITest extends TestBase {
     @Test(dependsOnMethods = "testCreateRegistry")
     public void testFailToCreateRegistryIfItAlreadyExist() {
 
-        var registryCreateRest = new RegistryCreate()
-            .name(SERVICE_REGISTRY_NAME);
+        var registryCreateRest = new RegistryCreate();
+        registryCreateRest.setName(SERVICE_REGISTRY_NAME);
 
         assertThrows(() -> registryMgmtApi.createRegistry(registryCreateRest));
     }
@@ -143,8 +143,8 @@ public class RegistryMgmtAPITest extends TestBase {
     @Test(priority = 2)
     public void testDeleteProvisioningRegistry() throws Throwable {
 
-        var registryCreateRest = new RegistryCreate()
-            .name(SERVICE_REGISTRY_NAME);
+        var registryCreateRest = new RegistryCreate();
+        registryCreateRest.setName(SERVICE_REGISTRY_NAME);
 
         LOGGER.info("create kafka instance: {}", SERVICE_REGISTRY_2_NAME);
         var registryToDelete = registryMgmtApi.createRegistry(registryCreateRest);
