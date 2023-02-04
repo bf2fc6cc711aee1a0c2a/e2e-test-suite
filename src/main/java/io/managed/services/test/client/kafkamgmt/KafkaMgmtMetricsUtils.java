@@ -1,7 +1,5 @@
 package io.managed.services.test.client.kafkamgmt;
 
-import com.openshift.cloud.api.kas.models.InstantQuery;
-import com.openshift.cloud.api.kas.models.InstantQuery_metric;
 import com.openshift.cloud.api.kas.models.KafkaRequest;
 import com.openshift.cloud.api.kas.models.MetricsInstantQueryListResponse_items;
 import com.openshift.cloud.api.kas.models.ServiceAccount;
@@ -65,7 +63,7 @@ public class KafkaMgmtMetricsUtils {
         // retrieve the current in messages before sending more
         var metricsList = api.getMetricsByInstantQuery(kafka.getId(), null);
         var initialInMessages = collectTopicMetric(metricsList.getItems(), topicName, IN_MESSAGES_METRIC);
-         LOGGER.info("the topic '{}' started with '{}' in messages", topicName, initialInMessages);
+        LOGGER.info("the topic '{}' started with '{}' in messages", topicName, initialInMessages);
 
         // send n messages to the topic
         LOGGER.info("send '{}' message to the topic '{}'", MESSAGE_COUNT, topicName);
@@ -84,12 +82,11 @@ public class KafkaMgmtMetricsUtils {
         ThrowingFunction<Boolean, Boolean, ApiGenericException> isMetricUpdated = last -> {
 
             var m = api.getMetricsByInstantQuery(kafka.getId(), null);
-             var i = collectTopicMetric(m.getItems(), topicName, IN_MESSAGES_METRIC);
+            var i = collectTopicMetric(m.getItems(), topicName, IN_MESSAGES_METRIC);
+            finalInMessagesAtom.set(i);
 
-             finalInMessagesAtom.set(i);
-
-             LOGGER.debug("kafka_server_brokertopicmetrics_messages_in_total: {}", i);
-             return initialInMessages + MESSAGE_COUNT == i;
+            LOGGER.debug("kafka_server_brokertopicmetrics_messages_in_total: {}", i);
+            return initialInMessages + MESSAGE_COUNT == i;
         };
         waitFor("metric to be updated", ofSeconds(3), WAIT_FOR_METRIC_TIMEOUT, isMetricUpdated);
 

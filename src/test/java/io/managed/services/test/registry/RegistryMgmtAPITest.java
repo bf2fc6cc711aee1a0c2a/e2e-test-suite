@@ -1,6 +1,5 @@
 package io.managed.services.test.registry;
 
-import com.openshift.cloud.api.srs.models.Registry;
 import com.openshift.cloud.api.srs.models.RegistryCreate;
 import com.openshift.cloud.api.srs.models.RootTypeForRegistry;
 import io.managed.services.test.Environment;
