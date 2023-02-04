@@ -2,6 +2,7 @@ package io.managed.services.test.registry;
 
 import com.openshift.cloud.api.srs.models.Registry;
 import com.openshift.cloud.api.srs.models.RegistryCreate;
+import com.openshift.cloud.api.srs.models.RootTypeForRegistry;
 import io.managed.services.test.Environment;
 import io.managed.services.test.TestBase;
 import io.managed.services.test.client.exception.ApiGenericException;
@@ -42,7 +43,7 @@ public class RegistryMgmtAPITest extends TestBase {
     private static final String ARTIFACT_SCHEMA = "{\"type\":\"record\",\"name\":\"Greeting\",\"fields\":[{\"name\":\"Message\",\"type\":\"string\"},{\"name\":\"Time\",\"type\":\"long\"}]}";
 
     private RegistryMgmtApi registryMgmtApi;
-    private Registry registry;
+    private RootTypeForRegistry registry;
 
     @BeforeClass
     public void bootstrap() throws Throwable {
