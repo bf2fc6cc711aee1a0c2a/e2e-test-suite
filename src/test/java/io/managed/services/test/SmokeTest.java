@@ -1,6 +1,6 @@
 package io.managed.services.test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.openshift.cloud.api.kas.api.kafkas_mgmt.v1.kafkas.item.metrics.query.MetricsInstantQueryListResponse;
 import io.managed.services.test.cli.CliGenericException;
 import io.managed.services.test.client.kafka.KafkaMessagingUtils;
@@ -109,7 +109,9 @@ public class SmokeTest extends TestBase {
     @Test
     public void testCollectTopicMetric() throws IOException {
         var stream = SmokeTest.class.getClassLoader().getResourceAsStream("smoke/user-metrics.json");
-        var metrics = new ObjectMapper().readValue(stream, MetricsInstantQueryListResponse.class);
+        var factory = new JsonParseNodeFactory();
+        var parseNode = factory.getParseNode("application/json", stream);
+        var metrics = parseNode.getObjectValue(MetricsInstantQueryListResponse::createFromDiscriminatorValue);
 
         var result = KafkaMgmtMetricsUtils.collectTopicMetric(
             metrics.getItems(),
