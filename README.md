@@ -42,6 +42,7 @@ mvn verify -Psmoke
 * Every new and variable used in testsuite must be added to table or env variables
 * The test class must be included in one of the TestNG suites in `suites/`
 
+
 ## Environment Variables
 
 This environment variables are used to configure tests behaviour, the ENVs marked with the double asterisk (**) are
