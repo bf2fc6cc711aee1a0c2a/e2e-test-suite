@@ -1,0 +1,2193 @@
+* b1e8f42 (origin/node-autoscaling-refactor, node-autoscaling-refactor) simplified boolean check of instance ready state, added logs in timeout case
+*   19bfe04 (origin/main, origin/HEAD, main) Merge pull request #437 from bf2fc6cc711aee1a0c2a/renovate/maven.checkstyle.version
+|\  
+| * d29e6f8 (origin/renovate/maven.checkstyle.version) chore(deps): update dependency org.apache.maven.plugins:maven-checkstyle-plugin to v3.2.1
+* |   3f3c061 Merge pull request #422 from bf2fc6cc711aee1a0c2a/renovate/vertx
+|\ \  
+| * | 8fc42ac (origin/renovate/vertx) chore(deps): update vertx to v4.3.7
+| | | * e94ec9e (origin/d1, d1) dependencies
+| |_|/  
+|/| |   
+* | |   4fdab45 Merge pull request #472 from bf2fc6cc711aee1a0c2a/remove-sr
+|\ \ \  
+| * | | 293d875 (origin/remove-sr, remove-sr) removal of service registries from pr-check suite
+* | | |   6fa00c2 Merge pull request #435 from bf2fc6cc711aee1a0c2a/renovate/sundrio.version
+|\ \ \ \  
+| * | | | 7ab4ea7 (origin/renovate/sundrio.version) Update dependency io.sundr:builder-annotations to v0.93.2
+* | | | |   92baa43 Merge pull request #424 from bf2fc6cc711aee1a0c2a/renovate/cucumber
+|\ \ \ \ \  
+| * | | | | d579050 (origin/renovate/cucumber) Update cucumber to v7.11.1
+| |/ / / /  
+* | | | |   1b0411b Merge pull request #423 from bf2fc6cc711aee1a0c2a/renovate/org.testng-testng-7.x
+|\ \ \ \ \  
+| |_|/ / /  
+|/| | | |   
+| * | | | 2987d06 (origin/renovate/org.testng-testng-7.x) chore(deps): update dependency org.testng:testng to v7.7.1
+| | |/ /  
+| |/| |   
+* | | | b40f3dc test group and profile (pr-check) to validate PRs
+| | | | * 89310c2 (origin/suite-pr-check, suite-pr-check) test group and profile (pr-check) to validate PRs
+| |_|_|/  
+|/| | |   
+* | | |   883aab5 Merge pull request #469 from agullon/fix_cli_no_records
+|\ \ \ \  
+| * | | | 856b0a4 fix checkstyle
+| * | | | dadfb9e Fix when no records consumed
+|/ / / /  
+* | | |   3245cd1 Merge pull request #419 from bf2fc6cc711aee1a0c2a/renovate/org.apache.httpcomponents-httpclient-4.x
+|\ \ \ \  
+| * | | | c660b76 (origin/renovate/org.apache.httpcomponents-httpclient-4.x) Update dependency org.apache.httpcomponents:httpclient to v4.5.14
+* | | | |   7bfd8ac Merge pull request #411 from bf2fc6cc711aee1a0c2a/renovate/app-services-sdk
+|\ \ \ \ \  
+| * | | | | 5fcb200 (origin/renovate/app-services-sdk) chore(deps): update app-services-sdk to v0.31.0
+| | |_|_|/  
+| |/| | |   
+* | | | |   03a1142 Merge pull request #410 from bf2fc6cc711aee1a0c2a/renovate/org.apache.commons-commons-compress-1.x
+|\ \ \ \ \  
+| * | | | | dc7b386 (origin/renovate/org.apache.commons-commons-compress-1.x) Update dependency org.apache.commons:commons-compress to v1.22
+| | |/ / /  
+| |/| | |   
+* | | | |   d609829 Merge pull request #387 from bf2fc6cc711aee1a0c2a/renovate/org.apache.kafka-kafka-clients-2.x
+|\ \ \ \ \  
+| * | | | | 6966289 (origin/renovate/org.apache.kafka-kafka-clients-2.x) Update dependency org.apache.kafka:kafka-clients to v2.8.2
+| |/ / / /  
+| | | | | * c59bb0f (origin/463) fix after rebase
+| | | | | * 32a5b65 fix failing test
+| | | | | * cac8338 compile
+| | | | | * e579b7a airplan batch job
+| | | | | * 91e126e [WIP] use the Kiota generated SDKs
+| |_|_|_|/  
+|/| | | |   
+* | | | |   4b7f68d Merge pull request #409 from bf2fc6cc711aee1a0c2a/renovate/io.strimzi-kafka-oauth-client-0.x
+|\ \ \ \ \  
+| * | | | | 53bdeaa (origin/renovate/io.strimzi-kafka-oauth-client-0.x) Update dependency io.strimzi:kafka-oauth-client to v0.11.0
+| |/ / / /  
+* | | | |   7663129 (463) Merge pull request #407 from bf2fc6cc711aee1a0c2a/renovate/org.openapitools-jackson-databind-nullable-0.x
+|\ \ \ \ \  
+| * | | | | 5b5b8be (origin/renovate/org.openapitools-jackson-databind-nullable-0.x) Update dependency org.openapitools:jackson-databind-nullable to v0.2.4
+| |/ / / /  
+* | | | |   48f76d2 Merge pull request #404 from bf2fc6cc711aee1a0c2a/renovate/com.github.scribejava-scribejava-apis-8.x
+|\ \ \ \ \  
+| * | | | | a8a46a0 (origin/renovate/com.github.scribejava-scribejava-apis-8.x) Update dependency com.github.scribejava:scribejava-apis to v8.3.3
+| |/ / / /  
+* | | | |   5fe91ac Merge pull request #402 from bf2fc6cc711aee1a0c2a/renovate/org.eclipse.jgit-org.eclipse.jgit-6.x
+|\ \ \ \ \  
+| * | | | | 2059c0f (origin/renovate/org.eclipse.jgit-org.eclipse.jgit-6.x) Update dependency org.eclipse.jgit:org.eclipse.jgit to v6
+| |/ / / /  
+* | | | |   5cfde77 Merge pull request #467 from bf2fc6cc711aee1a0c2a/renew-acess-token
+|\ \ \ \ \  
+| * | | | | f1568e7 (origin/renew-acess-token, renew-acess-token) renew access token based on bearer token expiration
+* | | | | |   2575641 Merge pull request #468 from agullon/hotfix
+|\ \ \ \ \ \  
+| * | | | | | a1af565 change single quotes to double quotes on an error message
+|/ / / / / /  
+* | | | | |   99806c3 Merge pull request #466 from bf2fc6cc711aee1a0c2a/fix-nodeautoscaling-failed-bearer
+|\ \ \ \ \ \  
+| |/ / / / /  
+|/| | | | |   
+| * | | | | cc26188 (origin/fix-nodeautoscaling-failed-bearer, fix-nodeautoscaling-failed-bearer) reserved deployment, rmeoval of checking max node number as precodition to test
+| * | | | | 7e82661 simplified test for reserved deployment (not creating number of instances and rather stay with one), more straightforward cleanup
+|/ / / / /  
+| | | | | * faaf7a8 (origin/sdk-31, sdk-31) dependencies
+| |_|_|_|/  
+|/| | | |   
+* | | | |   54d1b1c Merge pull request #397 from bf2fc6cc711aee1a0c2a/renovate/org.seleniumhq.selenium-selenium-java-4.x
+|\ \ \ \ \  
+| * | | | | de884c3 (origin/renovate/org.seleniumhq.selenium-selenium-java-4.x) Update dependency org.seleniumhq.selenium:selenium-java to v4.8.0
+* | | | | |   6f48ef1 Merge pull request #396 from bf2fc6cc711aee1a0c2a/renovate/joda-time-joda-time-2.x
+|\ \ \ \ \ \  
+| * | | | | | 61ee902 (origin/renovate/joda-time-joda-time-2.x) Update dependency joda-time:joda-time to v2.12.2
+| | |/ / / /  
+| |/| | | |   
+* | | | | |   81a04e4 Merge pull request #392 from bf2fc6cc711aee1a0c2a/renovate/log4j
+|\ \ \ \ \ \  
+| * | | | | | b33389a (origin/renovate/log4j) Update log4j to v2.19.0
+| |/ / / / /  
+* | | | | |   9f8ac96 Merge pull request #395 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-10.x
+|\ \ \ \ \ \  
+| * | | | | | 21955f5 (origin/renovate/com.puppycrawl.tools-checkstyle-10.x) chore(deps): update dependency com.puppycrawl.tools:checkstyle to v10.6.0
+| | |_|_|/ /  
+| |/| | | |   
+* | | | | |   c6e318d Merge pull request #464 from pb82/fix-after-kfm-billing-model-changes
+|\ \ \ \ \ \  
+| * | | | | | 54efc63 fix: billing model semantics after kfm billing model changes
+|/ / / / / /  
+| | | | | | * 6dbeb54 (origin/d, d) dependencies
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | |   fd6e0e1 (HEAD -> p474, stage-billing-models) Merge pull request #448 from bf2fc6cc711aee1a0c2a/node-scaling
+|\ \ \ \ \ \  
+| * | | | | | a86a544 (origin/node-scaling, node-scaling) more precise choice of name of pods in reserved deployment
+| * | | | | | 1aa6ef7 switch statement improvement
+| * | | | | | 349753c quick fix managed kafka agent (get in any namespace instead of current which might pass locally but not in pipeline)
+| * | | | | | 0ba9680 updated data plane suite
+| * | | | | | 7caa128 extend reserved deployment to assert existence of resources, addition of testing the mkaagent remaining capacity when deleting instances
+| * | | | | | 3425497 removal of unnecessary data plane util class
+| * | | | | | 005a7ab capacity reporting and test separtion renaming
+| * | | | | | 8e09dce node autoscaling and machineset observing
+| * | | | | | 6395e8a refactor of reserved deployment to cover dev. and stadard instances in separated test cases and wait for kafka deletion
+|/ / / / / /  
+* | | | | |   83bd9bf Merge pull request #449 from andreaTP/use-offline-token
+|\ \ \ \ \ \  
+| * | | | | | 0a09322 (andrea/use-offline-token, offlik) disabled connection to cluster using token which would be invalidated
+| * | | | | | 2c753de testing of invalid token changed to reflect failing on offline token not bearer
+| * | | | | | dca7ddf removal of quickstart context for user, revertion back to loging with console in the cli context, change of environment variables
+| * | | | | | 7364c0a addition of script to validate present offline tokens
+| * | | | | | 133f15f little refactor of quota test and billing model test -> replacement of need for direct use of usernames
+| * | | | | | 164a559 experimental addition jitpack.io, kiota, with experimentally generated account management sdk, added as account management api
+* | | | | | |   364d900 Merge pull request #458 from bf2fc6cc711aee1a0c2a/fix-cli-name
+|\ \ \ \ \ \ \  
+| * | | | | | | 12245f8 (origin/fix-cli-name, fix-cli-name) fix too long instance name after switching to addition of data provider name as suffix to instance names
+|/ / / / / / /  
+* | | | | | |   10cecfa Merge pull request #456 from bf2fc6cc711aee1a0c2a/concurrentGcpAwsStage
+|\ \ \ \ \ \ \  
+| |_|_|_|_|_|/  
+|/| | | | | |   
+| * | | | | | f260aec (origin/concurrentGcpAwsStage) deleting config file
+| * | | | | | 5d98663 Refactoring and simplifying code for Kafka Inatance naming
+| * | | | | |   edbeb47 Merge branch 'main' into concurrentGcpAwsStage
+| |\ \ \ \ \ \  
+| |/ / / / / /  
+|/| | | | | |   
+| * | | | | | bc70e5f adding CLOUD_PROVIDER var to Kafka Instance, Service Registry and Service Account names to differentiate between GCP and AWS
+| | | | | | | * 31775f4 (refs/stash) WIP on 449-andrea4: 6e87528 cloud_services
+| | | |_|_|_|/| 
+| | |/| | | | | 
+| | | | | | | * 38225e2 index on 449-andrea4: 6e87528 cloud_services
+| | | |_|_|_|/  
+| | |/| | | |   
+| | * | | | | 6e87528 (449-andrea4) cloud_services
+| | * | | | | 54cb584 (449-andrea3) better default sso url
+| | * | | | | dbbf705 (449-andrea2) update stratoshpere ref
+| | * | | | | 0dbc700 restore access token
+| | * | | | | a30fd2b Use offline token instead of hacking the browser login flow
+| |/ / / / /  
+|/| | | | |   
+| | | | | | * c0b58ea (origin/renovate/fabric8) Update fabric8 to v6.4.1
+| |_|_|_|_|/  
+|/| | | | |   
+| | | | | | * 112778b (origin/renovate/renovatebot-github-action-34.x) Update renovatebot/github-action action to v34
+| |_|_|_|_|/  
+|/| | | | |   
+| | | | | | * 97b173e (origin/renovate/actions-setup-java-3.x) Update actions/setup-java action to v3
+| |_|_|_|_|/  
+|/| | | | |   
+| | | | | | * 28322a6 (origin/renovate/actions-checkout-3.x) Update actions/checkout action
+| |_|_|_|_|/  
+|/| | | | |   
+| | | | | | * f86d4bb (origin/renovate/actions-cache-3.x) Update actions/cache action to v3
+| |_|_|_|_|/  
+|/| | | | |   
+| | | | | | * aff7489 (origin/renovate/actions-checkout-2.x) Update actions/checkout action to v2.6.0
+| |_|_|_|_|/  
+|/| | | | |   
+| | | | | | * 3cd97e1 (andrea/wip-use-kiota-sdk) more...
+| | | | | | * 388ce8d WIP started using the generated Kiota SDKs
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | |   2af5d1a (449-andrea) Merge pull request #444 from andreaTP/improve-java-gen-workflow
+|\ \ \ \ \ \  
+| * | | | | | ed96032 (andrea/improve-java-gen-workflow) Improve the Java generation workflow
+| | |_|_|_|/  
+| |/| | | |   
+* | | | | |   7dd9beb Merge pull request #447 from bf2fc6cc711aee1a0c2a/fleetshard-models
+|\ \ \ \ \ \  
+| |_|/ / / /  
+|/| | | | |   
+| * | | | | bae174e (origin/fleetshard-models, fleetshard-models) temporary copy paste approach to obtain mk kafka, agent models  for impleenting fleetshard resources related tasks
+|/ / / / /  
+* | | | |   74db423 Merge pull request #446 from bf2fc6cc711aee1a0c2a/metric-source
+|\ \ \ \ \  
+| |_|_|_|/  
+|/| | | |   
+| * | | | 9abc480 (origin/metric-source, metric-source) metric changed to kafka based
+|/ / / /  
+* | | |   3f2b5c4 Merge pull request #442 from bf2fc6cc711aee1a0c2a/MGDSTRM-10253
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | |   709f19e (origin/MGDSTRM-10253) Merge branch 'MGDSTRM-10253' into HEAD
+| |\ \ \  
+| | * | | 732bf58 addressing PR comments
+| * | | | 65af66d remove cleanKafkaInstanceByOwner()
+| |/ / /  
+| * | | 92e4e0a adding new method to remove all existing Kafka instances
+| * | | 1cdee17 Adding new 5 quota test cases
+|/ / /  
+| | | * cc62546 (origin/java-gen, java-gen) trainee
+| |_|/  
+|/| |   
+| | | * 6cd2808 (origin/billing-metric-ha-server-backend-switch, billing-metric-ha-server-backend-switch) preserving expected metrics from federated endpoint, including haproxy_server...
+| |_|/  
+|/| |   
+| | | * ad76454 (origin/python_example) fix: typos and remove duplication
+| | | * 3d5f5ec feat: add tests for python example application
+| | | | * b3a0cd0 (origin/renovate/org.apache.kafka-kafka-clients-3.x) chore(deps): update dependency org.apache.kafka:kafka-clients to v3
+| |_|_|/  
+|/| | |   
+| | | | * 3a5bcfc (origin/fix, fix) 40
+| | | | * d30bd33 (origin/produce, produce) produce
+| | | | * 9884ea3 whatever
+| | | | * 7daaf89 returning all
+| | | | * de9cde5 different kafka instance
+| | | | * e813e84 trash z fixovania billingu (akurat print sa hodi)
+| |_|_|/  
+|/| | |   
+| | | | * b675119 (review1-quota) feat: addition of python sdk wrapper, util methods and tests
+| |_|_|/  
+|/| | |   
+| | | | * 7bca92d (origin/renovate/org.apache.maven.plugins-maven-surefire-plugin-3.x) chore(deps): update dependency org.apache.maven.plugins:maven-surefire-plugin to v3.0.0-m8
+| |_|_|/  
+|/| | |   
+| | | | * 05730d2 (origin/renovate/maven.failsafe.version) chore(deps): update dependency org.apache.maven.plugins:maven-failsafe-plugin to v3.0.0-m8
+| |_|_|/  
+|/| | |   
+* | | |   b9eb874 (review7-quick, review5-quota, review4-quota, review3-sdk, review2-sdk, review10-fabric, 450-quickstart) Merge pull request #391 from bf2fc6cc711aee1a0c2a/renovate/apicurio
+|\ \ \ \  
+| * | | | 2b7b4ab (origin/test21, test21) chore(deps): update apicurio to v2.4.1.final
+| |/ / /  
+* | | |   f97c8a4 (agul) Merge pull request #429 from bf2fc6cc711aee1a0c2a/gcp-billing-models
+|\ \ \ \  
+| * | | | 99c2a70 (origin/gcp-billing-models, gcp-billing-models) added test gcp provider with aws account
+| * | | | 5833a73 skip billing model test if gcp marketplace chosen
+* | | | |   72c6f18 Merge pull request #436 from bf2fc6cc711aee1a0c2a/reserved-deployment
+|\ \ \ \ \  
+| |_|/ / /  
+|/| | | |   
+| * | | | d756cc4 (origin/reserved-deployment, reserved-deployment) models and deployments tests
+| * | | | a155147 reserved deployment hacks models and utils
+|/ / / /  
+| | | | * 767eec5 (andrea/java-gen-maven-plugin-download) Test the URL download functionality of the Maven plugin
+| |_|_|/  
+|/| | |   
+* | | |   66eb919 (quickstart-node) Merge pull request #415 from bf2fc6cc711aee1a0c2a/kafka-suspended
+|\ \ \ \  
+| * | | | 69a243e (origin/kafka-suspended, kafka-suspended) add suspension resuming test suite testng, environment vars, and utils
+| * | | | 2129db0 kafka instance suspension and resuming
+| |/ / /  
+* | | |   e7b0cd3 Merge pull request #432 from bf2fc6cc711aee1a0c2a/fabric8-operator-crds
+|\ \ \ \  
+| * | | | fbf659a (origin/fabric8-operator-crds, fabric8-operator-crds) removal of abundant comments in pom.xml file after rewerting workarounds in fabric8
+| * | | | c0d779a pointing of crd crawler back to the main repo holding crds for kafkaconnections and serviceregistryconnection, update fabric8 to 6.3 which fixes known bug
+* | | | |   54d8c7a Merge pull request #431 from bf2fc6cc711aee1a0c2a/service-registry-deserialization-fix
+|\ \ \ \ \  
+| |/ / / /  
+|/| | | |   
+| * | | | 2fdd6a7 (origin/service-registry-deserialization-fix, service-registry-deserialization-fix) registries: aretefact creation and update of api curio version in order to actualize obsolete date format causing deserialization issues
+|/ / / /  
+* | | |   22bb144 (fabric8-crds) Merge pull request #430 from bf2fc6cc711aee1a0c2a/env-refactor
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | 6d882be (origin/env-refactor, env-refactor) removal of useless assigning of variable to itself, default value of provider is now aws
+|/ / /  
+* | |   cfa4bb6 Merge pull request #428 from bf2fc6cc711aee1a0c2a/gcp-cli
+|\ \ \  
+| * | | f48f9f3 (origin/gcp-cli, gcp-cli) add provider option into the cli tests when creating kafka instance
+|/ / /  
+* | |   52110e7 Merge pull request #421 from tonyxrmdavidson/gcpFixV2
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 1fd5866 (origin/test8, test8) reverting marketplace call to aws
+| * |   3b67784 Merge branch 'main' into gcpFixV2
+| |\ \  
+| |/ /  
+|/| |   
+| * | 9c5e0d2 Update to environments file
+| * | 2b00f09 Fix for gcp
+| | | * 59933e8 (origin/renovate/org.eclipse.jgit-org.eclipse.jgit-4.x) Update dependency org.eclipse.jgit:org.eclipse.jgit to v4.11.9.201909030838-r
+| |_|/  
+|/| |   
+| | | * 9cd0bb3 (origin/test7, test7) chore(deps): update apicurio to v2.4.0.final
+| |_|/  
+|/| |   
+* | |   103507d Merge pull request #427 from bf2fc6cc711aee1a0c2a/billing-metric-update
+|\ \ \  
+| * | | fd611a2 (origin/billing-metric-update, billing-metric-update) billing metric tests, pointed to new prometheus route, change of setting route to env var, add todos for metric names, refactoring
+|/ / /  
+* | |   a48001f Merge pull request #426 from bf2fc6cc711aee1a0c2a/transitive-dependencies
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 8a035ca (origin/transitive-dependencies, transitive-dependencies) temporary change of endpoint for serviceRegistryConnection crd obtaining endpoint
+| * | 4a7b198 removal of strimzi dependency,addition of  usage og forked repo to obtain descriptive enough version of crds to build specific enough Models
+|/ /  
+| | * 3ca6651 (origin/resolve-sa, resolve-sa) remove strimzi api from dependencies
+| |/  
+|/|   
+* | df2d104 (origin/fabric8-transitive-dependency, nwm, fabric8-transitive-dependency) fix indent
+* | cb83e00 use builder pattern
+* | e08286b delete the jar
+* | 91953fb Use the fabric8 java-generator instead of committing a jar
+| | * 272833b (andrea/java-generator, review) fix indent
+| | * 9c75796 use builder pattern
+| | * 3904356 delete the jar
+| | * 8611679 Use the fabric8 java-generator instead of committing a jar
+| |/  
+|/|   
+* | fcb3ff0 (andrea/main) creation of new test suite to provide smoke tests in production environment
+* |   7a5d42b Merge pull request #324 from bf2fc6cc711aee1a0c2a/renovate/cucumber
+|\ \  
+| |/  
+|/|   
+| * a9e815d chore(deps): update cucumber to v7.9.0
+| | * 4266609 (origin/gpcFix) Fix for gcp bug
+| | | * bca66ab (origin/production-smoke-test-suite, production-smoke-test-suite) creation of new test suite to provide smoke tests in production environment
+| |_|/  
+|/| |   
+* | |   009eca9 (factory8, acl-cli) Merge pull request #335 from bf2fc6cc711aee1a0c2a/renovate/vertx
+|\ \ \  
+| * | | ba8f6b7 chore(deps): update vertx to v4.3.5
+|/ / /  
+* | |   7a0f89b (reserved-deployments) Merge pull request #412 from bf2fc6cc711aee1a0c2a/cli-kafka-create-max-quota-retry
+|\ \ \  
+| * | | 839748c (origin/cli-kafka-create-max-quota-retry, cli-kafka-create-max-quota-retry) cli kafka create instance add retry when quota reach max
+| |/ /  
+* | |   40663d4 Merge pull request #414 from bf2fc6cc711aee1a0c2a/billing-message
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 0a2c053 (origin/billing-message, billing-message) billing added logging, changed error message to match lower case change
+|/ /  
+| | * cab0082 (origin/quickstart-generate-connection, quickstart-generate-connection) change of kafka creation to kafka apply due to new existing quickstart that may clash in order
+| | * beef09e renaming all quarkus quickstarts resources
+| | * 4647e42 quickstart for running quarkus app by applying cli configuration and running app either using helm or apply kubernetes resources
+| |/  
+|/|   
+* |   0c16b1f (kcat-quickstart-update) Merge pull request #385 from bf2fc6cc711aee1a0c2a/renovate/app-services-sdk
+|\ \  
+| |/  
+|/|   
+| * 3bc74e0 (origin/test5, test5) chore(deps): update app-services-sdk to v0.27.1
+* |   25d6aae Merge pull request #408 from bf2fc6cc711aee1a0c2a/extensive-logging-fix
+|\ \  
+| * | 085c259 (origin/extensive-logging-fix, extensive-logging-fix) fix extensive logging
+|/ /  
+* |   32c18c6 Merge pull request #403 from robobario/add-orphan-acl-deletion-checks
+|\ \  
+| |/  
+|/|   
+| * 2b28bf5 (local-acls) Assert that after ownership is changed we delete orphan ACL bindings from kafka
+| | * 3e7fd5e (origin/depos, depos) chore(deps): update fabric8 to v6.2.0
+| |/  
+|/|   
+* | ad216fa Add okhttp3 lib
+* | 3dbcedb Remove reportportal integration
+* |   e6f952f Merge pull request #406 from rkpattnaik780/enable_auth_v2
+|\ \  
+| |/  
+|/|   
+| * 555ad16 cli: remove enable-auth-v2 flag
+|/  
+| * 5c4e499 (origin/rp, origin/local-remove-rp-integration, rp, local-remove-rp-integration) Add okhttp3 lib
+| * 1165306 (test3, k1) Remove reportportal integration
+|/  
+*   29e783e Merge pull request #400 from bf2fc6cc711aee1a0c2a/cli-service-acc
+|\  
+| * d79d271 (origin/cli-service-acc, cli-service-acc) add usage of id field instead of clientId,  cleanup after local testing
+| * e965aae cli: migration from usage of kafka sdk to service-account sdk for service accounts with by enable-auth-v2 flag introduction.
+| | * bd5f7b0 (connectors) connectors mgmt: add kafka, teardown, + extending application services with connectors API
+| | * 1c1674b connector mgmt: list connector namesapces
+| | * 3f050c4 connectors management: apply connector namespace test + util
+| | * 83019a1 setup communication with connectors endpoint
+| |/  
+|/|   
+* |   0da8cac Merge pull request #399 from bf2fc6cc711aee1a0c2a/max-limit
+|\ \  
+| * | c0d43a2 (origin/max-limit, max-limit) test max message size limit
+* | |   aba3d44 Merge pull request #394 from bf2fc6cc711aee1a0c2a/quick-quarkus
+|\ \ \  
+| |_|/  
+|/| |   
+| * | e1ea228 (origin/quick-quarkus, quick-quarkus) cucuber .feature file cleanup
+| * | 60e2d17 edit: cucumber-quickstarts-quarkus temporary directories
+| * | 7dfc296 (quickstarts) implemented: cucumber-quarkus-kafka
+| |/  
+* |   b3ea215 Merge pull request #398 from bf2fc6cc711aee1a0c2a/updateReadMeCreateUsers
+|\ \  
+| |/  
+|/|   
+| * 1b5b71a (origin/updateReadMeCreateUsers) update to state that all test users need both required and optional fields completed when creating them.
+|/  
+*   b757e5f Merge pull request #393 from bf2fc6cc711aee1a0c2a/kafka-scripts-version-update
+|\  
+| * c271dbb (origin/kafka-scripts-version-update, kafka-scripts-version-update) kafka scripts updated version to 3.2.3
+|/  
+*   5d0032f (origin/integration) Merge pull request #389 from grdryn/fix-sort-order
+|\  
+| * 39ba2d4 Set offset to fix sort order from CLI
+|/  
+* 57e1ba0 Update maintainers
+| * 089625c (origin/branchIntegration) adding kafkaAccessMgmtTest class to integration.xml
+| * 0ec08c7 Added KafkaAccessMgmtTest class to tag
+| * b17c262 removing unused imports
+| * 4a6c9ea adding kafakInstanceAPITest to integration.xml. Removing policy tests from test class
+|/  
+*   987300a (quickstart-quarkus) Merge pull request #383 from bf2fc6cc711aee1a0c2a/pom-fix
+|\  
+| * 5e51ff7 (origin/pom-fix, pom-fix) enable cli describe service account
+| * b38e32d pom file changed attributes in checkstyle
+|/  
+*   efcf187 Merge pull request #381 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-10.x
+|\  
+| * 9aa990a Update dependency com.puppycrawl.tools:checkstyle to v10.3.3
+* |   ea2503c Merge pull request #380 from bf2fc6cc711aee1a0c2a/renovate/maven.checkstyle.version
+|\ \  
+| * | 5cac4f1 Update dependency org.apache.maven.plugins:maven-checkstyle-plugin to v3.2.0
+* | |   16dedc2 Merge pull request #374 from bf2fc6cc711aee1a0c2a/renovate/org.openapitools-jackson-databind-nullable-0.x
+|\ \ \  
+| * | | b0dddc9 Update dependency org.openapitools:jackson-databind-nullable to v0.2.3
+| | |/  
+| |/|   
+* | |   b83a230 Merge pull request #367 from bf2fc6cc711aee1a0c2a/renovate/com.epam.reportportal-agent-java-testng-5.x
+|\ \ \  
+| * | | d6e6290 Update dependency com.epam.reportportal:agent-java-testng to v5.1.3
+| |/ /  
+* | |   1054ae8 Merge pull request #366 from bf2fc6cc711aee1a0c2a/renovate/joda-time-joda-time-2.x
+|\ \ \  
+| |/ /  
+|/| |   
+| * | d079c70 Update dependency joda-time:joda-time to v2.11.1
+|/ /  
+* |   15c98d9 Merge pull request #355 from bf2fc6cc711aee1a0c2a/renovate/major-fabric8
+|\ \  
+| * | da61fd8 Update fabric8 to v6
+|/ /  
+* |   186d02b Merge pull request #361 from bf2fc6cc711aee1a0c2a/renovate/fabric8
+|\ \  
+| * | 64cf9f7 Update fabric8 to v5.12.3
+* | |   87686b3 Merge pull request #351 from bf2fc6cc711aee1a0c2a/renovate/com.epam.reportportal-logger-java-log4j-5.x
+|\ \ \  
+| * | | a7a472f Update dependency com.epam.reportportal:logger-java-log4j to v5.1.5
+| |/ /  
+| | | * 5464e75 (origin/dependencies, dependencies) dependencies: puppycrawl.tools:checkstyle 10.3.2 -> 10.3.3
+| | | * 51845a8 dependencies: maven-checkstyle-plugin 3.1.2 -> 3.2.0
+| | | * 2a5ed66 dependencies: jackson-databind-nullable 0.2.1 -> 0.2.3
+| | | * b684efa dependencies: epam.reportportal agent-java-testng 5.1.2 -> 5.1.3
+| | | * e75ac95 dependencies: joda time 2.10.14 -> 2.11.1
+| |_|/  
+|/| |   
+* | |   13456aa Merge pull request #350 from bf2fc6cc711aee1a0c2a/renovate/log4j
+|\ \ \  
+| * | | 5f35456 Update log4j to v2.18.0
+| |/ /  
+* | |   d4aa16b Merge pull request #382 from bf2fc6cc711aee1a0c2a/cli-topic-produce-consume
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 32a0453 (origin/cli-topic-produce-consume, cli-topic-produce-consume) cli consume from specific offset
+| * | 2dd8670 cli consume records
+| * | 867dc9a cli topic produce records
+|/ /  
+* |   36bd047 Merge pull request #340 from bf2fc6cc711aee1a0c2a/renovate/org.testng-testng-7.x
+|\ \  
+| * | 9dddee7 Update dependency org.testng:testng to v7.6.1
+* | |   d4a373d Merge pull request #337 from bf2fc6cc711aee1a0c2a/renovate/org.jsoup-jsoup-1.x
+|\ \ \  
+| |_|/  
+|/| |   
+| * | c3cd8a3 Update dependency org.jsoup:jsoup to v1.15.3
+|/ /  
+* |   50e399b Merge pull request #379 from bf2fc6cc711aee1a0c2a/kafka-access-mng-addition
+|\ \  
+| * | 64adfb4 (origin/kafka-access-mng-addition, kafka-access-mng-addition) kafka access mng suite addition
+|/ /  
+* |   bbda052 Merge pull request #347 from bf2fc6cc711aee1a0c2a/renovate/io.prometheus-simpleclient_pushgateway-0.x
+|\ \  
+| * | eb02a49 Update dependency io.prometheus:simpleclient_pushgateway to v0.16.0
+* | |   412ab77 Merge pull request #342 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-10.x
+|\ \ \  
+| * | | 8c01a1b Update dependency com.puppycrawl.tools:checkstyle to v10.3.2
+| |/ /  
+* | |   608a2c7 Merge pull request #333 from bf2fc6cc711aee1a0c2a/renovate/org.seleniumhq.selenium-selenium-java-4.x
+|\ \ \  
+| * | | ff507e6 Update dependency org.seleniumhq.selenium:selenium-java to v4.4.0
+* | | |   4e051d6 Merge pull request #377 from bf2fc6cc711aee1a0c2a/json-encode
+|\ \ \ \  
+| * | | | c3cde7a (origin/json-encode, json-encode) json encoding addition
+|/ / / /  
+* | | |   16961b0 Merge pull request #341 from bf2fc6cc711aee1a0c2a/renovate/io.strimzi-api-0.x
+|\ \ \ \  
+| * | | | c51efeb (origin/renovate/io.strimzi-api-0.x) chore(deps): update dependency io.strimzi:api to v0.30.0
+* | | | |   06f6c6a Merge pull request #331 from bf2fc6cc711aee1a0c2a/renovate/maven.failsafe.version
+|\ \ \ \ \  
+| * | | | | 4b1cd75 Update dependency org.apache.maven.plugins:maven-failsafe-plugin to v3.0.0-M7
+* | | | | |   39d1b0b Merge pull request #332 from bf2fc6cc711aee1a0c2a/renovate/org.apache.maven.plugins-maven-surefire-plugin-3.x
+|\ \ \ \ \ \  
+| * | | | | | 604675f Update dependency org.apache.maven.plugins:maven-surefire-plugin to v3.0.0-M7
+| | |_|_|/ /  
+| |/| | | |   
+* | | | | |   7d7cd8c Merge pull request #376 from bf2fc6cc711aee1a0c2a/cli-mas-removal
+|\ \ \ \ \ \  
+| * | | | | | d95fce6 (origin/cli-mas-removal) cli --mas-auth-url option removal
+|/ / / / / /  
+* | | | | |   22ab4c7 Merge pull request #375 from bf2fc6cc711aee1a0c2a/dependencies
+|\ \ \ \ \ \  
+| * | | | | | 965602f dependency: lombok update 1.18.22 to ..24
+|/ / / / / /  
+| | | | | | * 6bc45e2 (origin/demo-prometheus-oc-client, demo-prometheus-oc-client) Client Demo Test
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | |   a2e81ba Merge pull request #373 from bf2fc6cc711aee1a0c2a/billing-metrics
+|\ \ \ \ \ \  
+| |/ / / / /  
+|/| | | | |   
+| * | | | | 7e73412 (origin/billing-metrics, billing-metrics) moving of all billing related test to one package
+| * | | | | 841e04c addition of billing metric to the periodic test run, cleaning of unused utils methods
+| * | | | | f8dbd29 billing metricL added description and pre-failed in case of instance not existing apriori
+| * | | | | cfa3eb1 style fix
+| * | | | | e8e929e completed switch from observatorium to prometheus communication
+| * | | | | fe60e40 scripts for generating new token to communicate with prometheus via http endpoint and initiate refactor of observatorium client
+| * | | | | 58f6355 billing metrics consumption metric test fix
+| * | | | | 444d74e change of used metric, decrease size of produced load
+| * | | | | ab5f6f8 billing metic: storage metric test fix
+| * | | | | 505e64f feat: storage increase test
+| * | | | | 29a3d38 wip: setup service account and topics
+| * | | | | 7c8bb6b wip: billing metrics tests
+* | | | | |   41bfbd1 Merge pull request #372 from bf2fc6cc711aee1a0c2a/kafka-admin-parititon
+|\ \ \ \ \ \  
+| * | | | | | 0c6bf3c (origin/kafka-admin-parititon, kafka-admin-parititon) creating topic with high number of partitions: addition of try catch block when creating topic
+|/ / / / / /  
+* | | | | |   ef7d793 Merge pull request #371 from bf2fc6cc711aee1a0c2a/quarkus-app-tls
+|\ \ \ \ \ \  
+| * | | | | | 3f9607f (origin/quarkus-app-tls, quarkus-app-tls) quarkus app: changed route, login to cli, and vertx client
+|/ / / / / /  
+* | | | | |   99d2e04 Merge pull request #370 from bf2fc6cc711aee1a0c2a/cli-region-addition
+|\ \ \ \ \ \  
+| |/ / / / /  
+|/| | | | |   
+| * | | | | f75c7bf (origin/cli-region-addition, cli-region-addition) updated region selection from cli, to json conversion addition of nullable object ignore module
+|/ / / / /  
+| | | | | * c18647b (origin/renovate/major-fabric8) Update fabric8 to v6
+| |_|_|_|/  
+|/| | | |   
+* | | | |   231d175 Merge pull request #349 from bf2fc6cc711aee1a0c2a/renovate/app-services-sdk
+|\ \ \ \ \  
+| * | | | | 4b51f8c Update app-services-sdk to v0.24.0
+* | | | | |   7e16212 Merge pull request #369 from tonyxrmdavidson/integrationE2ERelease
+|\ \ \ \ \ \  
+| * | | | | | 95511a0 adding integration.xml
+|/ / / / / /  
+| | | | | | * 86bc3d4 (origin/renovate/com.epam.reportportal-agent-java-testng-5.x) Update dependency com.epam.reportportal:agent-java-testng to v5.1.3
+| |_|_|_|_|/  
+|/| | | | |   
+* | | | | |   89ad8c0 (tony-trial) Merge pull request #357 from k-wall/MGDSTRM-8525
+|\ \ \ \ \ \  
+| |_|_|_|/ /  
+|/| | | | |   
+| * | | | | e4c5067 address review comments
+| * | | | | 3d0e962 MGDSTRM-8525: add topic config policy enhancement end to end tests
+|/ / / / /  
+* | | | |   df3d75f Merge pull request #365 from tonyxrmdavidson/integrationSuite
+|\ \ \ \ \  
+| |/ / / /  
+|/| | | |   
+| * | | | a9a4790 added config for integration suite
+|/ / / /  
+| | | | * 9d52fcd (cli-change-own) init test
+| |_|_|/  
+|/| | |   
+* | | |   3ecd4bf Merge pull request #364 from bf2fc6cc711aee1a0c2a/oc-client-cert-fix
+|\ \ \ \  
+| * | | | 96a60e1 (origin/oc-client-cert-fix, oc-client-cert-fix) addition of cert fix for Quarkus application and Kafka Operator test
+|/ / / /  
+* | | |   40075f4 Merge pull request #363 from bf2fc6cc711aee1a0c2a/gitignore
+|\ \ \ \  
+| * | | | e619125 (origin/gitignore, gitignore) addition of all *.config.env files to be ignored
+|/ / / /  
+* | | |   53751e0 Merge pull request #362 from bf2fc6cc711aee1a0c2a/openshift-trusted-certificates
+|\ \ \ \  
+| * | | | 86727b4 (origin/openshift-trusted-certificates, openshift-trusted-certificates) oc client: addition of configuration to trust certs
+|/ / / /  
+* | | |   4c21ad5 Merge pull request #359 from bf2fc6cc711aee1a0c2a/tmp-delete
+|\ \ \ \  
+| * | | | 458cd43 (origin/tmp-delete, origin/profile-extension, tmp-delete, profile-extension) addition of applicable profiles for different tests
+|/ / / /  
+| | | | * 09fa1b9 (test) feat: storage increase test
+| | | | * 2a9efd4 wip: setup service account and topics
+| | | | * 92bc32a wip: billing metrics tests
+| |_|_|/  
+|/| | |   
+* | | |   75aa317 Merge pull request #321 from bf2fc6cc711aee1a0c2a/renovate/apicurio
+|\ \ \ \  
+| * | | | c622693 (origin/renovate/apicurio) Update apicurio to v2.2.5.Final
+| | |_|/  
+| |/| |   
+* | | |   efb8720 Merge pull request #358 from bf2fc6cc711aee1a0c2a/timeout-change
+|\ \ \ \  
+| |_|_|/  
+|/| | |   
+| * | | 92e45fe (origin/timeout-change, timeout-change) changed timeout for node autoscaling
+|/ / /  
+| | | * 5a2bd1c (origin/test4, MGDSTRM-8525-local) MGDSTRM-8525: add topic config policy enhancement end to end tests
+| |_|/  
+|/| |   
+* | |   2daf93d (MGDSTRM-8525) Merge pull request #356 from bf2fc6cc711aee1a0c2a/test-execution-script-permission-fix
+|\ \ \  
+| * | | 43e811f (origin/test-execution-script-permission-fix) reversion of rest of (assumingly accidentaly changed) files perimissions in repository
+| * | | 87c372f fix permission for execution of testRunner
+|/ / /  
+* | |   ec9453b Merge pull request #354 from pb82/observatorium-client
+|\ \ \  
+| * | | 08da113 feat: add billing model tests to suite
+| * | | bb28680 feat: additional assertions
+| * | | 465155f feat: add stratosphere test scenarios
+| * | | 7e45e5f feat: observatorium client and stratosphere tests
+|/ / /  
+* | |   f8fa7c6 Merge pull request #353 from bf2fc6cc711aee1a0c2a/sso
+|\ \ \  
+| * | | 6e187fd (origin/sso, sso) kafka instance api, name fix
+|/ / /  
+* | |   ad40fb9 Merge pull request #352 from bf2fc6cc711aee1a0c2a/redhat-sso
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 3a06bf8 (origin/redhat-sso, redhat-sso) cli simplified, envs copied
+| * | b379e94 sso checkout
+|/ /  
+| | * 2cc4495 (origin/renovate/com.epam.reportportal-logger-java-log4j-5.x) Update dependency com.epam.reportportal:logger-java-log4j to v5.1.5
+| |/  
+|/|   
+| | * 073523f (origin/renovate/org.jsoup-jsoup-1.x) Update dependency org.jsoup:jsoup to v1.15.2
+| |/  
+|/|   
+* |   ee830a2 (devexp) Merge pull request #348 from MikeEdgar/topic-null-check
+|\ \  
+| * | 393aa1c Skip deleteTopic when the topicName is null
+|/ /  
+| | * 31a2379 (origin/renovate/io.prometheus-simpleclient_pushgateway-0.x) Update dependency io.prometheus:simpleclient_pushgateway to v0.16.0
+| |/  
+|/|   
+* |   051ae22 Merge pull request #346 from MikeEdgar/MGDSTRM-8730
+|\ \  
+| * | 0c1885b Add service account descriptions (required for RH SSO)
+|/ /  
+* |   ebcc096 Merge pull request #345 from MikeEdgar/MGDSTRM-8730
+|\ \  
+| |/  
+|/|   
+| * 5c434a1 (MGDSTRM-8730) Update app-services-sdk to v0.20.4, adjust payloads
+| * b3cc921 Update app-services-sdk to v0.20.4
+|/  
+| * 217ca1f (partition-logging) addition of logs into partition tests
+|/  
+*   2693018 Merge pull request #344 from bf2fc6cc711aee1a0c2a/logging
+|\  
+| * 7d94d0e (origin/logging, logging) overextensive logging fixed, and reauthentication for now stopped
+* | 1c86b4f Merge pull request #343 from bf2fc6cc711aee1a0c2a/logging
+|\| 
+| * 7fae99b changed log level in console and reportportal
+|/  
+| * 553f604 (origin/partition-logging) addition of logs into partition tests
+|/  
+*   7d90c7e Merge pull request #339 from bf2fc6cc711aee1a0c2a/cli-fix-flag
+|\  
+| * 26bf4cd (origin/cli-fix-flag, partition-limit, cli-fix-flag) cli bypass checks flag name changed
+* | 3686970 Merge pull request #338 from bf2fc6cc711aee1a0c2a/partition-limit
+|\| 
+| * 34b0e29 (origin/partition-limit) in order to overflow partition totalcount, two new topics created each time  instead of branching
+| * 87a2dfd partition limit
+| * c9eff76 test sketch (release pending functionality)
+* |   46bcea8 Merge pull request #325 from bf2fc6cc711aee1a0c2a/permissions-internal-and-system-resources
+|\ \  
+| * | 49571c7 (origin/permissions-internal-and-system-resources, permissions-internal-and-system-resources) Rights to create internal topics and Access to them
+* | |   c065038 Merge pull request #311 from bf2fc6cc711aee1a0c2a/renovate/app-services-sdk
+|\ \ \  
+| |_|/  
+|/| |   
+| * | c04b519 chore(deps): update app-services-sdk to v0.19.0
+* | |   6292a62 (app-services-sdk-update) Merge pull request #334 from bf2fc6cc711aee1a0c2a/developer-broker-instances
+|\ \ \  
+| * | | 84eb26a (origin/developer-broker-instances, developer-broker-instances) fix of number of brokers to check, i.e., from 3 to 1 in case of developer kafka
+|/ / /  
+* | |   5f49968 Merge pull request #330 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-10.x
+|\ \ \  
+| * | | dfb803f chore(deps): update dependency com.puppycrawl.tools:checkstyle to v10.2
+* | | |   29728cf Merge pull request #323 from bf2fc6cc711aee1a0c2a/renovate/com.epam.reportportal-agent-java-testng-5.x
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | 2ccd728 chore(deps): update dependency com.epam.reportportal:agent-java-testng to v5.1.2
+| | |/  
+| |/|   
+* | |   72ea0dc (renovate, oldmain) Merge pull request #329 from bf2fc6cc711aee1a0c2a/renovated
+|\ \ \  
+| * | | 6c8789e (origin/renovated, renovated) renovated actions verification completed, keep new token,  and revert execution interval
+|/ / /  
+* | |   d35c074 Merge pull request #326 from bf2fc6cc711aee1a0c2a/renovated
+|\ \ \  
+| * | | 3540aab renovate verification
+|/ / /  
+* | |   214249f Merge pull request #317 from bf2fc6cc711aee1a0c2a/renovate/fabric8
+|\ \ \  
+| * | | 7c80453 chore(deps): update fabric8 to v5.12.2
+| | |/  
+| |/|   
+* | |   4af785b Merge pull request #320 from bf2fc6cc711aee1a0c2a/renovate/vertx
+|\ \ \  
+| |_|/  
+|/| |   
+| * | 26d4277 chore(deps): update vertx to v4.2.7
+|/ /  
+| | * 6cd934c (origin/renovate/org.projectlombok-lombok-1.x) chore(deps): update dependency org.projectlombok:lombok to v1.18.24
+| |/  
+|/|   
+* |   af55298 Merge pull request #319 from MikeEdgar/create-long-lived-acls-always
+|\ \  
+| * | 5d55cab Add method dependency to ensure instance API available to create ACLs
+| * | 774df6d Always create/re-create ACLs for long-lived instance tests
+|/ /  
+* |   154c0b2 Merge pull request #318 from rareddy/license-add
+|\ \  
+| |/  
+|/|   
+| * fe2f4c2 adding the opensource license files
+|/  
+*   4e53c2d Merge pull request #312 from bf2fc6cc711aee1a0c2a/renovate/apicurio
+|\  
+| * 24c4f84 chore(deps): update apicurio to v2.2.2.final
+* |   a6d070d Merge pull request #313 from bf2fc6cc711aee1a0c2a/renovate/org.seleniumhq.selenium-selenium-java-4.x
+|\ \  
+| * | 7af7e20 chore(deps): update dependency org.seleniumhq.selenium:selenium-java to v4.1.3
+| |/  
+* |   aaf6607 Merge pull request #314 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-10.x
+|\ \  
+| |/  
+|/|   
+| * 21f5a01 chore(deps): update dependency com.puppycrawl.tools:checkstyle to v10.1
+|/  
+*   7588729 Merge pull request #310 from bf2fc6cc711aee1a0c2a/app-services-sdk-1-7-0
+|\  
+| * 83a049c (origin/app-services-sdk-1-7-0) chore: update to app-services-sdk 0.17.0
+|/  
+*   737d8c3 Merge pull request #309 from bf2fc6cc711aee1a0c2a/revert-305-revert-304-revert-app-services-sdk-0.17.0
+|\  
+| * 1dc469d (origin/revert-305-revert-304-revert-app-services-sdk-0.17.0) Revert "App services sdk 0.17.0""
+|/  
+*   a0a69a3 Merge pull request #305 from bf2fc6cc711aee1a0c2a/revert-304-revert-app-services-sdk-0.17.0
+|\  
+| * 00c8f37 (origin/revert-304-revert-app-services-sdk-0.17.0) fix: update sdk versions to include parser fix
+| * 8a0f403 Revert "Revert app services sdk 0.17.0"
+* |   75acbb5 Merge pull request #308 from bf2fc6cc711aee1a0c2a/renovate/joda-time-joda-time-2.x
+|\ \  
+| * | 30688b4 chore(deps): update dependency joda-time:joda-time to v2.10.14
+* | |   1694c6e Merge pull request #307 from bf2fc6cc711aee1a0c2a/renovate/vertx
+|\ \ \  
+| |/ /  
+|/| |   
+| * | a2c178c chore(deps): update vertx to v4.2.6
+|/ /  
+* |   b32ab17 Merge pull request #302 from bf2fc6cc711aee1a0c2a/reauth
+|\ \  
+| |/  
+|/|   
+| * 9e048cf (origin/reauth) chore: add Kafka reauthentication test
+* |   e9d4c71 Merge pull request #304 from k-wall/revert-app-services-sdk-0.17.0
+|\ \  
+| * | 496eab0 Revert "fix: library after updating to app-services-sdk 0.17.0"
+| * | f9c24b4 Revert "chore(deps): update app-services-sdk to v0.17.0"
+|/ /  
+* |   d93e8c2 Merge pull request #303 from bf2fc6cc711aee1a0c2a/renovate-app-services-sdk
+|\ \  
+| * | 502ac18 (origin/renovate-app-services-sdk) fix: library after updating to app-services-sdk 0.17.0
+| * | 2ba7f7e chore(deps): update app-services-sdk to v0.17.0
+|/ /  
+* |   4bcd88a Merge pull request #301 from henryZrncik/cucumber-kafka-scripts-scenario
+|\ \  
+| |/  
+|/|   
+| * 5fd04bf cucumber kafka scripts quickstart: tar utility linux container problem fix
+* | e415a6b chore(deps): update dependency com.puppycrawl.tools:checkstyle to v10 (#298)
+* | fb22cfc Merge pull request #296 from henryZrncik/cucumber-kafka-scripts-scenario
+|\| 
+| * 587074f cleanup
+| * 7f5f688 cucumber kafka scripts
+* | 19490b8 chore(deps): update log4j to v2.17.2 (#297)
+* | d4c57fa chore(deps): update apicurio to v2.2.1.final (#299)
+|/  
+* d3a6f2c chore(deps): update vertx to v4.2.5 (#295)
+*   28df12e (x, newB, aaa) Merge pull request #293 from bf2fc6cc711aee1a0c2a/add-messages-and-bytes-federated-metrics
+|\  
+| * 8f4da2c (origin/add-messages-and-bytes-federated-metrics) feat: restored messages and bytes metrics
+| * af06964 feat: replaced old kafka topic bytes and messages metrics
+| | * 050a2a6 (origin/mas-sso-migration, mas-sso-migration) chore: add alternative security mgmt api
+| | * 368afae refactor: remove all deprecated methods
+| | * d68ec01 refactor: remove the Future form the login functions
+| | * 3cac7f6 refactor: switch to Apache HttpClient for the SSO login
+| | * 5d9bb16 fix: openshift identity environments variables
+| |/  
+|/|   
+* |   660a67e Merge pull request #288 from bf2fc6cc711aee1a0c2a/api-access-control
+|\ \  
+| * | 909c92f (origin/api-access-control) refactor: remove duplicate permissions tests
+| * | e3765ef refactor: rename KafkaAccessControlTest to KafkaAccessMgmtTest
+| * | 32d6018 refactor: improve clarity and structure of the KafkaAccessControlTest
+| * | 0e967f2 cleanup
+| * | a2b5762 ordering of tests (api access control)
+| * | 71fe5e3 kafka instance api access utils creation (separated from kafka instance api utils)
+| * | 0ae79a5 style fix
+| * | 66f6517 permission for deletion of kafka instance
+| * | bace00f new instance owner ACLs
+| * | 7d26892 assert fix, removal of unnecessary iniciliazation
+| * | 6ac89ec default organization users (admin, primary, secondary) permissions
+| * | d381b77 ACL: deny groups
+| * | 95adaee default ACLs added
+| * | 8dbb453 refactor of ACL provisioning
+| * | 8432a3f ACL deny Topic read tests
+| * | 4449bcc ACLs permissions on default service account
+| * | 9e32c93 default service account permissions
+| * | eaaa5dc always forbidden operations
+| * | 685acc0 kafka instance permissions
+| * | deb1796 new test class: kafka access control test
+| |/  
+* | 257a9cf chore(deps): update app-services-sdk to v0.15.5 (#281)
+* | b0a693c chore(deps): update dependency io.strimzi:api to v0.28.0 (#294)
+|/  
+*   fd48ccb Merge pull request #223 from pawelpaszki/additional-user-facing-metrics
+|\  
+| * 8d54185 feat: added additional user facing metrics
+* | 0fe54b1 fix: login to Red Hat SSO (#292)
+* | b749d4a chore(deps): update dependency io.strimzi:kafka-oauth-client to v0.10.0 (#290)
+| | * b5d455b (origin/fix-login) fix: login to Red Hat SSO
+| |/  
+|/|   
+* | dcf7b16 fix: exclude CLI alpha releases by default (#291)
+* | 7aa6b2e chore(deps): update dependency com.jayway.jsonpath:json-path to v2.7.0
+* | 6e2ae61 chore(deps): update apicurio to v2.2.0.final
+* | 409566f chore(deps): update dependency com.puppycrawl.tools:checkstyle to v9.3
+* | 38c20ab chore(deps): update dependency org.seleniumhq.selenium:selenium-java to v4.1.2
+* | 1803def chore(deps): update fabric8 to v5.12.1
+* | 927fed3 chore(deps): update dependency io.prometheus:simpleclient_pushgateway to v0.15.0
+| | * e588011 (api-access-control) cleanup
+| | * 26e8b05 ordering of tests (api access control)
+| | * 68abf15 kafka instance api access utils creation (separated from kafka instance api utils)
+| | * d8c5949 style fix
+| | * 1cf0cbf permission for deletion of kafka instance
+| | * a477d21 new instance owner ACLs
+| | * 3d91462 assert fix, removal of unnecessary iniciliazation
+| | * 0a7be0e default organization users (admin, primary, secondary) permissions
+| | * cb00c66 ACL: deny groups
+| | * da3ee45 default ACLs added
+| | * 0dec03e refactor of ACL provisioning
+| | * 0321002 ACL deny Topic read tests
+| | * 49d2451 ACLs permissions on default service account
+| | * 0060d5f default service account permissions
+| | * dc42571 always forbidden operations
+| | * beb1984 kafka instance permissions
+| | * 03878a3 new test class: kafka access control test
+| |/  
+|/|   
+* | 8932320 chore(deps): update fabric8 to v5.12.0
+* | 6f2cc96 (sandbox) chore(deps): update vertx to v4.2.4
+* | 9c05496 chore(deps): update dependency io.strimzi:api to v0.27.1
+* | f022039 chore(deps): update dependency com.epam.reportportal:agent-java-testng to v5.1.1
+* | 1024ac6 chore(deps): update cucumber to v7.2.3
+* | d472986 Fix renovate self-hosted config location
+* | 07312d2 created service registry operator
+* | 87bba00 shift
+* | 1522ed3 test: self hosted configuration for renovate
+| | * 7f5d19b (origin/fix-renovate-action) test: self hosted configuration for renovate
+| |/  
+|/|   
+| | * 620d4d7 (origin/service-registry-operator, service-registry-operator) created service registry operator
+| | * 61b6209 shift
+| |/  
+|/|   
+* | da866c2 fix(actions): add configurationFile to renovate action
+* | 4f7710c tmp: change Kafka instance name to unlock the tests without deleting the failed instance
+| | * 9fd34e6 (origin/b1zzu-patch-1) tmp: change Kafka instance name to unlock the tests without deleting the failed instance
+| |/  
+|/|   
+| | * 678d93d (origin/minor-fixes) fix(actions): add configurationFile to renovate action
+| |/  
+|/|   
+* | fa41b66 ordering of tests, in order to reduce time, update of logs, comments, clean up,
+* | 94a5f4a kafka management api permission: change owner test, addition of hack for waiting while waiting for fix
+* | 5b9184c fix(actions): add repository arg to renovate action
+| | * e034803 (origin/kafka-mng-api-change-instance-owner, kafka-mng-api-change-instance-owner) ordering of tests, in order to reduce time, update of logs, comments, clean up,
+| | * 7d3fe30 kafka management api permission: change owner test, addition of hack for waiting while waiting for fix
+| |/  
+|/|   
+* | 6296617 chore(actions): add renovate github action
+* | 7d94af0 chore(deps): update fabric8 to v5.11.2
+* | 2f133a9 chore(deps): update cucumber to v7.2.2
+* | b4876af chore(deps): update dependency org.testng:testng to v7.5
+* | ceec25f chore(deps): update dependency com.epam.reportportal:logger-java-log4j to v5.1.4
+* | 0dc2eec chore(dep): group dependencies for renovate
+* | 3db7ec0 chore(dep): remove indirect dependencies
+* | ea5ea06 chore(docs): update rhoas-model guide in README.md
+* | b5b8ecd chore(dep): update rhoas-model-1.0.0-SNAPSHOT.jar
+* | 5f8b2f1 fix(dep): remove local client-java-5.0.18-b1zzu1.jar library
+* | d0232dd fix(prometheus): remove error message from retry metric
+* | eaf03c6 fix(deps): downgrade kafka-client to 2.8.1
+| | * 24c92ce (origin/downgrade-kafka-client) fix(deps): downgrade kafka-client to 2.8.1
+| |/  
+|/|   
+* | ef6c0ef chore(deps): update dependency io.vertx:vertx-core to v4.2.3
+* | ef0ec81 chore(deps): update dependency io.vertx:vertx-kafka-client to v4.2.3
+* | bcb96ec chore(deps): update dependency com.redhat.cloud:registry-management-sdk to v0.11.0
+* | b4d2fc3 chore(deps): update dependency org.apache.logging.log4j:log4j-core to v2.17.1
+* | eb3db88 chore(deps): update dependency org.apache.logging.log4j:log4j-slf4j-impl to v2.17.1
+* | c24780e chore(deps): update dependency org.apache.kafka:kafka-clients to v3
+* | cb8830c chore(deps): update dependency io.cucumber:cucumber-picocontainer to v7.2.0
+* | 789583c chore(deps): update dependency io.cucumber:cucumber-testng to v7.2.0
+* | 2c2d8a5 chore(deps): update dependency io.fabric8:kubernetes-model to v5.11.1
+* | a8f0478 chore(deps): update dependency io.cucumber:cucumber-java to v7.2.0
+* | 33bd291 chore(deps): update dependency io.fabric8:openshift-client to v5.11.1
+* | 07b4b1f chore(deps): update dependency io.prometheus:simpleclient to v0.14.1
+* | 0a0ec58 chore(deps): update dependency io.prometheus:simpleclient_pushgateway to v0.14.1
+* | aedde2b chore(deps): update dependency io.strimzi:api to v0.27.0
+* | 760d1b0 chore(deps): update dependency io.strimzi:kafka-oauth-client to v0.9.0
+* | 09cf80b chore(deps): update dependency org.apache.logging.log4j:log4j-api to v2.17.1
+* | 3b400ff chore(deps): update dependency com.epam.reportportal:logger-java-log4j to v5.1.3
+* | 1134d7f chore(deps): remove report-portal internal package
+* | 76caa74 chore(deps): update dependency com.epam.reportportal:client-java to v5.1.3
+* | 781ec1f chore(deps): update dependency com.puppycrawl.tools:checkstyle to v9.2.1
+* | 0656ce4 chore(deps): update dependency com.redhat.cloud:kafka-instance-sdk to v0.11.0
+* | 3024d21 chore(deps): update dependency com.epam.reportportal:agent-java-testng to v5.1.0
+* | 1603319 chore(deps): update dependency org.apache.kafka:kafka-clients to v2.8.1
+* | 4458d8a chore(deps): update dependency joda-time:joda-time to v2.10.13
+* | 764674c chore(deps): update dependency io.apicurio:apicurio-registry-serdes-avro-serde to v2.1.5.final
+* | 5873ab6 chore(deps): update dependency io.apicurio:apicurio-registry-client to v2.1.5.final
+* | 399688b chore(deps): update dependency com.redhat.cloud:kafka-management-sdk to v0.11.0
+* | cdf0f34 chore(deps): update dependency io.vertx:vertx-web-client to v4.2.3
+* | 6605168 chore(deps): update dependency org.seleniumhq.selenium:selenium-java to v4.1.1
+* | cb8d108 fix: do not fail if we can't push to Prometheus
+| | * e886a00 (origin/catch-push-to-prometheus) fix: do not fail if we can't push to Prometheus
+| |/  
+|/|   
+* | 8b48842 docs(README): format markdown tables
+* | f9dce67 refactor(cli): re-org wait for registry methods
+* | fb331b8 service registry CLI tests
+* | 3f25e8d service registry CLI class, create and wait for service registry
+| | * 7542f82 (origin/registry-cli-test, registry-cli-test) service registry CLI tests
+| | * 2ba62be service registry CLI class, create and wait for service registry
+| |/  
+|/|   
+* | 5601357 (change-kafka-instance-owner) fix(registry): create the input stream in the retry loop
+* | fdeb81c refactor: remove unused pipeline.sh script
+| | * 5bc304d (origin/remove-docker-image) refactor: remove unused pipeline.sh script
+| |/  
+|/|   
+* | b9a63f5 refactor: remove Dockerfile
+* | c2a70f9 refactor: rename REPORTPORTAL_UUID to REPORTPORTAL_ACCESS_TOKEN
+|/  
+* 0f16ce1 style fix
+* fab9aa4 Automate SR organization admins permissions E2E tests
+* d9027f3 Avoid spurious stacktrace when kafkaConsumer is null
+| * 9f8fd9b (origin/admin-pe-sr, admin-pe-sr) style fix
+| * c730aed Automate SR organization admins permissions E2E tests
+|/  
+*   802d0f9 Merge pull request #220 from bf2fc6cc711aee1a0c2a/admin-pe-mng
+|\  
+| * 2c213bf (origin/admin-pe-mng, admin-pe-mng) added correct assert, change of used account to primary
+| * c961f35 Automation of  MK organization admins permissions
+| * 765e2dd ADMIN (ENV) added, changing owner of kafka instance
+|/  
+* f9308a0 Correct boolean parsing for KAFKA_INSECURE_TLS
+* 6989b09 Use separate variables to configure insecure TLS and REST TLS scheme
+* 70c11d8 Updates to allow running tests in kas-installer environment
+* 2161d6a fix(cli): ignore unknown fields when decoding json response
+* 17d5e0f fix(quickstarts): skip unimplemented cucumber steps
+* 6147246 delete service account: test order fix, teardown addition
+* f57780e LongLiveKafkaInstanceTest: Acl for SA added.
+* 62ffe23 deletion of service account and trying to use it to communicate.
+* 64f46a2 fix: create target otherwise docker will create it as root
+* 80f3970 chore: install kcat in the test container
+* 6251828 fix(quickstarts): topic clean errors
+* ffe6bb9 fix(quickstarts): add todo steps
+* cec5ca0 feat(quickstarts): automate kcat quickstart
+* 539ccea refactor(quickstarts): split kafka getting started steps
+* c6b42d1 fix(cli): allow login to CLI with external keycloak session
+* 30e4a69 Revert "refactor(lib): remove vertx from cli login"
+| * 7f30712 (mk-admin-permissions) setting of environemnt variable for Admin
+|/  
+| * a420d01 (origin/delete-sa, delete-sa) delete service account: test order fix, teardown addition
+| * a097491 LongLiveKafkaInstanceTest: Acl for SA added.
+| * 4abc4e2 deletion of service account and trying to use it to communicate.
+|/  
+* 0bf7d91 fix(quarkus): access token secret name
+* 29aec17 refactor(lib): remove vertx from cli login
+* 750d505 fix(quickstarts): login password
+* b4092e1 deps(cucumber): update cucumber to 7.0.0
+* eb23bd9 chore(quickstarts): automate getting started with kafka
+* 50428c7 chore(quickstarts): add skipped steps definitions for all features
+* e7efa41 Revert renaming of original feature file
+* 975fa43 Add scenario for Node.js binding
+* d323d1a Address QE feedback
+* f5435cc Remove duplicate feature file
+* 8006723 Create new feature file for OpenShift quick starts. Add scenarios for cluster connect and Quarkus bind.
+* 35833fb Rethinking metrics approach
+* cd6e229 Add metrics section to getting started test scenario
+* 938abc0 Add permissions to getting started scenario
+* d82eb4d review edits SR
+* 9376bcc Prereqs updates and rename to Kcat
+* 1d58f34 Address peer review feedback
+* 40b8278 Add Node.js scenario test feature file
+* f6ff737 review edit SR, DB
+* aeaf080 review edit
+* 7edee05 alignment fix
+* 79220f7 Add Kafka scripts to test feature file
+* 9bebbeb Update src/test/resources/io/managed/services/test/quickstarts/quickstarts.feature
+* 6e35269 Split kafka instance prereq throughout
+* 3b99742 Add feature description.
+* 4e868c4 Update src/test/resources/io/managed/services/test/quickstarts/quickstarts.feature
+* 7bf4f55 Add quarkus and kafkacat scenarios to test feature file.
+| * fd021aa (origin/quickstarts) chore(quickstarts): add skipped steps definitions for all features
+| * 3e60182 Revert renaming of original feature file
+| * ace86d8 Add scenario for Node.js binding
+| * e7e81a9 Address QE feedback
+| * b79393b Remove duplicate feature file
+| * 7da6571 Create new feature file for OpenShift quick starts. Add scenarios for cluster connect and Quarkus bind.
+| * 69d81fe Rethinking metrics approach
+| * 77206c5 Add metrics section to getting started test scenario
+| * ed34322 Add permissions to getting started scenario
+| * cc73af8 review edits SR
+| * 157b7ee Prereqs updates and rename to Kcat
+| * b7cdc33 Address peer review feedback
+| * 5e9cdd3 Add Node.js scenario test feature file
+| * 34f60fb review edit SR, DB
+| * 6f427c0 review edit
+| * b91df95 alignment fix
+| * 6d9ce34 Add Kafka scripts to test feature file
+| * c3cb13b Update src/test/resources/io/managed/services/test/quickstarts/quickstarts.feature
+| * 338de73 Split kafka instance prereq throughout
+| * c280f36 Add feature description.
+| * c051b40 Update src/test/resources/io/managed/services/test/quickstarts/quickstarts.feature
+| * e573fb9 Add quarkus and kafkacat scenarios to test feature file.
+|/  
+* ebdab0d feat: add test for metrics federate endpoint
+* 10a7119 fix: QuarkusApplicationTest
+* 3e77268 fix: update rhoas-model
+* 7aaf541 fix: KafkaCLITest grant service account access
+| * c63d463 (delete-sa-back) LongLiveKafkaInstanceTest: Acl for SA added.
+| * 5f909cb deletion of service account and trying to use it to communicate.
+|/  
+* 8d294c9 (delete-service-acc) fix: close KafkaAdmin objects correctly
+* 9f2b426 fix: artifact creation expected exception
+* a4f44cc fix: topic creation exception for secondary user
+* 9b54b1a fix: retry RuntimeException
+* 654cd2c fix: retry ProcessingException
+* 124e46c fix: topic clean
+* bb939fa fix: create missing topic in the KafkaAdminPermissionTest
+* e8c77f5 chore: add token refresh for RegistryClient
+* 8929c5e feat: add keycloak user with token refresh
+* 6b661a6 fix: assert the correct exception
+* 56870cf refactor: delete testFailToCallAPIIfUserDoesNotOwnTheKafkaInstance
+* 17d7a58 fix: enable secondary user permissions tests
+* 1177073 fix: enable testFailToCreateRegistryIfItAlreadyExist
+* a98baad docs: make it easier to copy values from README.md
+* 251d10e chore: wait until the Kafka instance is in provisioning
+* 80aac8e chore: wait max one day for a free spot to create a Kafka Instance
+* 7f5fe54 fix: RegistryKafkaIntegrationTest
+* 69c8434 fix: KafkaAdminPermissionTest
+* 2738263 fix: tests names in suites
+* 9f507be chore: create service account ACLs to produce and consume messages in the KafkaMgmtAPITest
+* 737e730 Change --name to --short-description in CLI
+* 475c432 fix: the collectTopicMetric wasn't summing the metrics but just return the last one
+* 1c14fd9 chore: make default region where kafka is provisioned configurable
+* f1a7e26 fix: ignore additional properties in ServiceAccountSecret
+* 73be8ef test: increase metric timeout to 5 minutes
+* f84a490 fix: checkstyle
+* 9abb62f fix: retry 408 API errors
+* f353dfd fix: extract patch for CLI
+* 5b55198 CLI: Remove output flag from topic update
+* e892400 fix: build
+*   3364b60 Merge pull request #185 from bf2fc6cc711aee1a0c2a/remove-timeout
+|\  
+| * e075579 refactor: remove time-out because of how testng handles them in separated thread
+|/  
+*   bd84885 Merge pull request #184 from b1zzu/fix-kafka-perm-tests
+|\  
+| * 1240b4f fix: disable failing tests because of logic changes
+| * 3d62d21 fix: implement AutoCloseable for KafkaAdmin
+|/  
+*   8385c12 Merge pull request #183 from b1zzu/fix-kafka-perm-tests
+|\  
+| * 3fdb82a chore: add testSecondaryUserCanNotCreateTopicOnTheKafkaInstance
+|/  
+*   2eff283 Merge pull request #181 from bf2fc6cc711aee1a0c2a/fix-cli-download
+|\  
+| * d81576d fix: add optional GITHUB_TOKEN to download the CLI
+|/  
+*   f3aa558 Merge pull request #179 from MikeEdgar/adjust_acl_permission_tests
+|\  
+| * 36a6e51 fix: allow ACL list test, add test to check ACL delete denied
+* |   b7cda31 Merge pull request #180 from bf2fc6cc711aee1a0c2a/disable-canary
+|\ \  
+| * | 91bd3df tmp: disable canary tests until we find an alternative solution
+|/ /  
+* |   1329fd3 Merge pull request #176 from bf2fc6cc711aee1a0c2a/fix-registry-test
+|\ \  
+| * | fc55cf3 fix: assign developer role to registry service account
+* | |   bbdbff4 Merge pull request #177 from bf2fc6cc711aee1a0c2a/time-out
+|\ \ \  
+| * | | 84dcf00 fix: increase messages for multi-partitions tests
+| * | | 8cccc95 fix: increase timeouts for some tests
+| |/ /  
+* | |   18bdfe0 Merge pull request #178 from bf2fc6cc711aee1a0c2a/null-ex
+|\ \ \  
+| * | | cdac9bc fix: test dependency in KafkaCLITest
+| |/ /  
+* | / 55a4ede Merge pull request #174 from bf2fc6cc711aee1a0c2a/env-ref
+|\| | 
+| |/  
+|/|   
+| * cd79d6e refactor: clean REPORTPORTAL_ENABLE env
+| * b216137 fix: makefile envs
+| * 13e3b44 refactor: Environment variables
+|/  
+*   fa79321 Merge pull request #173 from bf2fc6cc711aee1a0c2a/prometheus-errors
+|\  
+| * 355fd74 fix: dockerignore all config files
+| * 87bb946 chore: add PROMETHEUS_PUSH_GATEWAY to makefile
+| * c1af724 chore: add retry for API 500 errors
+| * 9cd9fe4 chore: create a new retry utils method with prometheus report
+| * 3ee66c1 fix: extend AutoCloseable in kafka client and producer
+| * 6c44bc0 feat: add prometheus test reporter
+* | 1259114 Revert "test: log errors for pattern analysis test"
+* | 42f1ea6 test: log errors for pattern analysis test
+|/  
+*   7479a24 Merge pull request #170 from bf2fc6cc711aee1a0c2a/renovate/io.fabric8-kubernetes-model-5.x
+|\  
+| * b56fa16 chore(deps): update dependency io.fabric8:kubernetes-model to v5.7.3
+* |   b107da4 Merge pull request #171 from bf2fc6cc711aee1a0c2a/renovate/io.fabric8-openshift-client-5.x
+|\ \  
+| |/  
+|/|   
+| * 201f028 chore(deps): update dependency io.fabric8:openshift-client to v5.7.3
+|/  
+*   0ee04bd Merge pull request #156 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-9.x
+|\  
+| * fadc724 (origin/renovate/com.puppycrawl.tools-checkstyle-9.x) chore(deps): update dependency com.puppycrawl.tools:checkstyle to v9
+* |   70966a7 Merge pull request #168 from bf2fc6cc711aee1a0c2a/fix-consumer-group
+|\ \  
+| * | debf8cc fix: close consumer in teardown
+* | | 59dc086 Merge pull request #167 from bf2fc6cc711aee1a0c2a/fix-consumer-group
+|\| | 
+| * | 12f13d8 fix: wait for consumers in consumer group
+|/ /  
+* |   0750f56 Merge pull request #166 from bf2fc6cc711aee1a0c2a/fix-clean-service-accounts
+|\ \  
+| * | 35c1a9c fix: delete all service accounts with the same name
+|/ /  
+* | df252cd fix: add cloudflare dns
+* |   f31d746 Merge pull request #165 from bf2fc6cc711aee1a0c2a/migrate-to-java-sdk
+|\ \  
+| * | fc41928 fix: remove resteasy-jackson-provider
+| * | 98c64d4 fix: resolve most warnings
+| * | 05d55ec refactor: migrate KafkaCLITest
+| * | f9bcbf5 refactor: migrate RegistryKafkaIntegrationTest
+| * | c4dc25e refactor: migrate QuarkusApplicationTest
+| * | 9ecc8ee refactor: migrate CucumberQuickstartsTest
+| * | 2835d91 refactor: migrate LongLiveKafkaInstanceTest and KafkaOperatorTest
+| * | 4b739a8 refactor: migrate KafkaAdminPermissionTest
+| * | e5b0358 refactor: migrate KafkaAdminAPITest
+| * | e87dd74 refactor: rename RegistriesApi to RegistryMgmtApi
+| * | 966c8c5 refactor: deprecate service api objects
+| * | 565ce9e refactor: waitUntilKafkaHostsAreResolved method
+| * | 157b490 refactor: migrate KafkaManagerAPIPermissionsTest
+| * | a801094 refactor: migrate the ServiceAPI to SecurityMgmtApi in KafkaManagerAPITest
+| * | d11d388 refactor: migrate the ServiceAPI to KafkaMgmtAPI in KafkaManagerAPITest
+| * | a163262 feat: add kafka mgmt java sdk
+|/ /  
+* | bb6a752 fix: redhat sso authentication
+| | * bc32225 (origin/migrate-to-java-sdk) refactor: migrate KafkaAdminPermissionTest
+| | * 319e4ae refactor: migrate KafkaAdminAPITest
+| | * 4fefd59 refactor: rename RegistriesApi to RegistryMgmtApi
+| | * 30cdac4 refactor: deprecate service api objects
+| | * b4c0503 refactor: waitUntilKafkaHostsAreResolved method
+| | * 1a9ae93 refactor: migrate KafkaManagerAPIPermissionsTest
+| | * 580ba44 refactor: migrate the ServiceAPI to SecurityMgmtApi in KafkaManagerAPITest
+| | * af44f19 refactor: migrate the ServiceAPI to KafkaMgmtAPI in KafkaManagerAPITest
+| | * 14e80db feat: add kafka mgmt java sdk
+| |/  
+|/|   
+* | f0382cd fix: add dig to the image
+* | 80e5897 fix: testDeleteProvisioningRegistry
+* | d58917d chore: print dig when host can not be resolved
+* | 1fc82d7 chore: wait for all kafka hosts to be resolved
+* |   91af339 Merge pull request #162 from bf2fc6cc711aee1a0c2a/wait-for-sr-d
+|\ \  
+| * | cb9ab71 (origin/wait-for-sr-d) fix: wait for service registry to be deleted
+|/ /  
+* |   2646a8f Merge pull request #161 from bf2fc6cc711aee1a0c2a/print-dns-lookup
+|\ \  
+| * | f54d12a (origin/print-dns-lookup) chore: log dns lookup in case the bootstrap host in unreachable
+* | | 3911aae fix(cli): update flag
+|/ /  
+* |   e031df3 Merge pull request #150 from bf2fc6cc711aee1a0c2a/cucumber-qs
+|\ \  
+| * | 00949b4 (origin/cucumber-qs) chore: automate getting started quickstarts
+| * | ca8e9fd chore: add the quickstarts suite to the default tests
+| * | fb66b10 chore: add getting started quickstart scenario
+| |/  
+* |   e9a890a Merge pull request #160 from bf2fc6cc711aee1a0c2a/fix-registry
+|\ \  
+| * | 1f2cde4 (origin/fix-registry) fix: registry test suite
+|/ /  
+* |   0f577f3 Merge pull request #159 from bf2fc6cc711aee1a0c2a/reduce-log
+|\ \  
+| * | c1f2f22 (origin/reduce-log) refactor: mark recurring logs as debug
+* | |   72160f0 Merge pull request #158 from bf2fc6cc711aee1a0c2a/fix-service-registry-test
+|\ \ \  
+| * | | 82d0a66 (origin/fix-service-registry-test) fix: add RegistryManagerAPIPermissionsTest and RegistryManagerAPITest to the registry suite
+| | |/  
+| |/|   
+* | |   bfd0fe2 Merge pull request #157 from bf2fc6cc711aee1a0c2a/fix-unknown-host
+|\ \ \  
+| |_|/  
+|/| |   
+| * | efe5363 (origin/fix-unknown-host) fix: disable vertx dns resolver
+| * | c6eb5f7 chore: print system properties for debug propose
+| * | 79fe4db fix: set sun.net.inetaddr.ttl to 0
+| |/  
+* |   0580e3a Merge pull request #136 from bf2fc6cc711aee1a0c2a/failed-if-kafkas-not-created
+|\ \  
+| * | a13c38e (origin/failed-if-kafkas-not-created) fix typo
+| * | 2de3a12 (failed-if-kafkas-not-created) different action for different states of preexisitng kafka
+| * | 0a2196b noticing corrupted kafka cluster instances in bootstrap
+| |/  
+* |   55875ce Merge pull request #152 from bf2fc6cc711aee1a0c2a/renovate/io.vertx-vertx-auth-oauth2-4.x
+|\ \  
+| * | 740dd3b (origin/renovate/io.vertx-vertx-auth-oauth2-4.x) chore(deps): update dependency io.vertx:vertx-auth-oauth2 to v4.1.3
+| |/  
+* |   356026f Merge pull request #151 from bf2fc6cc711aee1a0c2a/renovate/com.redhat.cloud-registry-management-sdk-0.x
+|\ \  
+| * | d98d286 (origin/renovate/com.redhat.cloud-registry-management-sdk-0.x) chore(deps): update dependency com.redhat.cloud:registry-management-sdk to v0.5.3
+| |/  
+* |   dff0492 Merge pull request #153 from bf2fc6cc711aee1a0c2a/renovate/io.vertx-vertx-core-4.x
+|\ \  
+| * | b98a147 (origin/renovate/io.vertx-vertx-core-4.x) chore(deps): update dependency io.vertx:vertx-core to v4.1.3
+| |/  
+* |   031d228 Merge pull request #154 from bf2fc6cc711aee1a0c2a/renovate/io.vertx-vertx-kafka-client-4.x
+|\ \  
+| * | c39a1a2 (origin/renovate/io.vertx-vertx-kafka-client-4.x) chore(deps): update dependency io.vertx:vertx-kafka-client to v4.1.3
+| |/  
+* |   7069e47 Merge pull request #155 from bf2fc6cc711aee1a0c2a/renovate/io.vertx-vertx-web-client-4.x
+|\ \  
+| |/  
+|/|   
+| * e3e46e8 (origin/renovate/io.vertx-vertx-web-client-4.x) chore(deps): update dependency io.vertx:vertx-web-client to v4.1.3
+|/  
+*   60c2f3c (extra-service-account) Merge pull request #149 from bf2fc6cc711aee1a0c2a/disable-unauth-test
+|\  
+| * f290f03 (origin/disable-unauth-test) refactor: remove unauthorized user tests
+* |   4a1413a Merge pull request #146 from bf2fc6cc711aee1a0c2a/registry-kafka-integration
+|\ \  
+| * | 8ef7b70 (origin/registry-kafka-integration) chore: test produce and consume avro messages
+| * | bed9a41 chore: remove disabled tests
+| * | 09c6abf chore: retry for 10m in case cluster at capacity
+| * | 8241c9c tmp: write integration test
+| * | b4cd72a chore: add additional configs for kafka producer and consumer
+| * | ab92350 chore: start work on registry kafka integration
+| * | 249dbd8 fix: close vertx in the teardown
+| * | e080d27 refactor: generalize kafka client and producer
+| * | 4401fb7 refactor: generalize authentication and api initialization
+| |/  
+* | b17a4bd fix: update kafka create to use --name flag (#148)
+* |   dbf9434 Merge pull request #147 from bf2fc6cc711aee1a0c2a/cli-name-flags
+|\ \  
+| |/  
+|/|   
+| * 5914a2d (origin/cli-name-flags) Fix tests with breaking CLI changes
+|/  
+*   b12455d Merge pull request #145 from bf2fc6cc711aee1a0c2a/renovate/io.vertx-vertx-auth-oauth2-4.x
+|\  
+| * 5c924ce fix: redirect URI
+| * 61c25e0 chore(deps): update dependency io.vertx:vertx-auth-oauth2 to v4.1.2
+* |   f0a171a Merge pull request #141 from bf2fc6cc711aee1a0c2a/renovate/com.puppycrawl.tools-checkstyle-8.x
+|\ \  
+| * | e95be89 fix: checkstyle
+| * | 7254e5f chore(deps): update dependency com.puppycrawl.tools:checkstyle to v8.45.1
+|/ /  
+* |   9e68426 Merge pull request #139 from bf2fc6cc711aee1a0c2a/renovate/maven.checkstyle.version
+|\ \  
+| * | 6e45582 chore(deps): update dependency org.apache.maven.plugins:maven-checkstyle-plugin to v3.1.2
+| |/  
+* |   dc9d481 Merge pull request #140 from bf2fc6cc711aee1a0c2a/renovate/org.jsoup-jsoup-1.x
+|\ \  
+| * | 10fa81b chore(deps): update dependency org.jsoup:jsoup to v1.14.2
+| |/  
+* |   2f8edcd Merge pull request #142 from bf2fc6cc711aee1a0c2a/renovate/io.fabric8-kubernetes-model-5.x
+|\ \  
+| * | 20ef889 chore(deps): update dependency io.fabric8:kubernetes-model to v5.7.0
+| |/  
+* |   c4188a5 Merge pull request #143 from bf2fc6cc711aee1a0c2a/renovate/io.fabric8-openshift-client-5.x
+|\ \  
+| * | a9f11c4 chore(deps): update dependency io.fabric8:openshift-client to v5.7.0
+| |/  
+* |   00696aa Merge pull request #144 from bf2fc6cc711aee1a0c2a/renovate/io.strimzi-api-0.x
+|\ \  
+| |/  
+|/|   
+| * c43f700 chore(deps): update dependency io.strimzi:api to v0.25.0
+|/  
+*   09833a3 Merge pull request #137 from bf2fc6cc711aee1a0c2a/renovate/configure
+|\  
+| * 36bb588 Add renovate.json
+|/  
+| * 7071783 (org-admin-permissions) henry temporal commit ammend me
+|/  
+*   b570256 (metrics, additional-service-account) Merge pull request #130 from bf2fc6cc711aee1a0c2a/cli-consumer-groups
+|\  
+| * c68cc6e (origin/cli-consumer-groups, cli-consumer-groups) CLI consumer-groups removal of redundant topic, refactor and ignoring extra fields in consumer-group related JSON response
+| * d482760 CLI delete consumer-group + change of priorities of tests in order to put deletion of topic after deletion of consumer-group
+| * a9196eb cli consumer group list and describe
+* |   29e8c48 Merge pull request #135 from bf2fc6cc711aee1a0c2a/unknown-host
+|\ \  
+| |/  
+|/|   
+| * 393b302 fix: wait for bootstrap host to be known
+|/  
+*   1fc8c26 Merge pull request #134 from bf2fc6cc711aee1a0c2a/service-registry
+|\  
+| * 9baf063 fix: use FAKE_TOKEN from the TestUtils
+| * 02d117f feat: add permissions tests for the registry api
+| * df168e0 feat: add more tests for the service registry manager
+| * 35a6cf4 fix: cli dependency
+| * f8976d3 docs: add todo
+|/  
+| * f7b7245 (ll) Merge branch 'service-registry' of github.com:bf2fc6cc711aee1a0c2a/e2e-test-suite into ll
+|/| 
+| * c8bb904 (origin/service-registry) feat: add permissions tests for the registry api
+| * 2b1c35f feat: add more tests for the service registry manager
+| * 85668b3 fix: cli dependency
+| * 4cbf103 docs: add todo
+* |   8a6231d Merge pull request #132 from bf2fc6cc711aee1a0c2a/admin-api-perm-eval-other-users
+|\ \  
+| * | 9991ccc (origin/admin-api-perm-eval-other-users, admin-api-perm-eval-other-users) other users than owning trying to use kafka Admin API
+* | |   99832b8 Merge pull request #133 from bf2fc6cc711aee1a0c2a/craicoverflow-patch-1
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 0754058 Use `-v` flag instead of `-d`
+|/ /  
+* | d5b9565 Merge pull request #131 from bf2fc6cc711aee1a0c2a/service-registry
+|\| 
+| * 70ca9c1 chore: test delete registry
+| * a6cde28 chore: wait for registry to be ready
+| * c80ee8c refactor: rename kafka tests to align with registry tests
+| * e1b702f chore: add create registry test
+|/  
+*   2d98cec (service-registry) Merge pull request #129 from bf2fc6cc711aee1a0c2a/print-service-binding
+|\  
+| * 20dfd36 fix: check if status is null
+* | 2f09775 Merge pull request #128 from bf2fc6cc711aee1a0c2a/print-service-binding
+|\| 
+| * dc14dc3 debug: print service binding cr to debug null point exception
+|/  
+*   bfe59be (cli-cg) Merge pull request #127 from bf2fc6cc711aee1a0c2a/automate-operator-api-configuration
+|\  
+| * 0006fe8 refactor: clean unused classes
+| * ad9a230 refactor: use the openshift client to edit the csv
+| * 2fb1b3f chore: update dependencies
+| * a7d3d20 chore: patch the CLOUD_SERVICES_API operator env
+| * ecb01fc chore: add the SKIP_KAFKA_TEARDOWN env
+| * ea3716f refactor: remove dependency to the long-live kafka instance
+| * cb82034 refactor: split testng classes in tests
+* |   c61653e Merge pull request #126 from bf2fc6cc711aee1a0c2a/cli-logout-pe-canary-replacement
+|\ \  
+| |/  
+|/|   
+| * 904e727 (origin/cli-logout-pe-canary-replacement, cli-logout-pe-canary-replacement) order fix for both KafkaCLI and KafkaAdminPermissionTest
+| * 140543b kafka admin permission evaluation canary topic and group replacement for own topic and group
+| * 24d2279 CLI logout test (created)
+|/  
+*   d68f3d7 Merge pull request #125 from bf2fc6cc711aee1a0c2a/fix-testGetConsumerGroup
+|\  
+| * a429898 fix: wait for the consumer group to list the connected consumer
+|/  
+*   80e840d Merge pull request #124 from bf2fc6cc711aee1a0c2a/refactor-test
+|\  
+| * d4425cc docs: improve javadoc formatting
+| * 42f4b75 docs: explain KafkaControlManagerAPIPermissionsTest
+| * a76a0f3 docs: explain KafkaOperatorTest
+| * 373578e docs: improve KafkaCLITest documentation
+| * 18bcc0b docs: explain KafkaCLITest
+| * c08447b docs: explain LongLiveKafkaInstanceTest
+| * 33e2696 docs: explain QuarkusApplicationTest
+| * 7dccaaa rename QuarkusApplicationTest
+| * a165814 reorganize tests
+| * 44a5cbe delete KafkaAPILimitTest
+| * c82a831 refactor LongLiveKafkaInstanceTest
+| * e11e83e move KafkaAdminPermissionTest under the KafkaInstancesTest
+| * 353cca0 rename KafkaAdminPermissionTest methods
+| * ba69dea add some possible todo to the KafkaAdminAPITest
+| * 052d5c2 move KafkaAdminAPITest under KafkaInstancesTest
+| * 38800b1 refactor test method names
+|/  
+* 05ae6d8 Fix failing CLI tests (#123)
+*   63230c4 Merge pull request #122 from bf2fc6cc711aee1a0c2a/ignore-unknown
+|\  
+| * 08e932d fix: ignore unknown properties in kafka admin api models
+* | 8d49eac Fix kafka admin api topic list
+* | 2ce5281 Fix kafka admin api consumergrouplist tests
+* |   238da92 Merge pull request #120 from bf2fc6cc711aee1a0c2a/retry-access-denied
+|\ \  
+| * | 3558336 fix checkstlye
+| * | bb5cb44 Assert previous test passed
+| * | 890d770 Add retry for API 503 error
+| * | 9b828d3 Add retry for CLI 503 error
+| * | f7e8f4d add retry for Access Denied oauth error
+| * | 9af98f2 add generic retry utils function
+* | |   a8b1f5c Merge pull request #116 from bf2fc6cc711aee1a0c2a/longLiveUpTime
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 31f367e (origin/longLiveUpTime) refactor of kafka creation payload and minor fixes
+| * | 9d2d092 checking for kafka instance expiration, and creation kafka payload moved to one method DRY
+|/ /  
+* |   4573c29 Merge pull request #117 from machi1990/patch-1
+|\ \  
+| * | acbc925 Update LongLiveKafkaTest.java
+* | |   1e1c973 Merge pull request #119 from bf2fc6cc711aee1a0c2a/add-alias-for-host
+|\ \ \  
+| * | | 8cd41d3 add aliases for clientID and bootstrapServerHost
+|/ / /  
+* | |   8b2d0d6 Merge pull request #118 from wei-lee/update-service-api
+|\ \ \  
+| |/ /  
+|/| |   
+| * | f12145b fix: update service api to use new updated paths and allow unknonw fields in certain APIs
+|/ /  
+* |   757edb4 Merge pull request #115 from bf2fc6cc711aee1a0c2a/always-run-teardown
+|\ \  
+| * | 208aabd run the teardown even if the bootstrap fails
+|/ /  
+* |   9105ad1 Merge pull request #113 from bf2fc6cc711aee1a0c2a/canaryB
+|\ \  
+| * | b9794bf (origin/canaryB) using  KafkaConsumerClient.receiveAsync instead of 3 separate methods
+| * | ef4ded1 canary topic existence and , liveliness
+|/ /  
+* | 79c8500 Change base api path to kafkas_mgmt (#114)
+| | * ee88a63 (origin/develop/production-tests) add production testng group and maven profile
+| |/  
+|/|   
+* |   e08190c Merge pull request #112 from bf2fc6cc711aee1a0c2a/develop/fix-delete
+|\ \  
+| * | 297a2aa clean the secret for the service account even if the sa can't be found
+* | |   30dee39 Merge pull request #110 from bf2fc6cc711aee1a0c2a/close-vertx
+|\ \ \  
+| * | | 2a429df close vert.x in the class teardown
+* | | |   878c4ab Merge pull request #111 from bf2fc6cc711aee1a0c2a/develop/fix-delete
+|\ \ \ \  
+| |/ / /  
+|/| / /   
+| |/ /    
+| * / 9ea423a actively wait for message sent on deleted instance to fail
+|/ /  
+* |   1be0768 Merge pull request #108 from bf2fc6cc711aee1a0c2a/automate-sandbox-account-recreation
+|\ \  
+| * | 8769404 automate sandbox account recreation
+* | |   f0714c9 Merge pull request #109 from bf2fc6cc711aee1a0c2a/fix-tls-13
+|\ \ \  
+| |/ /  
+|/| |   
+| * | da0fd02 enable TLSv1.3 for the vert.x webclient
+|/ /  
+* |   0eed278 Merge pull request #107 from bf2fc6cc711aee1a0c2a/fix-close
+|\ \  
+| * | 7da6edc fix close produce and consumer position
+* | |   5c3c3b4 Merge pull request #105 from bf2fc6cc711aee1a0c2a/fix-admin-test
+|\ \ \  
+| * | | 5c0ba58 create a consumer group to then tests
+| |/ /  
+* | |   d35f628 Merge pull request #106 from bf2fc6cc711aee1a0c2a/fix-cli-download
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 9abb8b5 fix CLI download
+|/ /  
+* |   4d71060 Merge pull request #104 from bf2fc6cc711aee1a0c2a/disable-limit-test
+|\ \  
+| * | 8c32f1e disable KafkaAPILimitTest
+|/ /  
+* |   b1eb599 Merge pull request #102 from bf2fc6cc711aee1a0c2a/diffNumberOfConsumersForMultiplePartitions
+|\ \  
+| * | 61bb920 clean unused methods
+| * | faf8504 reuse existing parts from the testTopic to test a topic with multiple partitions and consumers
+| * | 7980ded convert plains and oatuh config into KafkaAuthMethod
+| * | 4645815 consuming partitions by different numbers of consumers
+* | |   bef48bf Merge pull request #103 from bf2fc6cc711aee1a0c2a/fix-instance-clean
+|\ \ \  
+| |/ /  
+|/| |   
+| * | fcc207a fix cleanup of mk-e2e-pe- instance
+|/ /  
+* |   fb09bad Merge pull request #101 from bf2fc6cc711aee1a0c2a/develop/testng
+|\ \  
+| * | 4655d2f Fix profile execution
+| * | bafe648 Add sandbox profile
+| * | d54c2f8 Group Test in Suites
+| * | 5a713d1 Remove JUnit5
+| * | cc09089 Rewrite TestListener for TestNG
+| * | 5e95b35 Make test methods public
+| * | 535817b Migrate QuarkusSampleTest to TestNG
+| * | 6536b8f Migrate SSOAuthTest to TestNG
+| * | affcba6 Migrate SmokeTest to TestNG
+| * | ac9f542 Migrate ServiceAPIUnauthUserTest to TestNG
+| * | abb7425 Migrate LongLiveKafkaTest to TestNG
+| * | 3711794 Migrate KafkaOperatorTest to TestNG
+| * | 7ff51cb Migrate KafkaCLITest to TestNG
+| * | 95a02c2 Migrate KafkaAPIUserPermissionsTest to TestNG
+| * | 9834101 Migrate KafkaAPITest to TestNG
+| * | f89061a Migrate KafkaAdminPermissionTest to TestNG
+| * | b832954 Migrate KafkaAPILimitTest to TestNG
+| * | 974e1aa Make tests methods public
+| * | dad2515 Migrate KafkaAdminAPITest to TestNG
+|/ /  
+| | * 33ea7ef (origin/canary) canary topic and and liveliness
+| | * 897adc4 (origin/diffNumberOfConsumersForMultiplePartitions) one extra fail removed after rebase (LongLiveKafkaTest) is now (ServiceAPILongLiveTest)
+| | * f9824dd consuming partitions by different numbers of consumers,.
+| | * c9e2f1a temporary commit
+| |/  
+|/|   
+* |   a7ac98f Merge pull request #100 from bf2fc6cc711aee1a0c2a/develop/remove-vertx-junit
+|\ \  
+| * | 7cb4e7e Rename BindingOperatorTest to KafkaOperatorTest
+| * | 9fe4fe8 Rename ServiceAPITest to KafkaAPITest
+| * | 897e676 Assert bwait is not called from a vertx thread
+| * | 6d97801 Remove vertx junit form pom.xml
+| * | 327c5bf Remove ServiceAPIUserMetricsTest
+| * | 3b200a0 Remove vertx junit from CustomReportPortalExtension
+| * | c83d331 Remove vertx junit from KafkaAPIUserPermissionsTest
+| * | 4a4b73d Remove vertx junit from SSOAuthTest
+| * | 464f5bb Remove vertx junit from ServiceAPITest
+| * | e27553b Remove vertx junit from ServiceAPIUnauthUserTest
+| * | f6ed6ad Remove vertx junit from LongLiveKafkaTest
+| * | 0182051 Remove vertx junit from QuarkusSampleTest
+| * | d89162f Remove vertx junit from KafkaAPILimitTest
+| * | a9f0244 Remove vertx junit from KafkaAdminPermissionTest.java
+| * | 83e2b4b Remove vertx junit from CLITest.java
+| * | 0637ffa Remove vertx junit from BindingOperatorTest.java
+| * | a34bb10 Remove vertx junit from ServiceAPIUnauthUserTest
+| * | ba24f19 Rename await to bwait because it's a blocking waiting technique
+|/ /  
+* |   4659bf9 Merge pull request #99 from bf2fc6cc711aee1a0c2a/serviceApiFix
+|\ \  
+| * | 6b15e6f (origin/serviceApiFix) tidy up in ServiceAPI, LongLive classes. (useless fields, and params)
+| * | a4949da service account as class param, and passed instead of creating new one as it would cause secret change and fail in creation of consumer/ producer
+|/ /  
+* |   8d7fbfb Merge pull request #95 from bf2fc6cc711aee1a0c2a/duplicateTestMessageMetric
+|\ \  
+| * | d81c13b (origin/duplicateTestMessageMetric) rebased, fix: context, return types, names
+|/ /  
+* |   ae693f7 Merge pull request #98 from bf2fc6cc711aee1a0c2a/develop/fix-rp
+|\ \  
+| * | 2a6faa8 reportportal has moved to maven
+* | | 6dfec59 Merge pull request #97 from bf2fc6cc711aee1a0c2a/develop/clean-sbo-secrets
+|\| | 
+| * | 5e0d005 Use LinkedList
+| * | 3ecfa61 Add SKIP_TEARDOWN to Makefile
+| * | fa8a99a Improve object collection on test complete
+| * | fddecf6 Wait for ServiceBinding status to be Ready
+| * | c0c540f Clean service binding secrets in the teardown
+| * | 8e7552b Remove printed token
+|/ /  
+* |   fe02405 (origin/config) Merge pull request #96 from bf2fc6cc711aee1a0c2a/develop/prod
+|\ \  
+| * | 261255f Update README.md
+| * | 982015e Add MAS_SSO_REDHAT_KEYCLOAK_URI to the Makefile
+|/ /  
+* |   a114449 Merge pull request #94 from bf2fc6cc711aee1a0c2a/develop/fix-qs-test
+|\ \  
+| * | 08c860d Convert BeforeAll to Test
+|/ /  
+* |   6f27007 Merge pull request #93 from bf2fc6cc711aee1a0c2a/develop/fix-stage-cli
+|\ \  
+| * | 0c4d161 Overwrite default CLI api and auth urls
+|/ /  
+* |   c27eb53 Merge pull request #92 from bf2fc6cc711aee1a0c2a/develop/fix-profile
+|\ \  
+| |/  
+|/|   
+| * 460987f Add kafka-admin-permissions to the default profile
+|/  
+*   5b0957a Merge pull request #84 from bf2fc6cc711aee1a0c2a/permEval
+|\  
+| * 31b9636 Remove throws InterruptedException
+| * 8f96a99 Move the kafka instance creation to a test method
+| * da61d0c tidy up brackets and debug remains
+| * 77c0282 fixing rebase conflict with kafkaAdminApiTest
+| * 3026b01 Removal of white spaces from DisplayName annotations
+| * e5b2640 style fix
+| * c93d1fa all required permission checked
+| * eb32fa6 rebase for conflicts in kafkaAdminApiTest
+* |   7a8eb5c Merge pull request #91 from bf2fc6cc711aee1a0c2a/fix-timeout
+|\ \  
+| * | 97cfb7d Increase bootstrap timeout
+* | |   68d4204 Merge pull request #90 from bf2fc6cc711aee1a0c2a/develop/make-rp-configurable
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 357571f Make ReportPortal launch name configurable
+|/ /  
+* |   19f395d Merge pull request #88 from bf2fc6cc711aee1a0c2a/develop/delete-sa
+|\ \  
+| * | adb3f8e Add testCleanAdditionalServiceAccounts
+| |/  
+* / beb1422 Add test for ServiceAccount limits (#89)
+|/  
+*   b1e74c7 Merge pull request #87 from bf2fc6cc711aee1a0c2a/develop/minor-fix
+|\  
+| * 1a4c913 Fix name of service account
+* | 04a34ca Merge pull request #86 from bf2fc6cc711aee1a0c2a/develop/minor-fix
+|\| 
+| * f11a199 Set private constant to private
+* | 80a9618 Merge pull request #85 from bf2fc6cc711aee1a0c2a/develop/minor-fix
+|\| 
+| * c17dbfb Fix checkstyle
+| * b5e56b9 Collect quarkus app pod logs
+| * d02990e Remove comment
+| * b9b5d0f Fix checkstlye
+| * b03b40e Update consumer group after the canary group has been hidden
+| * 1428419 Add a utils await method that could substitute the Vert.x TestContext
+| * 0da3f31 Add assert to correctly skip tests
+| * 1ad5531 Update rhoas-model-1.0.0-SNAPSHOT.jar
+|/  
+*   f837871 Merge pull request #83 from bf2fc6cc711aee1a0c2a/develop/quarkus-binding
+|\  
+| * ddfa61d Move Route to the yml file
+| * 4a42dbc Deploy and test quarkus sample app
+| * 8a93cbd Add applyKafkaInstance utils method
+| * 4cd2580 Retrieve the correct secret in case of multiple secrets
+|/  
+*   c86b37a Merge pull request #82 from bf2fc6cc711aee1a0c2a/develop/dont-fail
+|\  
+| * 40be100 Don't fail immediately if the kafka instance report failed
+|/  
+*   cf6444e Merge pull request #81 from bf2fc6cc711aee1a0c2a/develop/refactor-consumer-group-test
+|\  
+| * af737c9 Fix checkstlye
+| * a6ece31 Fix consumer group tests after breaking changes to the API
+|/  
+*   6195126 Merge pull request #80 from bf2fc6cc711aee1a0c2a/develop/fail-fix
+|\  
+| * b1fd63e Add log lines to KafkaAdminAPITest testCreateTopic
+| * 8953816 Fix assert previous failures in BindingOperatorTest
+* |   d59c420 Merge pull request #79 from bf2fc6cc711aee1a0c2a/develop/fix-sa-limit
+|\ \  
+| |/  
+|/|   
+| * 2ad35cf Use long living service account for metrics tests to reduce the number of sa created
+|/  
+* 8e8b14f Speed pr check with cache of maven artifacts (#78)
+* 2816f57 Update readme instructions how to run tests (#77)
+*   9afdea9 Merge pull request #76 from bf2fc6cc711aee1a0c2a/remove-mvn-log
+|\  
+| * 3641380 Remove mvn download packages log from all pipelines
+|/  
+* 76dcc29 Add test for delete provisioning kafka instance (#74)
+* 994a1b8 Remove mess from GH action log output (#75)
+*   34cdba8 Merge pull request #73 from bf2fc6cc711aee1a0c2a/develop/fix-login
+|\  
+| * a5bb05c Fix OAuth messaging tests
+* | b827b9d Merge pull request #72 from bf2fc6cc711aee1a0c2a/develop/fix-login
+|\| 
+| * 7caaa4d Fix import
+| * 434925b Fix mass sso login and CLI
+|/  
+*   11e1852 Merge pull request #71 from bf2fc6cc711aee1a0c2a/develop/move-plain-tests
+|\  
+| * 1c0ec4d Fix unused imports
+| * 90805fb Move plain messaging tests from CLITest to ServiceAPITest
+|/  
+*   4a024f1 Merge pull request #70 from bf2fc6cc711aee1a0c2a/develop/fix-retry-login
+|\  
+| * 04dbf52 Fix login retry method
+|/  
+*   d9537ef Merge pull request #67 from bf2fc6cc711aee1a0c2a/develop/merge-perm
+|\  
+| * cc88709 Fix permissions tests expected result
+| * b91e116 Fix checkstyle
+| * 6ef1239 Merge diff orgs and same orgs user perm in a single test to speed up the tests
+* |   a562fa0 Merge pull request #69 from bf2fc6cc711aee1a0c2a/develop/retry-login
+|\ \  
+| * | 414d730 Fix CLI login
+* | | 8afdc9e Merge pull request #68 from bf2fc6cc711aee1a0c2a/develop/retry-login
+|\| | 
+| |/  
+|/|   
+| * dad11a3 Try to retry login in case of unexpected error
+|/  
+*   5891918 Merge pull request #66 from bf2fc6cc711aee1a0c2a/develop/fix-tests
+|\  
+| * c1bf15f Wait 1s before try to send message after instance has been deleted
+| * adc2d45 Add version to Kafka response model
+| * 4726724 Add fake reportportal endpoint
+* |   e4fd77d Merge pull request #65 from bf2fc6cc711aee1a0c2a/develop/en-test
+|\ \  
+| |/  
+|/|   
+| * a5ac33e Add ENABLE_TEST env to disable tests if needed
+|/  
+* 13cf409 Make reportportal endpoint configurable from envs
+* 97c9db2 Fix clean service account
+*   1aceeb7 Merge pull request #64 from bf2fc6cc711aee1a0c2a/develop/fix-mas-login
+|\  
+| * 9290f3e Fix checkstyle
+| * 238c4e0 Fix postUsernamePassword method
+| * b5b9356 Refactor the CLI login to support the new mas-sso to redhat sso login
+| * f179a29 Use the same vertx instance for the whole test duration
+|/  
+*   a2814fa Merge pull request #63 from bf2fc6cc711aee1a0c2a/develop/fix-mas-login
+|\  
+| * 97b1a8b Fix stopRedirect method
+|/  
+*   f1de945 Merge pull request #62 from bf2fc6cc711aee1a0c2a/develop/fix-mas-login
+|\  
+| * 6856ae6 Fix checkstyle
+* | f04671e Merge pull request #61 from bf2fc6cc711aee1a0c2a/develop/fix-mas-login
+|\| 
+| * 17a0d3e Add SSOAuthTest
+| * c6091e0 Fix MAS-SSO login
+|/  
+*   c395c02 Merge pull request #60 from bf2fc6cc711aee1a0c2a/develop/dev-cluster-server
+|\  
+| * 9f970e5 Set DEV_CLUSTER_SERVER by default to null because it change to often
+|/  
+*   d6508c7 Merge pull request #58 from bf2fc6cc711aee1a0c2a/develop/quarkus-binding
+|\  
+| * 1279cac Fix logger class
+| * c0bce0f Use fabric8 Serialization to convert object to yaml
+| * 0449c08 Add cli logout to teardown
+| * a6177a2 Remove the temporary test
+| * 835e4a2 Add CLI connect cluster test
+| * e43d08a Clean unused utils methods from TestUtils
+| * e44bffd Add configurable timeout to AsyncProcess execution
+* |   9f8ee4f Merge pull request #59 from bf2fc6cc711aee1a0c2a/develop/admin-api-fixes
+|\ \  
+| |/  
+|/|   
+| * ec57524 Remove KafkaAdmin from ServiceAPIUserMetricsTest
+| * 366e8af Remove testDeleteTopic from ServiceAPITest because already covered in KafkaAdminAPITest
+| * e675089 Remove kafkaAdminAPI global var form ServiceAPILongLiveTest
+| * bb07c18 Reorganize KafkaAdminAPITest
+| * 02138a6 Refactor kafkaadminapi models/resources
+| * 2857389 Align naming with service api
+| * 1758dff Flat resourcesGroups and resourcesgroup packages
+| * c1c9d59 Add createDefaultTopic utils method
+|/  
+*   085ef0a Merge pull request #56 from bf2fc6cc711aee1a0c2a/replaceKafkaAdmin
+|\  
+| * 9a020fc fix: forgot to remove unused import
+| * 02b0a42 removal of unused admin, and Logs
+| *   7416601 Merge branch 'replaceKafkaAdmin' of github.com:bf2fc6cc711aee1a0c2a/e2e-test-suite into replaceKafkaAdmin
+| |\  
+| | * f89e8b9 fixed style of code in UserMetricsTest, and minor refactor in utilities
+| * | d6c32e4 fixed style of code in UserMetricsTest, and minor refactor in utilities and overall unused variables and imports
+| |/  
+| * 30a9a69 kafka admin substituted by kafka admin api at ServiceAPIUserMetricsTest suit
+| * 688b4b2 kafka admin substituted by kafka admin api at ServiceAPILongLiveTest, ServiceApiTest
+* | facf4df Fix CLI RHOAS tests (#57)
+|/  
+* ccc03b5 Remove workaround for CLI (#55)
+*   a7675b5 Merge pull request #53 from obabec/oauth-test
+|\  
+| * 9009651 Optimize imports
+| * 055ae2c Address comments
+| * eade2f8 Add invalid plain
+| * c3f16f3 Oauth authentication test
+* | a4c8d12 Workaround for linux cli issue (#54)
+|/  
+*   2257f94 Merge pull request #52 from bf2fc6cc711aee1a0c2a/rest-api-topic-fix
+|\  
+| * 3c4048f KafkaAdminAPITest: create topic (no ReplicaFactor), timout, group delete response code update
+| * 4bf00e8 set up for local testing
+| * a4967c7 updating asserts for problems with kafka creation before timeout
+* | bb2cedc Clean service account and kafka instance using the API
+* | 57f0c1c Delete all service accounts by name because multiple service accounts can be created with the same name
+* | 8aeff90 Post clean the service account if the operator hasn't done it
+|/  
+* 64d396c Migrate to reportportal-cloud-services.apps.ocp4.prod.psi
+*   acdc73c Merge pull request #46 from bf2fc6cc711aee1a0c2a/develop/minor-fix
+|\  
+| * 027dbf9 Fail fast if kafka instance fails to create
+* | 5c51a0f Add kafka-admin-api tag to the default group
+* | 212dda0 Increase metric to be updated timeout to 2 minutes
+* |   6f32815 Merge pull request #41 from bf2fc6cc711aee1a0c2a/rest-api-topic-group
+|\ \  
+| * | 23faff4 clean code
+| * | 2e79712 fix
+| * | df77565 kafka admin API topics and group vertx callbacks fix
+| * | 7ddb0ab fix
+| * | 77630ac fix
+| * | bc30a45 [HZ] - [rest api] -> topic,group tests
+* | | f2cef92 Increase CloudServiceAccountRequest timeout to 3 minutes
+* | |   10546d3 Merge pull request #51 from bf2fc6cc711aee1a0c2a/develop/fix-test-topic
+|\ \ \  
+| * | | c496754 Rest all partitions of the topic to the end offset and commit before subscribing to it
+* | | | 59b4583 Merge pull request #50 from bf2fc6cc711aee1a0c2a/develop/fix-test-topic
+|\| | | 
+| * | | b9b0d08 Seek to end before setting the real handler
+|/ / /  
+* | |   6e9b4cd Merge pull request #49 from bf2fc6cc711aee1a0c2a/develop/update-rhoas-model
+|\ \ \  
+| * | | 383a057 Update rhoas-model to binding operator 0.6.1
+* | | |   9047c87 Merge pull request #48 from bf2fc6cc711aee1a0c2a/develop/fix-test-topic
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | baaa61b Retry API call in case of 504 error
+| * | | 323a692 Close KafkaAdmin after using it
+| * | | 1ec0a46 Cancel timeout timer after the produce and consume future complete
+|/ / /  
+* | |   c4a8ee1 Merge pull request #47 from bf2fc6cc711aee1a0c2a/develop/fix-timeout
+|\ \ \  
+| |_|/  
+|/| |   
+| * | 3897cd7 Add Timeout annotation to each class
+|/ /  
+* |   70e8dd1 Merge pull request #43 from bf2fc6cc711aee1a0c2a/reportportal
+|\ \  
+| * | 036ba63 Add Jenkins build url to the RP launch description
+* | |   7d2f4dd Merge pull request #45 from bf2fc6cc711aee1a0c2a/update-rhoas-model
+|\ \ \  
+| * | | 99c826c Refactor BindingOperatorTest bootstrap and teardown in a single method
+| * | | 2d4b7fa Print OPENSHIFT_API_URL from the bootstrap-mk-e2e-tests-namespace.sh
+| * | | 816dbad Update rhoas-model to operator 0.5.0
+| | |/  
+| |/|   
+* | |   ae01556 Merge pull request #44 from bf2fc6cc711aee1a0c2a/doc-binding-operator
+|\ \ \  
+| * | | 9783986 Document how to update the rhoas-model
+| |/ /  
+* | | fd6aae0 Remove retry warning (#42)
+* | | 704fb35 Add retry to CLI (#40)
+* | | 81a507c Set default timeout for vertx test extension (#39)
+* | | 3a0f271 Add kafka messaging tests into CLI test (#38)
+* | |   394fc7f Merge pull request #37 from bf2fc6cc711aee1a0c2a/reportportal
+|\ \ \  
+| | |/  
+| |/|   
+| * | 5e5c73f Don't mark skipped tests as To Investigate in ReportPortal
+* | |   d565392 Merge pull request #34 from bf2fc6cc711aee1a0c2a/read-sa-secret
+|\ \ \  
+| * | | 0440c50 Address comments
+| * | | 9858368 Read SA secret created by CLI
+|/ / /  
+* | | bb89e4e Merge pull request #36 from bf2fc6cc711aee1a0c2a/reportportal
+|\| | 
+| * | 45f5289 fix client-java-5.0.18-b1zzu1.jar
+* | | 85227fa Merge pull request #35 from bf2fc6cc711aee1a0c2a/reportportal
+|\| | 
+| * | 01dbae8 fork reportportal-client-java to fix the logs report
+| * | 7e8b546 Report test results to RP as SKIPPED if
+| |/  
+* | 1d97343 CLI topic tests (#33)
+* |   45edb71 Merge pull request #32 from bf2fc6cc711aee1a0c2a/always-close-the-consumer
+|\ \  
+| * | 3b2c155 Add timeout to testTopic method to close the producer and consumer in time
+| |/  
+* |   7ac2324 Merge pull request #31 from bf2fc6cc711aee1a0c2a/reduce-kafka-log
+|\ \  
+| |/  
+|/|   
+| * 7fc023a Add some logs to the ServiceAPIUserMetricsTest
+| * db60724 Reduce log level for org.apache.kafka to WARN
+* | 4ac34ee Merge pull request #30 from bf2fc6cc711aee1a0c2a/increase-metric-timeout
+|\| 
+| * 5ea1050 Increase the metric timeout to 20 seconds
+* |   59ef80e Merge pull request #29 from bf2fc6cc711aee1a0c2a/fix-rp-parameters-reporting
+|\ \  
+| * | 13029ff Set Vertx and VertxTestContext parameters to null
+| |/  
+* / 85cb006 Add assertKafka to testUser2DeleteKafkaInstance (#28)
+|/  
+*   0a5f303 Merge pull request #27 from bf2fc6cc711aee1a0c2a/fix-rp-integration
+|\  
+| * dd27d08 Fix reportportal integration
+|/  
+* 9c49194 Add second login to edge SSO (#26)
+* 2d18b81 Fix cleaning of cli tests (#25)
+* 82ebaf6 Remove ea-async (#23)
+* 41e381b Tests for CLI serviceaccount create/delete (#24)
+*   6e7d75b Merge pull request #22 from bf2fc6cc711aee1a0c2a/fix-login-timeout
+|\  
+| * b3df8f0 (origin/fix-login-timeout) fix: set longer vertx timeout
+| * d3fa23e fix: remove await to let the login going in timeout
+|/  
+*   35ea334 Merge pull request #21 from bf2fc6cc711aee1a0c2a/junit-default
+|\  
+| * 115a71d (origin/junit-default) Set default junit timeout for lifecycle and test
+* |   f70adc9 Merge pull request #20 from bf2fc6cc711aee1a0c2a/migrate-to-rpv5
+|\ \  
+| |/  
+|/|   
+| * 2a31453 (origin/migrate-to-rpv5) fix: disable rp.client.join which will try to create a sync and lock file
+|/  
+* 1ff224f Use --search option in rhoas cli (#19)
+| * 97a71dd (origin/cli-use-search) fix
+| * 99832ce Use --search option in rhoas cli
+|/  
+*   ae4ea1c Merge pull request #18 from bf2fc6cc711aee1a0c2a/migrate-to-rpv5
+|\  
+| * 323aed8 fix: reportportal envs docs
+| * b917059 feat: migrate to reportportal v5
+|/  
+*   46ad0c6 Merge pull request #17 from bf2fc6cc711aee1a0c2a/add-cli-profile
+|\  
+| * 9751de9 (origin/add-cli-profile) fix: run smoke tests on validate pull request
+| * cd2cf69 chore: add cli profile
+* |   8f4ea2b Merge pull request #16 from bf2fc6cc711aee1a0c2a/metric
+|\ \  
+| |/  
+|/|   
+| * 353a633 (origin/metric, metric) chore: add user metric test for messages_in_total
+| * 41717f4 add user metric endpoint and response types
+|/  
+*   04ed659 Merge pull request #15 from bf2fc6cc711aee1a0c2a/fix-kakfa-postfix
+|\  
+| * d60dcc4 fix: add ci postfix when executing from the pipeline
+* |   4437341 Merge pull request #12 from bf2fc6cc711aee1a0c2a/ll-multiple-topics
+|\ \  
+| * | 503122d chore: describe minMessageSize args
+| * | 6c2f9e2 chore: add minMessageSize to testTopic
+| * | 426ed99 feat: add utils method to test a kafka topic by sending and verifying n random messages
+| * | a04b8c3 chore: create and test multiple topics in the ServiceAPILongLiveTest
+* | |   5fc7e67 Merge pull request #13 from bf2fc6cc711aee1a0c2a/update-binding-operator-model
+|\ \ \  
+| * | | 7472dfc fix: throw test failing exception from TestExceptionCallbackListener
+| * | | 595af5e fix: update binding operator models
+* | | |   f2ff993 Merge pull request #14 from bf2fc6cc711aee1a0c2a/add-postman-docs
+|\ \ \ \  
+| |/ / /  
+|/| | |   
+| * | | bdbe527 docs: document how to use postman for service api
+|/ / /  
+* / / 8ddda18 Collect logs of binding operator (#11)
+|/ /  
+* |   5ea92d1 Merge pull request #10 from bf2fc6cc711aee1a0c2a/add-reset-credentials
+|\ \  
+| |/  
+|/|   
+| * 706e2c8 feat: add reset-credentials to long loving test
+* | ac22d8b Merge pull request #9 from bf2fc6cc711aee1a0c2a/add-rh-ca
+|\| 
+| * adfa3ec fix: add redhat ca to the test container
+| * 27d7387 fix: enable reportportal when executing the tests from the pipeline
+* |   97a7861 Merge pull request #8 from bf2fc6cc711aee1a0c2a/fast-fix
+|\ \  
+| |/  
+|/|   
+| * 427a37e fix: enable reportportal when executing the tests from the pipeline
+* | d1a5e79 Merge pull request #7 from bf2fc6cc711aee1a0c2a/test-container
+|\| 
+| * b76e2de fix: switch ServiceAPUnauthorizedAndUnauthenticatedUserTest to service-api-permissions
+| * a0fd487 fix: ServiceAPUnauthorizedAndUnauthenticatedUserTest errors
+| * 500702a style: fix indentation
+| * 9bfd77a fix: compatibility with podman
+| * d9284f6 chore: add test container build and run in makefile
+| * ffd04ac refactor: use the test container in pipeline.sh
+| * 82f52e4 refactor: rename ci profile to default
+| * 1540784 chore: move service api test out of the smoke directory
+| * 6a7e147 feat: create test container
+* |   52b91fc Merge pull request #5 from bf2fc6cc711aee1a0c2a/fix-readme-make
+|\ \  
+| * | e37459a Fix readme and makefile to reflect changes by failsafe
+| |/  
+* |   2484c45 Merge pull request #6 from bf2fc6cc711aee1a0c2a/cli-test-already-created
+|\ \  
+| |/  
+|/|   
+| * 90b4833 add assumtions
+| * 53ca711 Add test for create already created kafka
+|/  
+*   e427442 Merge pull request #4 from bf2fc6cc711aee1a0c2a/improve-cli-and-cli-utils
+|\  
+| * 8a61fc4 refactor: some improvements to the CLI and CLIUtils
+|/  
+*   0ff5079 Merge pull request #3 from kornys/tests-for-cli
+|\  
+| * b63ef75 address comments
+| * adafc9c Add clean and waiting for deletion
+| * 6171375 CLI tests work with kafkas
+* |   88d0b25 Merge pull request #1 from bf2fc6cc711aee1a0c2a/test-user-permission
+|\ \  
+| |/  
+|/|   
+| * 83b543d Update README.md
+| * 48f206e Updated readme file
+| * 00cde8a remove unused import
+| * 14c9a30 Implemented review comments
+| * e97573d Added new env variables for unauthorized user
+| * d382fc2 user permission tests
+* |   47fe5ed Merge pull request #2 from bf2fc6cc711aee1a0c2a/get-latest-cli-release-including-prereleases
+|\ \  
+| |/  
+|/|   
+| * 241c850 fix: remove unused import
+| * 4869f8d chore: update gitignore
+| * deda2b7 chore: fetch latest CLI release
+|/  
+* d234821 Add Pull Request check
+* 458ea16 fix: set kafka global var only if kafka is ready
+* bc7fd26 fix: set kafka global var only if kafka is ready
+* b3da79d Fix do not check content of messsage in long live test
+* f1f5676 Fix stop consumer after receiving count of messages
+* 1db160e fix: fix checkstyle error
+* c3d80a7 fix: refactor ManagedKafkaRequest to ManagedServicesRequest
+* f614910 Fix consumer atomic counter
+* 8d0a9a6 Kafka client abstraction
+* 157acc4 Download latest client version when latest is specified
+* 16299ea Allow to download cli for current env
+* 770f54c fix: testDeleteKafkaInstance
+* 78389a1 fix: change the KAFKA_POSTFIX_NAME when executing the tests on the ci
+* b423c93 refactor: split testCreateAndListKafkaInstance in multiple tests
+* 083a1ca refactor: split testPresenceOfLongLiveKafkaToProduceAndConsumeMessages in multiple tests
+* 1f61733 refactor: split testSameOrgUserPermission in multiple tests
+* c359a64 refactor: use ServiceAPIUtils.serviceAPI in the ServiceAPISameOrgUserPermissionsTest
+* aa851c4 refactor: split the testCreateKafkaInstance into multiple tests
+* a5b47a3 refactor: move await outside utils methods
+* 0a349d0 chore: add utils function to create a the api
+*   327d354 Merge branch 'service-test' of gitlab.cee.redhat.com:mk-ci-cd/mk-e2e-test-suite into service-test
+|\  
+| * 0bd0d78 Implemented review comments
+| *   12a33e8 Merge remote-tracking branch 'origin/master' into service-test
+| |\  
+| * | 84f0615 Test for verify not send and receive message after delete kafka instance
+* | | 5b4f8a4 Implemented review comments
+* | | 7fa0b3c Test for verify not send and receive message after delete kafka instance
+* | | 4473fbc Use failsafe plugin instead of surefire
+* | | 6e6a920 Fixes
+* | | 6565ce3 chore: add API call retry when failing with 500 or Connection closed
+| |/  
+|/|   
+* | a70a936 chore: update rhoas-model-1.0.0-SNAPSHOT.jar
+* | 0f28c81 fix: enable the BindingOperatorTest
+* | b4db121 fix: disable the BindingOperatorTest because the cluster doesn't exists anymore
+* | d26952e fix: add assume not null for managedKafkaRequest
+* | 5acca06 Configurable timeouts + use http status code enum
+* | 40bee1f fix: add assumeTrue to ServiceAPIDiffOrgUserPermissionTest
+* | 87ebd41 fix: add assumeTrue to ServiceAPITest
+* | 9a8ff06 fix: add assumeTrue to BindingOperatorTest
+* | f1a08aa Increase kafka wait timeout
+* | 436c4bb fix: recover toVertxFuture method
+* | 8aac0e5 chore: add CLI envs to the Makefile
+* | 2ef7ca3 feat: complete CLI login
+* | 53123b1 chore: login using the link generated from the CLI
+* | 9238a71 feat: add download CLI test
+|/  
+*   c2a0460 Merge remote-tracking branch 'origin/master' into service-api-tests
+|\  
+| * cb6dd44 fix: remove VertxContext otherwise vertex will wait until completeNow is not called
+| * 2d9f738 refactor: use .compose .recover instead of try/catch
+| * 0040a71 fix: use different instance names for same org and diff org user permissions
+| * db6cf40 fix: disable testCreateTopicInOrg1KafkaByOrg2 test because of known issue
+| * 452acb8 chore: add ENVs to ci/pipeline target
+| * a9bf56b docs: update README.md with all the new ENVs
+| * 53640ca feat: add BindingOperatorTest
+* | 9d73973 Implemented review comments
+* | b1b1e6b Added  tests for delete topic, create kafka instance with existing name and list and search kafka instances
+|/  
+* 540526e update test after rebase with master
+* 74eafaf remove unused import
+* a3289f7 address review comments
+* adb0d55 fix build issue
+* 1981079 add junit test to Test different organization user permission
+* eb4bc30 refactor: move utils for service api to ServiceAPIUtils
+* eb8e658 fix: delete kafka instances and service accounts by name
+* aa11cce fix: add SSO_SECONDARY_ and SSO_ALIEN_ ENVs to Makefile
+* 854d79a refactor: improve UnknownTopicOrPartitionException handling
+* a0a91fd Implemented review comments
+* 03e8397 Test for same org user permissions
+* 5bd6cc6 remove redundant log
+* 9b8ee96 handle particular exception
+* d159701 fail test if long live topic is not present
+* e9afa9c fix build warnings
+* f73c51d fix delete api to make async call
+* acefdc2 address review comments
+* 5d6bf88 add test for long live kafka
+* b172d30 fix build errors
+* 4ead732 address comment to use Optional.empty instead of null4
+* c74f1e2 move function to TestUtils
+* e27468b add a util function that returns single kafka with exact name
+* 3766a95 add whitespace after comma
+* 4bcacc2 address review comments
+* f0f01fc add functions to fetch List of kafkas
+* f9b6b57 chore: test topic creation and messages produce and consume
+* c33c8b1 fix: remove workaround for MGDSTRM-1231
+* 9dd9f1d fix: improve logging in case of authentication failure
+* 9f4cd87 chore: add config.json to gitignore
+* 26231d0 style: convert spaces to tabs in makefile
+* 056571f fix: fallback to default if env is empty
+* 7ae5b5d fix: pass all test envs to the container
+* c4b34c1 chore: add the ServiceAPITest test to the ci group
+* a2d3212 chore: set reportportal properties from envs
+* 4ba1819 chore: share host vars with ci container
+* 86b0618 fix: move ReportPortalExtension to TestBase
+* 0b4a4f1 chore: enable TRACE log level for ReportPortal
+* 8e745f8 chore: add integration with ReportPortal
+*   457d176 Merge branch 'MGDSTRM-1180-service-api-test' into 'master'
+|\  
+| * 89b3b25 fix: use jupiter fail instead of RuntimeException
+| * 44674de fix: remove static import of Environments
+| * 88ce813 fix: remove TestInstance annotation
+| * 651da8e fix: remove SMOKE_SUITE from ServiceAPITest
+| * 52f047e fix: extends TestBase
+| * 2d834e0 docs: describe envs for the ServiceAPITest
+| * 91a32a1 chore: test kafka producer initialization
+| * 6d5eef3 chore: create the sa to retrieve the client-id and secret
+| * cf704ce tmp: handle temporary error in reporting the kafka status
+| * 4d4e5b2 chore: improve error handling in case of waitFor timeout
+| * 0f4431d chore: add ea-async to sync async functions
+| * 9c06777 fix: handle service api errors
+| * 050dfde fix: use sso.redhat.com for the service api token
+| * 5577492 wip: create service api client
+| * 84094ce refactor: remove ApiClient
+| * e33fad3 refactor: use vertex oauth to handle the keycloak login
+| * 85d452d add utils to retrieve oauth access_token from keycloak-edge-redhat-rhoam-user-sso.apps.mas-sso-stage.1gzl.s1.devshift.org
+|/  
+*   7c7774d Merge branch 'kube-any' into 'master'
+|\  
+| * 4b6b258 Make kube client and cmd kube client able to connect to any cluster
+|/  
+*   7fffb83 Merge branch 'update-fabric8' into 'master'
+|\  
+| * a2dd8a3 Update fabric8
+|/  
+*   418c4fe Merge branch 'checkstyle-error' into 'master'
+|\  
+| * d1df129 Fix checkstyle error
+* |   60e6288 Merge branch 'skaleta' into 'master'
+|\ \  
+| * | d553d63 update pr check sh
+|/ /  
+* |   5225fe4 Merge branch 'skaleta' into 'master'
+|\ \  
+| * | 55d0e64 pr check sh chmod
+* | | e54f671 Merge branch 'skaleta' into 'master'
+|\| | 
+| * | c17b852 MGDSTRM-600: add pr check script
+* | |   7665bcb Merge branch 'exit-on-cluster-unavailable' into 'master'
+|\ \ \  
+| | |/  
+| |/|   
+| * | 9073e5e Exit properly in case cluster is not available
+|/ /  
+* / f68dcb4 Update README.md
+|/  
+*   1940c2c Merge branch 'add-pipeline' into 'master'
+|\  
+| * 04066f7 Add pipeline into e2e test suite
+|/  
+*   ea3b146 Merge branch 'generate-dn' into 'master'
+|\  
+| * 56e4bf2 Generate correct display names for e2e tests
+* |   4cb2861 Merge branch 'update-deps' into 'master'
+|\ \  
+| |/  
+|/|   
+| * 8d12c9a Update maven dependencies
+|/  
+*   56f411f Merge branch 'create-readme' into 'master'
+|\  
+| * 6aa261a Add readme and update makefile
+|/  
+*   f949fba Merge branch 'suite-init' into 'master'
+|\  
+| * 9e6635b Test suite init - junit,maven,fabric8,vert.x
+|/  
+* ed1f71b Initial commit
