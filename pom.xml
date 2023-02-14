@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.github.andreaTP.kiota-utils</groupId>
             <artifactId>kiota-rh-auth</artifactId>
-            <version>0.1.5</version>
+            <version>0.1.7</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
