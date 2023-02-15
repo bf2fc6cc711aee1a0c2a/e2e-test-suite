@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.github.andreaTP.rh-java-sdk</groupId>
             <artifactId>account-management-sdk</artifactId>
-            <version>0.0.5-SNAPSHOT</version>
+            <version>0.0.9</version>
         </dependency>
         <dependency>
             <groupId>com.github.andreaTP.kiota-utils</groupId>
