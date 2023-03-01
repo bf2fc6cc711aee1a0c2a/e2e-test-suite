@@ -28,6 +28,11 @@ public class SSOAuthTest extends TestBase {
     @BeforeClass
     public void bootstrap() {
 
+        LOGGER.info("RelaxTakeItEasy");
+        String myPropertyValue = System.getProperty("environment.brokerscount");
+        LOGGER.info("orNot");
+        System.out.println("my.property value: " + myPropertyValue);
+
         LOGGER.info("$$$s");
         LOGGER.info("this is execution profile {}", Environment.EXECUTION_PROFILE);
         LOGGER.info("this is desired integration profile group profile {}", TestGroups.INTEGRATION);

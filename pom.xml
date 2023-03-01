@@ -419,6 +419,9 @@
 
         <profile>
             <id>integration</id>
+            <properties>
+                <environment.brokerscount>1</environment.brokerscount>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -429,6 +432,7 @@
                                 <suiteXmlFile>suites/integration.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
+
                     </plugin>
                 </plugins>
             </build>
