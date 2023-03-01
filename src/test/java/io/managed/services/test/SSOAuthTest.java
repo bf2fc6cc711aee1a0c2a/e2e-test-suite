@@ -25,6 +25,13 @@ public class SSOAuthTest extends TestBase {
 
     @BeforeClass
     public void bootstrap() {
+
+        LOGGER.info("$$$s");
+        LOGGER.info("this is execution profile {}", Environment.EXECUTION_PROFILE);
+        LOGGER.info("this is desired integration profile group profile {}", TestGroups.INTEGRATION);
+        LOGGER.info("$$$e");
+
+
         assertNotNull(Environment.PRIMARY_USERNAME, "the PRIMARY_USERNAME env is null");
         assertNotNull(Environment.PRIMARY_PASSWORD, "the PRIMARY_PASSWORD env is null");
     }
