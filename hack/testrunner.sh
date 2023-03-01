@@ -96,6 +96,8 @@ if [[ -n "${TESTCASE}" ]]; then
   OPTIONS+=("-Dit.test=${TESTCASE}")
 fi
 
+echo ${OPTIONS[*]}
+
 set -x
 # shellcheck disable=SC2086
 exec mvn verify \

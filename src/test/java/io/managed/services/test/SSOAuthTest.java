@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Properties;
+
 import static io.managed.services.test.TestUtils.bwait;
 import static org.testng.Assert.assertNotNull;
 
@@ -30,6 +32,15 @@ public class SSOAuthTest extends TestBase {
         LOGGER.info("this is execution profile {}", Environment.EXECUTION_PROFILE);
         LOGGER.info("this is desired integration profile group profile {}", TestGroups.INTEGRATION);
         LOGGER.info("$$$e");
+
+        Properties properties = System.getProperties();
+        properties.list(System.out);
+
+        LOGGER.info(System.getenv().getOrDefault("maven.activeProfiles", null));
+        LOGGER.info(System.getenv().getOrDefault("maven.profile", null));
+        LOGGER.info(System.getenv().getOrDefault("profile", null));
+        LOGGER.info(System.getenv().getOrDefault("-P", null));
+        LOGGER.info(System.getenv().getOrDefault("p", null));
 
 
         assertNotNull(Environment.PRIMARY_USERNAME, "the PRIMARY_USERNAME env is null");
