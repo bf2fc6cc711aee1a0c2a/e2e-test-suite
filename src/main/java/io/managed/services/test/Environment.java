@@ -104,6 +104,14 @@ public class Environment {
     private static final String STAGE_DATA_PLANE_ADMIN_CLIENT_ID_ENV = "STAGE_DATA_PLANE_ADMIN_CLIENT_ID";
     private static final String STAGE_DATA_PLANE_ADMIN_CLIENT_SECRET_ENV = "STAGE_DATA_PLANE_ADMIN_CLIENT_SECRET";
 
+    private static final String OFFLINE_TOKEN_ENV = "OFFLINE_TOKEN";
+
+    private static final String SDK_KAFKA_NAME_ENV = "SDK_KAFKA_NAME";
+
+    private static final String SDK_CLOUD_PROVIDER_ENV = "SDK_CLOUD_PROVIDER";
+
+    private static final String SDK_PLAN_ENV = "SDK_PLAN";
+
     /*
      * Setup constants from env variables or set default
      */
@@ -202,6 +210,14 @@ public class Environment {
     // admin endpoint credentials (vault-key: clientid, secret) https://gitlab.cee.redhat.com/service/app-interface/-/blob/master/resources/jenkins/managed-services/secrets.yaml#L228-235
     public static final String STAGE_DATA_PLANE_ADMIN_CLIENT_ID = getOrDefault(STAGE_DATA_PLANE_ADMIN_CLIENT_ID_ENV, null);
     public static final String STAGE_DATA_PLANE_ADMIN_CLIENT_SECRET = getOrDefault(STAGE_DATA_PLANE_ADMIN_CLIENT_SECRET_ENV, null);
+
+    public static final String OFFLINE_TOKEN = getOrDefault(OFFLINE_TOKEN_ENV, null);
+
+    public static final String SDK_KAFKA_NAME = getOrDefault(SDK_KAFKA_NAME_ENV, null);
+
+    public static final String SDK_CLOUD_PROVIDER = getOrDefault(SDK_CLOUD_PROVIDER_ENV, null);
+
+    public static final String SDK_PLAN = getOrDefault(SDK_PLAN_ENV, null);
 
     private Environment() {
     }
