@@ -4,10 +4,9 @@ package io.managed.services.test.client.securitymgmt;
 import com.github.andreatp.kiota.auth.RHAccessTokenProvider;
 import com.microsoft.kiota.authentication.BaseBearerTokenAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
-import com.openshift.cloud.api.kas.ApiClient;
-import com.openshift.cloud.api.kas.models.ServiceAccount;
-import com.openshift.cloud.api.kas.models.ServiceAccountListItem;
-import com.openshift.cloud.api.kas.models.ServiceAccountRequest;
+import com.openshift.cloud.api.serviceaccounts.ApiClient;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountCreateRequestData;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.client.exception.ApiGenericException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,11 +31,11 @@ public class SecurityMgmtAPIUtils {
      * @param name Service Account name
      * @return Optional ServiceAccount
      */
-    public static Optional<ServiceAccountListItem> getServiceAccountByName(SecurityMgmtApi api, String name)
+    public static Optional<ServiceAccountData> getServiceAccountByName(SecurityMgmtApi api, String name)
         throws ApiGenericException {
 
         var list = api.getServiceAccounts();
-        return list.getItems().stream().filter(a -> name.equals(a.getName())).findAny();
+        return list.stream().filter(a -> name.equals(a.getName())).findAny();
     }
 
     /**
@@ -69,19 +68,19 @@ public class SecurityMgmtAPIUtils {
      * @param name Service Account Name
      * @return ServiceAccount with clientSecret
      */
-    public static ServiceAccount applyServiceAccount(SecurityMgmtApi api, String name)
+    public static ServiceAccountData applyServiceAccount(SecurityMgmtApi api, String name)
         throws ApiGenericException {
 
         var existing = getServiceAccountByName(api, name);
 
-        ServiceAccount serviceAccount;
+        ServiceAccountData serviceAccount;
         if (existing.isPresent()) {
             LOGGER.warn("reset service account '{}' credentials", existing.get().getName());
             serviceAccount = api.resetServiceAccountCreds(existing.get().getId());
             LOGGER.debug(serviceAccount);
         } else {
             LOGGER.info("create service account '{}'", name);
-            var req = new ServiceAccountRequest();
+            var req = new ServiceAccountCreateRequestData();
             req.setName(name);
             req.setDescription("E2E test service account");
             serviceAccount = api.createServiceAccount(req);
@@ -98,7 +97,7 @@ public class SecurityMgmtAPIUtils {
      */
     public static void cleanServiceAccount(SecurityMgmtApi api, String name) throws ApiGenericException {
 
-        var accounts = api.getServiceAccounts().getItems()
+        var accounts = api.getServiceAccounts()
             .stream().filter(a -> name.equals(a.getName()))
             .collect(Collectors.toList());
 

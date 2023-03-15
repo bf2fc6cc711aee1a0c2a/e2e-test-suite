@@ -2,7 +2,7 @@ package io.managed.services.test.client.kafkamgmt;
 
 import com.openshift.cloud.api.kas.models.KafkaRequest;
 import com.openshift.cloud.api.kas.models.MetricsInstantQueryListResponse_items;
-import com.openshift.cloud.api.kas.models.ServiceAccount;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.ThrowingFunction;
 import io.managed.services.test.client.exception.ApiGenericException;
 
@@ -54,7 +54,7 @@ public class KafkaMgmtMetricsUtils {
     public static void testMessageInTotalMetric(
         KafkaMgmtApi api,
         KafkaRequest kafka,
-        ServiceAccount serviceAccount,
+        ServiceAccountData serviceAccount,
         String topicName)
         throws Throwable {
 
@@ -71,7 +71,7 @@ public class KafkaMgmtMetricsUtils {
             Vertx.vertx(),
             kafka.getBootstrapServerHost(),
             serviceAccount.getClientId(),
-            serviceAccount.getClientSecret(),
+            serviceAccount.getSecret(),
             topicName,
             MESSAGE_COUNT,
             10,

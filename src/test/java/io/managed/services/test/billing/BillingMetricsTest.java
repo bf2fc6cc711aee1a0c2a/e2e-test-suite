@@ -4,7 +4,7 @@ import com.openshift.cloud.api.kas.auth.models.NewTopicInput;
 import com.openshift.cloud.api.kas.auth.models.Topic;
 import com.openshift.cloud.api.kas.auth.models.TopicSettings;
 import com.openshift.cloud.api.kas.models.KafkaRequest;
-import com.openshift.cloud.api.kas.models.ServiceAccount;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.Environment;
 import io.managed.services.test.TestBase;
 import io.managed.services.test.client.ApplicationServicesApi;
@@ -67,7 +67,7 @@ public class BillingMetricsTest extends TestBase {
     private PrometheusWebClient prometheusWebClient;
 
     private KafkaRequest kafka;
-    private ServiceAccount serviceAccount;
+    private ServiceAccountData serviceAccount;
 
     private KafkaInstanceApi kafkaInstanceApi;
 
@@ -188,7 +188,7 @@ public class BillingMetricsTest extends TestBase {
     public void invokeDataProduction() {
         String bootstrapHost = kafka.getBootstrapServerHost();
         String clientID = serviceAccount.getClientId();
-        String clientSecret = serviceAccount.getClientSecret();
+        String clientSecret = serviceAccount.getSecret();
 
         KafkaProducerClient producer = new KafkaProducerClient(
             Vertx.vertx(),
@@ -210,7 +210,7 @@ public class BillingMetricsTest extends TestBase {
     public void invokeDataConsumption() {
         String bootstrapHost = kafka.getBootstrapServerHost();
         String clientID = serviceAccount.getClientId();
-        String clientSecret = serviceAccount.getClientSecret();
+        String clientSecret = serviceAccount.getSecret();
 
         bwait(testTopicWithNConsumers(
             Vertx.vertx(),
@@ -309,7 +309,7 @@ public class BillingMetricsTest extends TestBase {
         kafkaInstanceApi.createTopic(payload);
     }
 
-    private void createACLs(ServiceAccount serviceAccount) throws ApiGenericException {
+    private void createACLs(ServiceAccountData serviceAccount) throws ApiGenericException {
         if (serviceAccount != null) {
             var principal = KafkaInstanceApiAccessUtils.toPrincipal(serviceAccount.getClientId());
             KafkaInstanceApiAccessUtils.createProducerAndConsumerACLs(kafkaInstanceApi, principal);

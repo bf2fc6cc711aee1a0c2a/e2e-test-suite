@@ -79,7 +79,7 @@ public class KcatSteps {
 
         kcat.addEnvironment(BOOTSTRAP_SERVER_ENV, kafkaInstance.getBootstrapServerHost());
         kcat.addEnvironment(USER_ENV, serviceAccount.getClientId());
-        kcat.addEnvironment(PASSWORD_ENV, serviceAccount.getClientSecret());
+        kcat.addEnvironment(PASSWORD_ENV, serviceAccount.getSecret());
     }
 
     @Given("Kcat is installed")

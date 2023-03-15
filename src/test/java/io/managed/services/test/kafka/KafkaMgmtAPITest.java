@@ -5,8 +5,8 @@ import com.openshift.cloud.api.kas.auth.models.TopicSettings;
 import com.openshift.cloud.api.kas.models.KafkaRequest;
 import com.openshift.cloud.api.kas.models.KafkaRequestPayload;
 import com.openshift.cloud.api.kas.models.KafkaUpdateRequest;
-import com.openshift.cloud.api.kas.models.ServiceAccount;
-import com.openshift.cloud.api.kas.models.ServiceAccountRequest;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountCreateRequestData;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.Environment;
 import io.managed.services.test.TestBase;
 import io.managed.services.test.TestUtils;
@@ -101,7 +101,7 @@ public class KafkaMgmtAPITest extends TestBase {
     private KafkaMgmtApi kafkaMgmtApi;
     private SecurityMgmtApi securityMgmtApi;
     private KafkaRequest kafka;
-    private ServiceAccount serviceAccount;
+    private ServiceAccountData serviceAccount;
     private KafkaInstanceApi kafkaInstanceApi;
 
 
@@ -184,7 +184,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         // Create Service Account
         log.info("create service account '{}'", SERVICE_ACCOUNT_NAME);
-        var sa = new ServiceAccountRequest();
+        var sa = new ServiceAccountCreateRequestData();
         sa.setName(SERVICE_ACCOUNT_NAME);
         sa.setDescription("E2E test service account");
         serviceAccount = securityMgmtApi.createServiceAccount(sa);
@@ -390,7 +390,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getClientSecret();
+        var clientSecret = serviceAccount.getSecret();
 
         bwait(testTopic(
             Vertx.vertx(),
@@ -429,7 +429,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getClientSecret();
+        var clientSecret = serviceAccount.getSecret();
 
         bwait(testTopic(
             Vertx.vertx(),
@@ -543,7 +543,7 @@ public class KafkaMgmtAPITest extends TestBase {
         var initialSessionLifetimeMs = KafkaAdminUtils.getAuthenticatorPositiveSessionLifetimeMs(
             kafka.getBootstrapServerHost(),
             serviceAccount.getClientId(),
-            serviceAccount.getClientSecret());
+            serviceAccount.getSecret());
         log.debug("positiveSessionLifetimeMs: {}", initialSessionLifetimeMs);
         // because reauth is enabled the session lifetime can not be null
         assertNotNull(initialSessionLifetimeMs);
@@ -560,7 +560,7 @@ public class KafkaMgmtAPITest extends TestBase {
             var sessionLifetimeMs = KafkaAdminUtils.getAuthenticatorPositiveSessionLifetimeMs(
                 kafka.getBootstrapServerHost(),
                 serviceAccount.getClientId(),
-                serviceAccount.getClientSecret());
+                serviceAccount.getSecret());
 
             log.debug("positiveSessionLifetimeMs: {}", sessionLifetimeMs);
 
@@ -576,7 +576,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         // create SA specifically for purpose of demonstration that it works, afterwards deleting it and fail to use it anymore
         log.info("create service account '{}'", SERVICE_ACCOUNT_NAME_FOR_DELETION);
-        var sa = new ServiceAccountRequest();
+        var sa = new ServiceAccountCreateRequestData();
         sa.setName(SERVICE_ACCOUNT_NAME_FOR_DELETION);
         sa.setDescription("E2E test service account");
         var serviceAccountForDeletion = securityMgmtApi.createServiceAccount(sa);
@@ -589,7 +589,7 @@ public class KafkaMgmtAPITest extends TestBase {
         // working Communication (Producing & Consuming) using  SA (serviceAccountForDeletion)
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccountForDeletion.getClientId();
-        var clientSecret = serviceAccountForDeletion.getClientSecret();
+        var clientSecret = serviceAccountForDeletion.getSecret();
 
         bwait(testTopic(
             Vertx.vertx(),
@@ -643,7 +643,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getClientSecret();
+        var clientSecret = serviceAccount.getSecret();
 
         // Connect the Kafka producer
         log.info("initialize kafka producer");

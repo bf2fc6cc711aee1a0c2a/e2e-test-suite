@@ -1,6 +1,6 @@
 package io.managed.services.test.quickstarts.contexts;
 
-import com.openshift.cloud.api.kas.models.ServiceAccount;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +9,9 @@ import java.util.Objects;
 @Getter
 @Setter
 public class ServiceAccountContext {
-    private ServiceAccount serviceAccount;
+    private ServiceAccountData serviceAccount;
 
-    public ServiceAccount requireServiceAccount() {
+    public ServiceAccountData requireServiceAccount() {
         return Objects.requireNonNull(serviceAccount);
     }
 }

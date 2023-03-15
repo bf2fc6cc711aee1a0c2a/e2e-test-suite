@@ -9,7 +9,7 @@ import com.openshift.cloud.api.kas.auth.models.AclResourceType;
 import com.openshift.cloud.api.kas.auth.models.NewTopicInput;
 import com.openshift.cloud.api.kas.auth.models.TopicSettings;
 import com.openshift.cloud.api.kas.models.KafkaRequest;
-import com.openshift.cloud.api.kas.models.ServiceAccount;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.Environment;
 import io.managed.services.test.TestBase;
 import io.managed.services.test.client.ApplicationServicesApi;
@@ -105,7 +105,7 @@ public class KafkaAccessMgmtTest extends TestBase {
     private ApplicationServicesApi alienAPI;
     private ApplicationServicesApi adminAPI;
 
-    private ServiceAccount primaryServiceAccount;
+    private ServiceAccountData primaryServiceAccount;
 
     private KafkaRequest kafka;
     private KafkaInstanceApi primaryKafkaInstanceAPI;
@@ -149,7 +149,7 @@ public class KafkaAccessMgmtTest extends TestBase {
         primaryApacheKafkaAdmin = new KafkaAdmin(
             kafka.getBootstrapServerHost(),
             primaryServiceAccount.getClientId(),
-            primaryServiceAccount.getClientSecret());
+            primaryServiceAccount.getSecret());
         LOGGER.info("kafka admin api initialized for instance: {}", kafka.getBootstrapServerHost());
 
         // initialize the Kafka Instance API (rest) clients for all users
@@ -395,7 +395,7 @@ public class KafkaAccessMgmtTest extends TestBase {
             Vertx.vertx(),
             kafka.getBootstrapServerHost(),
             primaryServiceAccount.getClientId(),
-            primaryServiceAccount.getClientSecret(),
+            primaryServiceAccount.getSecret(),
             TEST_TOPIC_NAME,
             1,
             10,
@@ -447,7 +447,7 @@ public class KafkaAccessMgmtTest extends TestBase {
         primaryKafkaConsumer = new KafkaConsumerClient<>(Vertx.vertx(),
             kafka.getBootstrapServerHost(),
             primaryServiceAccount.getClientId(),
-            primaryServiceAccount.getClientSecret(),
+            primaryServiceAccount.getSecret(),
             KafkaAuthMethod.PLAIN,
             StringDeserializer.class,
             StringDeserializer.class);
@@ -457,7 +457,7 @@ public class KafkaAccessMgmtTest extends TestBase {
         primaryKafkaProducer = new KafkaProducerClient<>(Vertx.vertx(),
             kafka.getBootstrapServerHost(),
             primaryServiceAccount.getClientId(),
-            primaryServiceAccount.getClientSecret(),
+            primaryServiceAccount.getSecret(),
             KafkaAuthMethod.PLAIN,
             StringSerializer.class,
             StringSerializer.class);
@@ -486,7 +486,7 @@ public class KafkaAccessMgmtTest extends TestBase {
             TEST_TOPIC_NAME,
             kafka.getBootstrapServerHost(),
             primaryServiceAccount.getClientId(),
-            primaryServiceAccount.getClientSecret()));
+            primaryServiceAccount.getSecret()));
         bwait(kafkaConsumer.asyncClose());
 
         LOGGER.info("Test that the service account can list consumer groups");

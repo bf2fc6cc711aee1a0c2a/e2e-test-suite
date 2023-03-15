@@ -5,7 +5,7 @@ import com.openshift.cloud.api.kas.auth.models.AclOperation;
 import com.openshift.cloud.api.kas.auth.models.AclPatternType;
 import com.openshift.cloud.api.kas.auth.models.AclPermissionType;
 import com.openshift.cloud.api.kas.auth.models.AclResourceType;
-import com.openshift.cloud.api.kas.models.ServiceAccount;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.client.exception.ApiGenericException;
 import lombok.extern.log4j.Log4j2;
 
@@ -132,7 +132,7 @@ public class KafkaInstanceApiAccessUtils {
      * @param api       KafkaInstanceApi
      * @param serviceAccount The serviceAccount instance to be granted permissions
      */
-    public static void applyAllowAllACLsOnResources(KafkaInstanceApi api, ServiceAccount serviceAccount, List<AclResourceType> resources) throws ApiGenericException {
+    public static void applyAllowAllACLsOnResources(KafkaInstanceApi api, ServiceAccountData serviceAccount, List<AclResourceType> resources) throws ApiGenericException {
         var principal = toPrincipal(serviceAccount.getClientId());
 
         // because ACLs that already exist are simply not created again, we do not need to check if the permission already exist.

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.openshift.cloud.api.kas.auth.models.AclBindingListPage;
 import com.openshift.cloud.api.kas.auth.models.AclOperation;
 import com.openshift.cloud.api.kas.auth.models.AclPermissionType;
@@ -26,6 +27,7 @@ import org.openapitools.jackson.nullable.JsonNullableModule;
 import org.testng.Assert;
 
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -279,8 +281,11 @@ public class CLI {
      * Return the Registry in use from the CLI
      */
     public Registry createServiceRegistry(String name) throws CliGenericException {
-        return retry(() -> exec("service-registry", "create", "--name", name))
-                .asJson(Registry.class);
+        var process = retry(() -> exec("service-registry", "create", "--name", name));
+        process.readAll();
+        var factory = new JsonParseNodeFactory();
+        var parseNode = factory.getParseNode("application/json", new ByteArrayInputStream(process.stdoutAsString().getBytes()));
+        return parseNode.getObjectValue(Registry::createFromDiscriminatorValue);
     }
 
     public Registry describeServiceRegistry(String id) throws CliGenericException  {

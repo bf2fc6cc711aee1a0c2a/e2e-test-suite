@@ -107,7 +107,7 @@ public class QuarkusSteps {
         envsMap.put("KAFKA_HOST", kafkaInstanceContext.requireKafkaInstance().getBootstrapServerHost());
         envsMap.put("RHOAS_SERVICE_ACCOUNT_CLIENT_ID", serviceAccountContext.requireServiceAccount().getClientId());
         envsMap.put("RHOAS_SERVICE_ACCOUNT_CLIENT_SECRET",
-                serviceAccountContext.requireServiceAccount().getClientSecret());
+                serviceAccountContext.requireServiceAccount().getSecret());
         envsMap.put("RHOAS_SERVICE_ACCOUNT_OAUTH_TOKEN_URL", String.format("%s/auth/realms/%s/protocol/openid-connect/token", Environment.REDHAT_SSO_URI,
                 Environment.REDHAT_SSO_REALM));
         log.debug(envsMap);

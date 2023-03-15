@@ -1,6 +1,6 @@
 package io.managed.services.test.quickstarts.steps;
 
-import com.openshift.cloud.api.kas.models.ServiceAccountRequest;
+import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountCreateRequestData;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -34,7 +34,7 @@ public class ServiceAccountSteps {
         var securityMgmtApi = openShiftAPIContext.requireSecurityMgmtApi();
 
         log.info("create service account with name '{}'", SERVICE_ACCOUNT_UNIQUE_NAME);
-        var payload = new ServiceAccountRequest();
+        var payload = new ServiceAccountCreateRequestData();
         payload.setName(SERVICE_ACCOUNT_UNIQUE_NAME);
         var serviceAccount = securityMgmtApi.createServiceAccount(payload);
         log.debug(serviceAccount);
@@ -47,7 +47,7 @@ public class ServiceAccountSteps {
         var serviceAccount = serviceAccountContext.requireServiceAccount();
 
         assertNotNull(serviceAccount.getClientId());
-        assertNotNull(serviceAccount.getClientSecret());
+        assertNotNull(serviceAccount.getSecret());
     }
 
     @Then("the service account is listed in the service accounts table")
@@ -57,7 +57,7 @@ public class ServiceAccountSteps {
         var list = securityMgmtApi.getServiceAccounts();
         log.debug(list);
 
-        var o = list.getItems().stream()
+        var o = list.stream()
             .filter(a -> SERVICE_ACCOUNT_UNIQUE_NAME.equals(a.getName()))
             .findAny();
         assertTrue(o.isPresent());
