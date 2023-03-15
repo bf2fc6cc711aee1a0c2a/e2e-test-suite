@@ -58,7 +58,7 @@ public class KafkaScriptsSteps {
                 "security.protocol=SASL_SSL\n" +
                 "sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required " +
                     String.format("username=\"%s\" ", sa.getClientId()) +
-                    String.format("password=\"%s\" ;", sa.getSecret());
+                    String.format("password=\"%s\" ;", sa.getClientSecret());
 
         kafkaPropertiesPath = kafkaScripts.createAndSetUpConfigFile(propertiesString);
     }

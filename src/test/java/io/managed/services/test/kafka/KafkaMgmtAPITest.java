@@ -2,11 +2,11 @@ package io.managed.services.test.kafka;
 
 import com.openshift.cloud.api.kas.auth.models.NewTopicInput;
 import com.openshift.cloud.api.kas.auth.models.TopicSettings;
-import com.openshift.cloud.api.kas.models.KafkaRequest;
-import com.openshift.cloud.api.kas.models.KafkaRequestPayload;
 import com.openshift.cloud.api.kas.models.KafkaUpdateRequest;
-import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountCreateRequestData;
-import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
+import com.openshift.cloud.api.kas.models.KafkaRequest;
+import com.openshift.cloud.api.kas.models.ServiceAccount;
+import com.openshift.cloud.api.kas.models.ServiceAccountRequest;
+import com.openshift.cloud.api.kas.models.KafkaRequestPayload;
 import io.managed.services.test.Environment;
 import io.managed.services.test.TestBase;
 import io.managed.services.test.TestUtils;
@@ -101,7 +101,7 @@ public class KafkaMgmtAPITest extends TestBase {
     private KafkaMgmtApi kafkaMgmtApi;
     private SecurityMgmtApi securityMgmtApi;
     private KafkaRequest kafka;
-    private ServiceAccountData serviceAccount;
+    private ServiceAccount serviceAccount;
     private KafkaInstanceApi kafkaInstanceApi;
 
 
@@ -165,7 +165,7 @@ public class KafkaMgmtAPITest extends TestBase {
     @Test(groups = {"pr-check", "production"})
     @SneakyThrows
     public void testCreateKafkaInstance() {
-
+        log.debug("a");
         // Create Kafka Instance
         var payload = new KafkaRequestPayload();
         payload.setName(KAFKA_INSTANCE_NAME);
@@ -184,10 +184,10 @@ public class KafkaMgmtAPITest extends TestBase {
 
         // Create Service Account
         log.info("create service account '{}'", SERVICE_ACCOUNT_NAME);
-        var sa = new ServiceAccountCreateRequestData();
-        sa.setName(SERVICE_ACCOUNT_NAME);
-        sa.setDescription("E2E test service account");
-        serviceAccount = securityMgmtApi.createServiceAccount(sa);
+        ServiceAccountRequest req = new ServiceAccountRequest();
+        req.setName(SERVICE_ACCOUNT_NAME);
+        req.setDescription("E2E test service account");
+        serviceAccount = securityMgmtApi.createServiceAccount(req);
     }
 
     @Test(dependsOnMethods = {"testCreateServiceAccount", "testCreateKafkaInstance"}, groups = {"pr-check", "production"})
@@ -390,7 +390,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         bwait(testTopic(
             Vertx.vertx(),
@@ -429,7 +429,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         bwait(testTopic(
             Vertx.vertx(),
@@ -543,7 +543,7 @@ public class KafkaMgmtAPITest extends TestBase {
         var initialSessionLifetimeMs = KafkaAdminUtils.getAuthenticatorPositiveSessionLifetimeMs(
             kafka.getBootstrapServerHost(),
             serviceAccount.getClientId(),
-            serviceAccount.getSecret());
+            serviceAccount.getClientSecret());
         log.debug("positiveSessionLifetimeMs: {}", initialSessionLifetimeMs);
         // because reauth is enabled the session lifetime can not be null
         assertNotNull(initialSessionLifetimeMs);
@@ -560,7 +560,7 @@ public class KafkaMgmtAPITest extends TestBase {
             var sessionLifetimeMs = KafkaAdminUtils.getAuthenticatorPositiveSessionLifetimeMs(
                 kafka.getBootstrapServerHost(),
                 serviceAccount.getClientId(),
-                serviceAccount.getSecret());
+                serviceAccount.getClientSecret());
 
             log.debug("positiveSessionLifetimeMs: {}", sessionLifetimeMs);
 
@@ -576,10 +576,11 @@ public class KafkaMgmtAPITest extends TestBase {
 
         // create SA specifically for purpose of demonstration that it works, afterwards deleting it and fail to use it anymore
         log.info("create service account '{}'", SERVICE_ACCOUNT_NAME_FOR_DELETION);
-        var sa = new ServiceAccountCreateRequestData();
-        sa.setName(SERVICE_ACCOUNT_NAME_FOR_DELETION);
-        sa.setDescription("E2E test service account");
-        var serviceAccountForDeletion = securityMgmtApi.createServiceAccount(sa);
+        ServiceAccountRequest req = new ServiceAccountRequest();
+        req.setName(SERVICE_ACCOUNT_NAME_FOR_DELETION);
+        req.setDescription("E2E test service account");
+
+        var serviceAccountForDeletion = securityMgmtApi.createServiceAccount(req);
 
         // ACLs
         var principal = KafkaInstanceApiAccessUtils.toPrincipal(serviceAccountForDeletion.getClientId());
@@ -589,7 +590,7 @@ public class KafkaMgmtAPITest extends TestBase {
         // working Communication (Producing & Consuming) using  SA (serviceAccountForDeletion)
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccountForDeletion.getClientId();
-        var clientSecret = serviceAccountForDeletion.getSecret();
+        var clientSecret = serviceAccountForDeletion.getClientSecret();
 
         bwait(testTopic(
             Vertx.vertx(),
@@ -643,7 +644,7 @@ public class KafkaMgmtAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         // Connect the Kafka producer
         log.info("initialize kafka producer");

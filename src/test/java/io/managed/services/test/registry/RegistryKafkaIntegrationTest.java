@@ -2,7 +2,6 @@ package io.managed.services.test.registry;
 
 
 import com.openshift.cloud.api.kas.models.KafkaRequest;
-import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import com.openshift.cloud.api.srs.models.RootTypeForRegistry;
 import io.apicurio.registry.rest.v2.beans.RoleMapping;
 import io.apicurio.registry.serde.SerdeConfig;
@@ -35,6 +34,7 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import com.openshift.cloud.api.kas.models.ServiceAccount;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -71,7 +71,7 @@ public class RegistryKafkaIntegrationTest extends TestBase {
     private KafkaMgmtApi kafkaMgmtApi;
     private SecurityMgmtApi securityMgmtApi;
     private KafkaRequest kafka;
-    private ServiceAccountData serviceAccount;
+    private ServiceAccount serviceAccount;
     private KafkaProducerClient<String, GenericRecord> producer;
     private KafkaConsumerClient<String, GenericRecord> consumer;
 
@@ -170,13 +170,13 @@ public class RegistryKafkaIntegrationTest extends TestBase {
         producerRegistryConfig.put(SerdeConfig.AUTO_REGISTER_ARTIFACT, "true");
         producerRegistryConfig.put(SerdeConfig.AUTO_REGISTER_ARTIFACT_IF_EXISTS, "RETURN");
         producerRegistryConfig.put(SerdeConfig.AUTH_USERNAME, serviceAccount.getClientId());
-        producerRegistryConfig.put(SerdeConfig.AUTH_PASSWORD, serviceAccount.getSecret());
+        producerRegistryConfig.put(SerdeConfig.AUTH_PASSWORD, serviceAccount.getClientSecret());
 
         producer = new KafkaProducerClient<>(
             vertx,
             kafka.getBootstrapServerHost(),
             serviceAccount.getClientId(),
-            serviceAccount.getSecret(),
+            serviceAccount.getClientSecret(),
             KafkaAuthMethod.OAUTH,
             StringSerializer.class,
             AvroKafkaGenericSerializer.class,
@@ -187,13 +187,13 @@ public class RegistryKafkaIntegrationTest extends TestBase {
         var consumerRegistryConfig = new HashMap<String, String>();
         consumerRegistryConfig.put(SerdeConfig.REGISTRY_URL, registry.getRegistryUrl());
         consumerRegistryConfig.put(SerdeConfig.AUTH_USERNAME, serviceAccount.getClientId());
-        consumerRegistryConfig.put(SerdeConfig.AUTH_PASSWORD, serviceAccount.getSecret());
+        consumerRegistryConfig.put(SerdeConfig.AUTH_PASSWORD, serviceAccount.getClientSecret());
 
         consumer = new KafkaConsumerClient<>(
             vertx,
             kafka.getBootstrapServerHost(),
             serviceAccount.getClientId(),
-            serviceAccount.getSecret(),
+            serviceAccount.getClientSecret(),
             KafkaAuthMethod.OAUTH,
             "test-group",
             "latest",

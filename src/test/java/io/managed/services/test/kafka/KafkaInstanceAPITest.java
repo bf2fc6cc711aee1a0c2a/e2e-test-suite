@@ -173,7 +173,7 @@ public class KafkaInstanceAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         KafkaProducerClient<String, String> kafkaProducerClient = new KafkaProducerClient(
                 Vertx.vertx(),
@@ -202,7 +202,7 @@ public class KafkaInstanceAPITest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         // fail to send single message and close production
         try (KafkaProducerClient<String, String> kafkaProducerClient = new KafkaProducerClient(
@@ -425,7 +425,7 @@ public class KafkaInstanceAPITest extends TestBase {
             TEST_TOPIC_NAME,
             kafka.getBootstrapServerHost(),
             account.getClientId(),
-            account.getSecret()));
+            account.getClientSecret()));
 
         var group = KafkaInstanceApiUtils.waitForConsumerGroup(kafkaInstanceApi, TEST_GROUP_NAME);
         LOGGER.debug(group);

@@ -4,7 +4,6 @@ package io.managed.services.test.kafka;
 import com.openshift.cloud.api.kas.auth.models.NewTopicInput;
 import com.openshift.cloud.api.kas.auth.models.TopicSettings;
 import com.openshift.cloud.api.kas.models.KafkaRequest;
-import com.openshift.cloud.api.serviceaccounts.models.ServiceAccountData;
 import io.managed.services.test.Environment;
 import io.managed.services.test.TestBase;
 import io.managed.services.test.client.ApplicationServicesApi;
@@ -27,6 +26,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import com.openshift.cloud.api.kas.models.ServiceAccount;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -72,7 +72,7 @@ public class LongLiveKafkaInstanceTest extends TestBase {
     private KafkaInstanceApi kafkaInstanceApi;
 
     private KafkaRequest kafka;
-    private ServiceAccountData serviceAccount;
+    private ServiceAccount serviceAccount;
 
     @BeforeClass
     public void bootstrap() {
@@ -136,7 +136,7 @@ public class LongLiveKafkaInstanceTest extends TestBase {
         }
     }
 
-    private void createACLs(ServiceAccountData serviceAccount) throws ApiGenericException {
+    private void createACLs(ServiceAccount serviceAccount) throws ApiGenericException {
         if (serviceAccount != null) {
             var principal = KafkaInstanceApiAccessUtils.toPrincipal(serviceAccount.getClientId());
             KafkaInstanceApiAccessUtils.createProducerAndConsumerACLs(kafkaInstanceApi, principal);
@@ -203,7 +203,7 @@ public class LongLiveKafkaInstanceTest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         try (var admin = new KafkaAdmin(bootstrapHost, clientID, clientSecret)) {
             var topics = admin.listTopics();
@@ -220,7 +220,7 @@ public class LongLiveKafkaInstanceTest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var secret = serviceAccount.getSecret();
+        var secret = serviceAccount.getClientSecret();
 
         try (var consumerClient = new KafkaConsumerClient<>(
             Vertx.vertx(),
@@ -250,7 +250,7 @@ public class LongLiveKafkaInstanceTest extends TestBase {
 
         String bootstrapHost = kafka.getBootstrapServerHost();
         String clientID = serviceAccount.getClientId();
-        String clientSecret = serviceAccount.getSecret();
+        String clientSecret = serviceAccount.getClientSecret();
 
         LOGGER.info("test topic '{}'", TOPIC_NAME);
         bwait(testTopic(Vertx.vertx(),
@@ -272,7 +272,7 @@ public class LongLiveKafkaInstanceTest extends TestBase {
 
         var bootstrapHost = kafka.getBootstrapServerHost();
         var clientID = serviceAccount.getClientId();
-        var clientSecret = serviceAccount.getSecret();
+        var clientSecret = serviceAccount.getClientSecret();
 
         LOGGER.info("test topic '{}' with 3 consumers", MULTI_PARTITION_TOPIC_NAME);
         bwait(testTopicWithMultipleConsumers(Vertx.vertx(),
