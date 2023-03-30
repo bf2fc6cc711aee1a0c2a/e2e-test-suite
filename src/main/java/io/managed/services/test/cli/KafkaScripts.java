@@ -99,7 +99,7 @@ public class KafkaScripts {
                 30000,
                 30000);
 
-        LOGGER.info("extract binaries");
+        LOGGER.info("kafka scripts downloaded, now extract binaries");
 
         // destination of decompression
         Path target = rootWorkDir;
