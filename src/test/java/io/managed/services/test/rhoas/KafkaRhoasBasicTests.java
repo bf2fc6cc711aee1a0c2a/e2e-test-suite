@@ -35,6 +35,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertThrows;
 import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertFalse;
 
 
 /**
@@ -62,12 +63,14 @@ public class KafkaRhoasBasicTests extends TestBase {
 
     // TODO enterprise: change logic of name assignment back once we have quota for more than 1 enterprise kafka instance
     private static final String KAFKA_INSTANCE_NAME = Environment.IS_ENTERPRISE ? "enterprise-test" : "e2e-cli-test-" + Environment.LAUNCH_SUFFIX;
+    private static final String KAFKA_CREATE_INSTANCE_NAME = Environment.IS_ENTERPRISE ? "enterprise-test-kfk" : "e2e-test-kfk-" + Environment.LAUNCH_SUFFIX;
     private static final String SERVICE_ACCOUNT_NAME = "e2e-cli-svc-acc-"  + Environment.LAUNCH_SUFFIX;
     private static final String TOPIC_NAME = "e2e-cli-topic" + Environment.LAUNCH_SUFFIX;
     // used for testing quickstart for data production and consumption
     private static final String TOPIC_NAME_PRODUCE_CONSUME = "produce-consume-test-topic" + Environment.LAUNCH_SUFFIX;
     private static final int DEFAULT_PARTITIONS = 1;
     private static final String CONSUMER_GROUP_NAME = "consumer-group-1";
+    private static final String SECONDARY_USER = "ad-hoc-secondary";
 
     private final Vertx vertx = Vertx.vertx();
 
@@ -124,6 +127,13 @@ public class KafkaRhoasBasicTests extends TestBase {
         
         try {
             KafkaMgmtApiUtils.deleteKafkaByNameIfExists(kafkaMgmtApi, KAFKA_INSTANCE_NAME);
+        } catch (Throwable t) {
+            LOGGER.error("delete kafka instance error: ", t);
+        }
+
+        try {
+            KafkaMgmtApiUtils.deleteKafkaByNameIfExists(kafkaMgmtApi, KAFKA_CREATE_INSTANCE_NAME);
+            LOGGER.info("SE BORRA PERFECTAMENTE");
         } catch (Throwable t) {
             LOGGER.error("delete kafka instance error: ", t);
         }
@@ -517,6 +527,35 @@ public class KafkaRhoasBasicTests extends TestBase {
             () -> cli.describeServiceAccount(serviceAccount.getClientId()));
     }
 
+    @Test(dependsOnMethods = "testLogin", enabled = true)
+    @SneakyThrows
+    public void testCreateKafka() {
+        LOGGER.info("Create Kafka instance with name {}", KAFKA_CREATE_INSTANCE_NAME);
+        var k = cli.createKafka(KAFKA_CREATE_INSTANCE_NAME);
+
+        LOGGER.info("Wait for Kafka instance with name: {}, with id: {}", k.getName(), k.getId());
+        kafka = CLIUtils.waitUntilKafkaIsReady(cli, k.getId());
+        LOGGER.debug(kafka);
+    }
+
+    @Test(dependsOnMethods = "testCreateKafka", enabled = true)
+    @SneakyThrows
+    public void testUpdateKafkaOwner() {
+        cli.UpdateKafkaOwner(SECONDARY_USER, KAFKA_CREATE_INSTANCE_NAME);
+        var k = cli.describeKafkaByName(KAFKA_CREATE_INSTANCE_NAME);
+        LOGGER.debug(k);
+        assertEquals(SECONDARY_USER, k.getOwner());
+    }
+
+    @Test(dependsOnMethods = "testCreateKafka", enabled = true)
+    @SneakyThrows
+    public void testUpdateKafkaReauthentication() {
+        cli.UpdateKafkaReauthentication("false", KAFKA_CREATE_INSTANCE_NAME);
+        var k = cli.describeKafkaByName(KAFKA_CREATE_INSTANCE_NAME);
+        LOGGER.debug(k);
+        assertFalse(k.getReauthenticationEnabled());
+    }
+
     @Test(dependsOnMethods = "testApplyKafkaInstance", priority = 3, enabled = true)
     @SneakyThrows
     public void testDeleteKafkaInstance() {
@@ -546,3 +585,4 @@ public class KafkaRhoasBasicTests extends TestBase {
         assertThrows(CliGenericException.class, () -> cli.listKafka()); // unable to run the same command after logout
     }
 }
+
