@@ -133,7 +133,6 @@ public class KafkaRhoasBasicTests extends TestBase {
 
         try {
             KafkaMgmtApiUtils.deleteKafkaByNameIfExists(kafkaMgmtApi, KAFKA_CREATE_INSTANCE_NAME);
-            LOGGER.info("SE BORRA PERFECTAMENTE");
         } catch (Throwable t) {
             LOGGER.error("delete kafka instance error: ", t);
         }
