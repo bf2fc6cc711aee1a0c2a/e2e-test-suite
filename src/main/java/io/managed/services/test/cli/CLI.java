@@ -166,7 +166,7 @@ public class CLI {
     }
 
     public void UpdateKafkaReauthentication(String newStatus, String instanceName) throws CliGenericException {
-        retry(() -> exec("kafka", "update", "--reauthentication", newStatus.toLowerCase(), "--name",
+        retry(() -> exec("kafka", "update", "--reauthentication", newStatus.toLowerCase(LOCALE_EN), "--name",
                 instanceName, "-y"));
     }
 
