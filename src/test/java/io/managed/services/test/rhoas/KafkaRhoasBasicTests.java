@@ -89,6 +89,7 @@ public class KafkaRhoasBasicTests extends TestBase {
         assertNotNull(Environment.PRIMARY_PASSWORD, "the PRIMARY_PASSWORD env is null");
         assertNotNull(Environment.PRIMARY_OFFLINE_TOKEN, "the PRIMARY_OFFLINE_TOKEN env is null");
         assertNotNull(Environment.SECONDARY_USERNAME, "the SECONDARY_USERNAME env is null");
+        assertNotNull(Environment.SECONDARY_PASSWORD, "the SECONDARY_PASSWORD env is null");
     }
 
     @AfterClass(alwaysRun = true)
@@ -523,10 +524,26 @@ public class KafkaRhoasBasicTests extends TestBase {
     @Test(dependsOnMethods = "testApplyKafkaInstance", enabled = true)
     @SneakyThrows
     public void testUpdateKafkaOwner() {
-        cli.UpdateKafkaOwner(Environment.SECONDARY_USERNAME, KAFKA_INSTANCE_NAME);
-        var k = cli.describeKafkaByName(KAFKA_INSTANCE_NAME);
-        LOGGER.debug(k);
-        assertEquals(Environment.SECONDARY_USERNAME, k.getOwner());
+        try
+        {
+            cli.UpdateKafkaOwner(Environment.SECONDARY_USERNAME, KAFKA_INSTANCE_NAME);
+            var k = cli.describeKafkaByName(KAFKA_INSTANCE_NAME);
+            LOGGER.debug(k);
+            assertEquals(Environment.SECONDARY_USERNAME, k.getOwner());
+        }
+        catch (Throwable t) {
+            LOGGER.error("testUpdateKafkaOwner ERROR: ", t);
+        }
+        finally {
+            LOGGER.info("login the CLI with the Secondary User (owner of the instance)");
+            CLIUtils.login(vertx, cli, Environment.SECONDARY_USERNAME, Environment.SECONDARY_PASSWORD).get();
+            cli.UpdateKafkaOwner(Environment.PRIMARY_USERNAME, KAFKA_INSTANCE_NAME);
+            var k = cli.describeKafkaByName(KAFKA_INSTANCE_NAME);
+            LOGGER.debug(k);
+            assertEquals(Environment.PRIMARY_USERNAME, k.getOwner());
+            LOGGER.info("login the CLI with the Primary User (re-owner of the instance)");
+            CLIUtils.login(vertx, cli, Environment.PRIMARY_USERNAME, Environment.SECONDARY_PASSWORD).get();
+        }
     }
 
     @Test(dependsOnMethods = "testApplyKafkaInstance", enabled = true)

@@ -879,7 +879,7 @@ public class KafkaAccessMgmtTest extends TestBase {
 
     @Test(priority = 11, dependsOnMethods = "testAdminUserCanChangeTheKafkaInstanceOwner", groups = TestGroups.INTEGRATION)
     public void testAlienUserCanNotDeleteTheKafkaInstance() {
-        LOGGER.info("Test that the aline user can not delete the Kafka instance");
+        LOGGER.info("Test that the alien user can not delete the Kafka instance");
         assertThrows(ApiNotFoundException.class, () -> alienAPI.kafkaMgmt().deleteKafkaById(kafka.getId(), true));
     }
 
