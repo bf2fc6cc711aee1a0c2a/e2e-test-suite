@@ -39,6 +39,7 @@ public class Environment {
     private static final String PRIMARY_PASSWORD_ENV = "PRIMARY_PASSWORD";
 
     private static final String SECONDARY_USERNAME_ENV = "SECONDARY_USERNAME";
+    private static final String SECONDARY_PASSWORD_ENV = "SECONDARY_PASSWORD";
     private static final String ADMIN_USERNAME_ENV = "ADMIN_USERNAME";
 
     // OFFLINE_TOKENS of users used in tests
@@ -108,7 +109,7 @@ public class Environment {
      * Setup constants from env variables or set default
      */
     public static final String CLOUD_PROVIDER = getOrDefault(CLOUD_PROVIDER_ENV, "aws");
-    
+
     public static final String SUITE_ROOT = System.getProperty("user.dir");
     public static final Path LOG_DIR = getOrDefault(LOG_DIR_ENV, Paths::get, Paths.get(SUITE_ROOT, "target", "logs")).resolve("test-run-" + DATE_FORMAT.format(LocalDateTime.now()));
 
@@ -119,6 +120,7 @@ public class Environment {
     public static final String PRIMARY_PASSWORD = getOrDefault(PRIMARY_PASSWORD_ENV, null);
 
     public static final String SECONDARY_USERNAME = getOrDefault(SECONDARY_USERNAME_ENV, null);
+    public static final String SECONDARY_PASSWORD = getOrDefault(SECONDARY_PASSWORD_ENV, null);
     public static final String ADMIN_USERNAME = getOrDefault(ADMIN_USERNAME_ENV, null);
 
     // sso.redhat.com primary user, secondary user, admin user, alien user diff org user respectively (See README.md)

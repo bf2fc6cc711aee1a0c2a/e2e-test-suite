@@ -308,8 +308,8 @@ public class KafkaAccessMgmtTest extends TestBase {
         LOGGER.info("Test user cannot access '__consumer_offsets' and '__transaction_state'");
         var instanceApiTopics = primaryKafkaInstanceAPI.getTopics();
         var o = instanceApiTopics.getItems().stream()
-                .filter(k -> "__consumer_offsets".equals(k.getName()) || "__transaction_state".equals(k.getName()))
-                .findAny();
+            .filter(k -> "__consumer_offsets".equals(k.getName()) || "__transaction_state".equals(k.getName()))
+            .findAny();
         assertTrue(o.isEmpty());
     }
 
@@ -682,7 +682,7 @@ public class KafkaAccessMgmtTest extends TestBase {
         // TODO investigate if acl should be able to be creatd even even its provide null values
         LOGGER.info("Test that the secondary user by default can not delete ACLs");
         assertThrows(ApiForbiddenException.class, () ->
-                secondaryKafkaInstanceAPI.deleteAcls(AclResourceType.TOPIC, "abc", AclPatternType.LITERAL, "cde", AclOperation.ALL, AclPermissionType.ALLOW));
+            secondaryKafkaInstanceAPI.deleteAcls(AclResourceType.TOPIC, "abc", AclPatternType.LITERAL, "cde", AclOperation.ALL, AclPermissionType.ALLOW));
     }
 
     @Test(priority = 6, groups = TestGroups.INTEGRATION)
@@ -757,7 +757,7 @@ public class KafkaAccessMgmtTest extends TestBase {
 
         LOGGER.info("Test that the admin user can not delete ACLs");
         assertThrows(ApiForbiddenException.class, () -> adminKafkaInstanceAPI.deleteAcls(
-                AclResourceType.TOPIC, "xx", AclPatternType.LITERAL, "123", AclOperation.READ, AclPermissionType.ALLOW));
+            AclResourceType.TOPIC, "xx", AclPatternType.LITERAL, "123", AclOperation.READ, AclPermissionType.ALLOW));
     }
 
     @SneakyThrows
@@ -879,7 +879,7 @@ public class KafkaAccessMgmtTest extends TestBase {
 
     @Test(priority = 11, dependsOnMethods = "testAdminUserCanChangeTheKafkaInstanceOwner", groups = TestGroups.INTEGRATION)
     public void testAlienUserCanNotDeleteTheKafkaInstance() {
-        LOGGER.info("Test that the aline user can not delete the Kafka instance");
+        LOGGER.info("Test that the alien user can not delete the Kafka instance");
         assertThrows(ApiNotFoundException.class, () -> alienAPI.kafkaMgmt().deleteKafkaById(kafka.getId(), true));
     }
 
