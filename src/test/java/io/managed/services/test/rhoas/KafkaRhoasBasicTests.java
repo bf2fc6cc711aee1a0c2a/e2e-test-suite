@@ -63,7 +63,6 @@ public class KafkaRhoasBasicTests extends TestBase {
 
     // TODO enterprise: change logic of name assignment back once we have quota for more than 1 enterprise kafka instance
     private static final String KAFKA_INSTANCE_NAME = Environment.IS_ENTERPRISE ? "enterprise-test" : "e2e-cli-test-" + Environment.LAUNCH_SUFFIX;
-    //private static final String CLI_CREATE_UPDATE_KAFKA_INSTANCE_NAME = Environment.IS_ENTERPRISE ? "enterprise-test-kfk" : "e2e-test-kfk-" + Environment.LAUNCH_SUFFIX;
     private static final String SERVICE_ACCOUNT_NAME = "e2e-cli-svc-acc-"  + Environment.LAUNCH_SUFFIX;
     private static final String TOPIC_NAME = "e2e-cli-topic" + Environment.LAUNCH_SUFFIX;
     // used for testing quickstart for data production and consumption
