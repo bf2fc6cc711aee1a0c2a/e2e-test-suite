@@ -95,6 +95,7 @@ public class KafkaRhoasBasicTests extends TestBase {
     @AfterMethod(alwaysRun = true)
     @SneakyThrows
     public void cleanMethod(Method method) {
+        // Restore the owner to PRIMARY, after testing that changing owners works.
         if (method.getName().equals("testUpdateKafkaOwner")) {
             var adminOfflineToken = Environment.ADMIN_OFFLINE_TOKEN;
             var kafkaMgmtApi = KafkaMgmtApiUtils.kafkaMgmtApi(Environment.OPENSHIFT_API_URI, adminOfflineToken);
