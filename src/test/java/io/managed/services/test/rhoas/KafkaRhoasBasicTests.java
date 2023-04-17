@@ -22,12 +22,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.List;
 import java.util.Objects;
+import java.lang.reflect.Method;
 
 import static io.managed.services.test.TestUtils.bwait;
 import static io.managed.services.test.client.kafka.KafkaMessagingUtils.testTopic;
@@ -88,7 +90,16 @@ public class KafkaRhoasBasicTests extends TestBase {
         assertNotNull(Environment.PRIMARY_PASSWORD, "the PRIMARY_PASSWORD env is null");
         assertNotNull(Environment.PRIMARY_OFFLINE_TOKEN, "the PRIMARY_OFFLINE_TOKEN env is null");
         assertNotNull(Environment.SECONDARY_USERNAME, "the SECONDARY_USERNAME env is null");
-        assertNotNull(Environment.SECONDARY_PASSWORD, "the SECONDARY_PASSWORD env is null");
+    }
+
+    @AfterMethod(alwaysRun = true)
+    @SneakyThrows
+    public void cleanMethod(Method method) {
+        if (method.getName().equals("testUpdateKafkaOwner")) {
+            var adminOfflineToken = Environment.ADMIN_OFFLINE_TOKEN;
+            var kafkaMgmtApi = KafkaMgmtApiUtils.kafkaMgmtApi(Environment.OPENSHIFT_API_URI, adminOfflineToken);
+            KafkaMgmtApiUtils.changeKafkaInstanceOwner(kafkaMgmtApi, kafka, Environment.PRIMARY_USERNAME);
+        }
     }
 
     @AfterClass(alwaysRun = true)
@@ -96,8 +107,9 @@ public class KafkaRhoasBasicTests extends TestBase {
     public void clean() {
 
         var offlineToken = Environment.PRIMARY_OFFLINE_TOKEN;
+        var adminOfflineToken = Environment.ADMIN_OFFLINE_TOKEN;
 
-        var kafkaMgmtApi =  KafkaMgmtApiUtils.kafkaMgmtApi(Environment.OPENSHIFT_API_URI, offlineToken);
+        var kafkaMgmtApi =  KafkaMgmtApiUtils.kafkaMgmtApi(Environment.OPENSHIFT_API_URI, adminOfflineToken);
         var securityMgmtApi = SecurityMgmtAPIUtils.securityMgmtApi(Environment.OPENSHIFT_API_URI, offlineToken);
         var kafkaInstanceApi = KafkaInstanceApiUtils.kafkaInstanceApi(Environment.OPENSHIFT_API_URI, offlineToken);
 
@@ -523,26 +535,10 @@ public class KafkaRhoasBasicTests extends TestBase {
     @Test(dependsOnMethods = "testApplyKafkaInstance", enabled = true)
     @SneakyThrows
     public void testUpdateKafkaOwner() {
-        try
-        {
-            cli.UpdateKafkaOwner(Environment.SECONDARY_USERNAME, KAFKA_INSTANCE_NAME);
-            var k = cli.describeKafkaByName(KAFKA_INSTANCE_NAME);
-            LOGGER.debug(k);
-            assertEquals(Environment.SECONDARY_USERNAME, k.getOwner());
-        }
-        catch (Throwable t) {
-            LOGGER.error("testUpdateKafkaOwner ERROR: ", t);
-        }
-        finally {
-            LOGGER.info("login the CLI with the Secondary User (owner of the instance)");
-            CLIUtils.login(vertx, cli, Environment.SECONDARY_USERNAME, Environment.SECONDARY_PASSWORD).get();
-            cli.UpdateKafkaOwner(Environment.PRIMARY_USERNAME, KAFKA_INSTANCE_NAME);
-            var k = cli.describeKafkaByName(KAFKA_INSTANCE_NAME);
-            LOGGER.debug(k);
-            assertEquals(Environment.PRIMARY_USERNAME, k.getOwner());
-            LOGGER.info("login the CLI with the Primary User (re-owner of the instance)");
-            CLIUtils.login(vertx, cli, Environment.PRIMARY_USERNAME, Environment.SECONDARY_PASSWORD).get();
-        }
+        cli.UpdateKafkaOwner(Environment.SECONDARY_USERNAME, KAFKA_INSTANCE_NAME);
+        var k = cli.describeKafkaByName(KAFKA_INSTANCE_NAME);
+        LOGGER.debug(k);
+        assertEquals(Environment.SECONDARY_USERNAME, k.getOwner());
     }
 
     @Test(dependsOnMethods = "testApplyKafkaInstance", enabled = true)
