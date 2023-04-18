@@ -34,7 +34,7 @@ public class KafkaInstanceSteps {
 
         log.info("create kafka instance with name '{}'", KAFKA_INSTANCE_UNIQUE_NAME);
         var payload = KafkaMgmtApiUtils.defaultKafkaInstance(KAFKA_INSTANCE_UNIQUE_NAME);
-        var kafka = KafkaMgmtApiUtils.createKafkaInstance(kafkaMgmtApi, payload);
+        var kafka = KafkaMgmtApiUtils.applyKafkaInstance(kafkaMgmtApi, payload);
         log.debug(kafka);
 
         kafkaInstanceContext.setKafkaInstance(kafka);
@@ -98,6 +98,7 @@ public class KafkaInstanceSteps {
 
     @AfterAll
     public static void clean_kafka_instance() throws Throwable {
+        log.info("cleanup of kafka instance");
         assumeTeardown();
 
         var kafkaMgmtApi = KafkaMgmtApiUtils.kafkaMgmtApi(Environment.OPENSHIFT_API_URI, Environment.PRIMARY_OFFLINE_TOKEN);

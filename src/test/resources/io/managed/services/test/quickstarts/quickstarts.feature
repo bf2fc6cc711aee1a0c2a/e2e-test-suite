@@ -114,8 +114,8 @@ Feature: Quick starts for OpenShift Streams for Apache Kafka
     # 4. Running the Quarkus example application
     Given the Kafka instance is in Ready state
     Given you have set the permissions for your service account to produce and consume from topic prices
-    When you run Quarkus example applications
-    Then the application is running and the `Last price` is updated at http localhost port 8080 resource prices.html
+    When you run your local Quarkus example applications
+    Then the application is running and the `Last price` is updated at localhost port 8080 resource prices.html
 
 
   Scenario: Using Node.js applications with Kafka instances in Red Hat OpenShift Streams for Apache Kafka
