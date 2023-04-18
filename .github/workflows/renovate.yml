@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.0.0
+        uses: actions/checkout@v2.7.0
       - run: 'echo "{\"repositories\": [\"${GITHUB_REPOSITORY}\"]}" >renovate-self-hosted-config.json'
       - run: cat renovate-self-hosted-config.json
       - name: Self-hosted Renovate
